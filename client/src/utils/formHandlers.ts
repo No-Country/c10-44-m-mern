@@ -1,0 +1,15 @@
+import { FormElements, Course, CloudinaryResult } from '../../types.d';
+
+//Esta funcion es para actualizar el estado del form
+export const handleChange = (
+  e: React.ChangeEvent<FormElements>,
+  state: Course,
+  setState: React.Dispatch<React.SetStateAction<Course>>
+) => {
+  let value = e.target.value;
+  let name = e.target.name;
+  setState({
+    ...state,
+    [name]: value,
+  });
+};
