@@ -21,3 +21,14 @@ export const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   console.log();
 };
+
+//Esta funcion sirve para eliminar imagenes cuando se clickea sobre ellas
+export const deleteImage = (
+  state: Course,
+  setState: React.Dispatch<React.SetStateAction<Course>>
+) => {
+  setState({
+    ...state,
+    image: '',
+  });
+};
