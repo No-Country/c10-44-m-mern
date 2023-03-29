@@ -1,4 +1,4 @@
-import { Course } from '../../types';
+import { Course, Module } from '../../types';
 
 export const validateForm = (data: Course): Course => {
   let error: Course = {
@@ -14,6 +14,19 @@ export const validateForm = (data: Course): Course => {
   }
   if (!data.image.length) {
     error.image = 'Agregá una imágen';
+  }
+  return error;
+};
+export const validateFormModule = (data: Module): Module => {
+  let error: Module = {
+    title: '',
+    number: '',
+  };
+  if (!data.title.length) {
+    error.title = 'El nombre es necesario';
+  }
+  if (!data.number.length) {
+    error.number = 'Es necesario agregar un número para el módulo';
   }
   return error;
 };

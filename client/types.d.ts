@@ -6,6 +6,11 @@ export interface Course {
   description: string;
   image: string;
 }
+export interface Module {
+  title: string;
+  number: string;
+}
+
 export const initialCourseState: Course = {
   title: '',
   description: '',
