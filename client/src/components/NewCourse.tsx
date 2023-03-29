@@ -30,7 +30,6 @@ function NewCourse() {
     setError(validateForm(course));
     console.log(course);
   };
-  console.log(error);
   return (
     <>
       <h2>Crear un nuevo curso</h2>
