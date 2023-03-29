@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { handleChange } from '@/utils/formHandlers';
 import { Course, initialCourseState } from '../../types.d';
 import { handleOpenWidget } from '@/utils/cloudinaryWidget';
+import { validateForm } from '@/utils/validations';
 
 function NewCourse() {
   const [course, setCourse] = useState<Course>(initialCourseState);
+  const [error, setError] = useState<Course>({
+    title: '',
+    description: '',
+    image: '',
+  });
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -12,16 +18,19 @@ function NewCourse() {
     script.async = true;
     document.body.appendChild(script);
 
+    setError(validateForm(course));
+
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, [course.image]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(validateForm(course));
     console.log(course);
   };
-
+  console.log(error);
   return (
     <>
       <h2>Crear un nuevo curso</h2>
@@ -32,8 +41,9 @@ function NewCourse() {
           name='title'
           value={course.title}
           id='title'
-          onChange={(e) => handleChange(e, course, setCourse)}
+          onChange={(e) => handleChange(e, course, setCourse, setError)}
         />
+        {error.title && <span>{error.title}</span>}
         <label htmlFor='description'>Descripción</label>
         <textarea
           name='description'
@@ -42,18 +52,26 @@ function NewCourse() {
           cols={30}
           rows={10}
           placeholder='Describí el curso'
-          onChange={(e) => handleChange(e, course, setCourse)}
+          onChange={(e) => handleChange(e, course, setCourse, setError)}
         ></textarea>
+        {error.description && <span>{error.description}</span>}
         <div>
           <label htmlFor='image'>Imágen del curso</label>
+          {course.image && <img src={course.image} alt={course.image} />}
+
           <button
             type='button'
             onClick={() => handleOpenWidget(course, setCourse)}
           >
             Subir imágen
           </button>
+          {error.image && <span>{error.image}</span>}
         </div>
-        <button type='submit'>Crear curso</button>
+        {error.title || error.description || error.image ? (
+          <button type='button'>Completá el formulario para seguir</button>
+        ) : (
+          <button type='submit'>Crear curso</button>
+        )}
       </form>
     </>
   );
