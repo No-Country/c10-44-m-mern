@@ -15,7 +15,7 @@ function NewModule() {
 
   useEffect(() => {
     setError(validateFormModule(module));
-  }, []);
+  }, [module]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,7 +43,11 @@ function NewModule() {
           onChange={(e) => handleChangeModule(e, module, setModule, setError)}
         />
         {error.number && <span>{error.number}</span>}
-        <button type='submit'>Crear módulo</button>
+        {error.title || error.number ? (
+          <button type='button'>Completá los campos</button>
+        ) : (
+          <button type='submit'>Crear módulo</button>
+        )}
       </form>
     </div>
   );
