@@ -1,4 +1,4 @@
-import { FormElements, Course, CloudinaryResult } from '../../types.d';
+import { FormElements, Course } from '../../types.d';
 
 //Esta funcion es para actualizar el estado del form
 export const handleChange = (
@@ -12,4 +12,9 @@ export const handleChange = (
     ...state,
     [name]: value,
   });
+};
+
+export const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  console.log();
 };
