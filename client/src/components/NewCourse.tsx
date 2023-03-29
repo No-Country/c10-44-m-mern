@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { handleChange } from '@/utils/formHandlers';
+import { handleChange, deleteImage } from '@/utils/formHandlers';
 import { Course, initialCourseState } from '../../types.d';
 import { handleOpenWidget } from '@/utils/cloudinaryWidget';
 import { validateForm } from '@/utils/validations';
@@ -58,6 +58,14 @@ function NewCourse() {
         <div>
           <label htmlFor='image'>Imágen del curso</label>
           {course.image && <img src={course.image} alt={course.image} />}
+          {course.image && (
+            <button
+              type='button'
+              onClick={() => deleteImage(course, setCourse)}
+            >
+              Eliminar imágen
+            </button>
+          )}
 
           <button
             type='button'
