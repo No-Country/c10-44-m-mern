@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@/components/Layout';
 import NewCourse from '@/components/NewCourse';
 import NewModule from '@/components/NewModule';
+import NewClass from '@/components/NewClass';
 
 function create() {
   return (
@@ -11,6 +12,7 @@ function create() {
     >
       <NewCourse />
       <NewModule />
+      <NewClass />
     </Layout>
   );
 }
