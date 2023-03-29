@@ -2,23 +2,12 @@
 Este archivo sirve como plantilla para que cada pagina tenga metadatos y otras caracteristicas que se repiten mucho en las diferentes secciones
 */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import styles from '../styles/Layout.module.css';
 import { Props } from '../../types.d';
 
 function Layout({ children, title, description }: Props) {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://upload-widget.cloudinary.com/global/all.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className={styles.probando}>
       <Head>

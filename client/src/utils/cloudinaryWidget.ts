@@ -18,7 +18,6 @@ export const handleOpenWidget = async (
     },
     (error: unknown, result: CloudinaryResult) => {
       if (!error && result && result.event === 'success') {
-        console.log('Done! Here is the image info: ', result.info);
         setState({
           ...state,
           image: result.info.url,
