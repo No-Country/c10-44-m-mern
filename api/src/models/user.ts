@@ -1,7 +1,7 @@
 import { Schema } from "mongoose";
 import db from "@/config/db";
 
-export const userSchema = new Schema({
+export const User = new Schema({
   email: { type: String, unique: true, required: true },
   passwordHash: String,
   displayName: { type: String, required: true },
@@ -12,4 +12,4 @@ export const userSchema = new Schema({
   updatedAt: Date,
 });
 
-export const userModel = db.model("User", userSchema);
+export const UserModel = db.model("User", User);
