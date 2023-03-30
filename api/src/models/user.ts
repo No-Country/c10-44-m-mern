@@ -1,4 +1,5 @@
-import { Schema, model } from 'mongoose'
+import { Schema } from "mongoose";
+import db from "@/config/db";
 
 export const userSchema = new Schema({
   email: { type: String, unique: true, required: true },
@@ -9,6 +10,6 @@ export const userSchema = new Schema({
   isPremium: Boolean,
   createdAt: Date,
   updatedAt: Date,
-})
+});
 
-export const userModel = model('User', userSchema)
+export const userModel = db.model("User", userSchema);
