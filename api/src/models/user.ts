@@ -1,6 +1,5 @@
-import { Model, Schema } from "mongoose";
+import { type Model, Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
-import db from "@/config/db";
 
 /**
  * Interface to model the User Schema
@@ -61,4 +60,4 @@ userSchema.method('validatePassword', async function (candidatePassword: string)
   return bcrypt.compare(candidatePassword, this.passwordHash);
 });
 
-export const User = db.model<IUser, UserModel>("User", userSchema);
+export const User = model<IUser, UserModel>("User", userSchema);

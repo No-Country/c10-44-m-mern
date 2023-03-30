@@ -1,9 +1,20 @@
-import { Schema, } from "mongoose";
-import db from "@/config/db";
+import { type Model, Schema, model } from "mongoose";
 
-export const RoleDocument = new Schema({
+/**
+ * Interface to model the Role Schema
+ */
+interface IRole {
+  name: string;
+  createdAt: Date;
+}
+
+export const roleSchema = new Schema<IRole>({
   name: { type: String, unique: true, required: true },
   createdAt: Date,
 });
 
-export const Role = db.model("Role", RoleDocument);
+export type RoleDocument = typeof roleSchema;
+
+type RoleModel = Model<IRole>;
+
+export const Role = model<IRole, RoleModel>("Role", roleSchema);

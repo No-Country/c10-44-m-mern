@@ -17,6 +17,9 @@ export const LocalStrategy = new PassportLocalStrategy({
     if (!existingUser.validatePassword(candidatePassword)) {
       return done(null, false, { message: "Contraseña incorrecta" });
     }
+
+    // If the user exists and the password is correct, return the user
+    done(null, existingUser);
   } catch (error) {
     done(error);
   }
