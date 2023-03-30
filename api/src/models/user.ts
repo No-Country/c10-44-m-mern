@@ -7,10 +7,10 @@ import db from "@/config/db";
  */
 interface IUser {
   email: string;
-  passwordHash: string;
+  passwordHash?: string;
   displayName: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   isPremium: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -34,10 +34,12 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   displayName: { type: String, required: true },
   firstName: String,
   lastName: String,
-  isPremium: Boolean,
-  createdAt: Date,
-  updatedAt: Date,
+  isPremium: {type: Boolean, default: false},
+}, {
+  timestamps: true
 });
+
+export type UserDocument = typeof userSchema;
 
 // Hash user password before saving to database
 userSchema.pre("save", async function (next) {
