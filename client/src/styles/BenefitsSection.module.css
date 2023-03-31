@@ -1,0 +1,40 @@
+/* Se eliminará cuando se haga merge */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap");
+
+.container__BenefitsSection ul {
+  list-style: none;
+}
+
+/* Hasta Aquí */
+
+.container__benefitsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ECEDF2;
+  color: #000;
+  font-family: "Sora", sans-serif;
+  text-align: center;
+  padding: 84px 99px 75px 139px;
+}
+
+.container__benefitsSection h2 {
+  margin: 1rem 0rem;
+}
+
+.container_benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card__benefit {
+  display: flex;
+  align-items: start;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.card__benefit p {
+  text-align: justify;
+
+}
