@@ -7,7 +7,7 @@ import NewClass from "@/components/NewClass";
 function create() {
   return (
     <Layout
-      title="Creá cursos, modulos o clases!"
+      title="Creá cursos, módulos o clases!"
       description="En esta sección podrás crear, modificar o eliminar cursos en tu plataforma"
     >
       <NewCourse />
