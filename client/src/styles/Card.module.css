@@ -7,7 +7,7 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end; */
+  align-items: start;
   padding: 24px;
 }
 
@@ -15,12 +15,14 @@
   font-size: 23px;
   line-height: 29px;
   font-weight: 600;
+  margin-top: 18px;
 }
 
 .description {
   font-size: 16px;
   line-height: 23px;
   font-weight: 400;
+  margin-top: 4px;
 }
 
 .imagecontainer {
