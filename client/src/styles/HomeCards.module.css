@@ -4,9 +4,16 @@
   background-color: #ecedf2;
   display: grid;
   place-content: center;
-  padding: 20px;
+  padding: 60px 40px;
   gap: 60px;
   font-family: "Sora", sans-serif;
+}
+
+.titlescontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .maintitle {
@@ -21,9 +28,11 @@
   font-size: 23px;
   line-height: 29px;
   text-align: center;
+  max-width: 660px;
 }
 
 .cardscontainer {
   display: flex;
   justify-content: space-around;
+  gap: 62px;
 }
