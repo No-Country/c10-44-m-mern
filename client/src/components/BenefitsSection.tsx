@@ -1,7 +1,6 @@
 import BenefitSection from "./BenefitSection";
 import styles from '../styles/BenefitsSection.module.css';
 
-
 function BenefitsSection() {
   return (
     <div className={styles.container__benefitsSection}>
