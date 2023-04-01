@@ -3,7 +3,7 @@ import { type Model, Schema, model } from "mongoose";
 /**
  * Interface to model the Role Schema
  */
-interface IRole {
+export interface IRole {
   name: string;
   createdAt: Date;
 }
