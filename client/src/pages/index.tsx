@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import NavBar from '@/components/NavBar'
 import HomeHero from '@/components/HomeHero'
-import NewCourse from '@/components/NewCourse'
 import PricingSection from '@/components/PricingSection'
 import HomeFooter from '@/components/HomeFooter'
 
