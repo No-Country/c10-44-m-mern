@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 /**
  * Interface to model the User Schema
  */
-interface IUser {
+export interface IUser {
   email: string;
   passwordHash?: string;
   displayName: string;
@@ -18,7 +18,7 @@ interface IUser {
 /**
  * Interface to model the methods of the User Schema
  */
-interface IUserMethods {
+export interface IUserMethods {
   validatePassword: (candidatePassword: string) => Promise<boolean>;
 }
 
