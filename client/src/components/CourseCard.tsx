@@ -7,8 +7,10 @@ function CourseCard({ title, description, image }: Course) {
       <figure className={styles.imagecontainer}>
         <img src={image} className={styles.image} alt={title} />
       </figure>
-      <h4 className={styles.title}>{title}</h4>
-      <p className={styles.description}>{description}</p>
+
+      <div className={styles.imagecontainer}>
+        <img src={image} className={styles.image} alt={title} />
+      </div>
     </div>
   );
 }
