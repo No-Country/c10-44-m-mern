@@ -1,37 +1,30 @@
 import CourseCard from "./CourseCard";
-
 import styles from "../styles/HomeCards.module.css";
 import ManGettingFolder from "../assets/ManGettingFolder.png";
-
-
 
 function CardSection() {
   const courses = [
     {
       title: "Nivel básico",
-
       image: ManGettingFolder.src,
-
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
+
     {
       title: "Nivel intermedio",
-
       image: ManGettingFolder.src,
-
-
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
+
     {
       title: "Nivel avanzado",
-
       image: ManGettingFolder.src,
-
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
+
     {
       title: "Nivel negocios",
       image: ManGettingFolder.src,
@@ -42,13 +35,9 @@ function CardSection() {
 
   return (
     <section className={styles.mainsection}>
-
       <div className={styles.titlescontainer}>
-        <h2 className={styles.maintitle}>Cursos de inglés</h2>
-        <p className={styles.subtitle}>
-          "Unlock your potential with our English learning platform and take
-          your career to the next level."
-        </p>
+        <h2 className={styles.maintitle}>Cursos de inglés</h2>        
+<p className={styles.subtitle}> "Libera tu potencial con nuestra plataforma de aprendizaje de inglés y lleva tu carrera al siguiente nivel". </p>
       </div>
       <div className={styles.cardscontainer}>
         {courses &&
