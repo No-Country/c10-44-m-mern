@@ -1,17 +1,18 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { AuthenticateCallback } from "passport";
 import { PassportAuth } from "../config/auth/passport";
-import { IUser } from "../models/user";
+import { IUser, IUserMethods } from "../models/user";
 import generateJWT from "../utils/generate-jwt";
 
 const generateJWTCallback =
   (req: Request, res: Response, next: NextFunction): AuthenticateCallback =>
-  (err, user: IUser, info, status) => {
+  (err, user: IUser & IUserMethods, info, status) => {
     if (err || !user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const jwt = generateJWT(user);
+    user.removePassword()
 
     return res.status(200).json({ user, token: jwt });
   };

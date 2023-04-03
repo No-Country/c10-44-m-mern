@@ -1,4 +1,4 @@
-import { User, IUser } from "../models/user";
+import { User, IUser, UserModel, IUserMethods } from "../models/user";
 
 const getAll = async () => {
   try {
@@ -20,25 +20,25 @@ const create = async (body: IUser) => {
   return User.create(body);
 };
 
-const updateOneById = async (id: string, body: Partial<IUser>) => {
-  try {
-    const moduleToUpdate = await User.findById(id);
-    if (!moduleToUpdate) {
-      throw new Error(
-        "No se encontro el modulo que se esta buscando actualizar"
-      );
-    } else {
-    await User.findOneAndUpdate({ _id: id }, body);
-    return `Class updated successfully`;}
-  } catch (err) {
-    throw new Error(err);
+const updateOneById = async (
+  id: string,
+  body: Partial<IUser>
+): Promise<IUser & IUserMethods> => {
+  const existingUser = await User.findById(id);
+
+  if (!existingUser) {
+    throw new Error("User not found");
   }
+
+  Object.assign(existingUser, body);
+
+  return existingUser.save();
 };
 
 const deleteOneById = async (id: string) => {
   try {
     await User.deleteOne({ _id: id });
-    return `Class deleted succesfully`;
+    return `User deleted succesfully`;
   } catch (err) {
     throw new Error(err);
   }

@@ -16,6 +16,7 @@ export const signUp = async (req: Request, res: Response) => {
     };
 
     const newUser = await createUser(bodyUser);
+    newUser.removePassword()
 
     const jwt = generateJWT(newUser);
 

@@ -64,9 +64,19 @@ const create = async (req: Request, res: Response) => {
 const updateById = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const body: IUser = req.body;
-    const response = await userService.updateOneById(id, body);
-    res.status(201).json(response);
+    let body: IUser = req.body;
+
+    if (req.body.password) {
+      body = {
+        ...req.body,
+        passwordHash: req.body.password,
+      };
+    }
+
+    const updatedUser = await userService.updateOneById(id, body);
+    updatedUser.removePassword()
+    
+    res.status(201).json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(400).json({
