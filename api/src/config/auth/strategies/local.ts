@@ -1,5 +1,5 @@
 import { Strategy as PassportLocalStrategy } from "passport-local";
-import { User } from "@/models/user";
+import { User } from "../../../models/user";
 
 /**
  * To authenticate users using a username and password
