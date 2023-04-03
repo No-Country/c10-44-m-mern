@@ -18,4 +18,4 @@ Passport.use(JWTStrategy);
 Passport.use(GoogleStrategy);
 // ...more strategies
 
-export { Passport };
+export { Passport as PassportAuth };

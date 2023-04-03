@@ -22,7 +22,7 @@ export const GoogleStrategy = new PassportGoogleStrategy(
         { upsert: true }
       );
 
-      done(null, existingUser);
+      return done(null, existingUser);
     } catch (error) {
       done(error);
     }

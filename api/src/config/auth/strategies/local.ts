@@ -14,12 +14,14 @@ export const LocalStrategy = new PassportLocalStrategy({
       return done(null, false, { message: "No existe usuario con ese email" });
     }
 
-    if (!existingUser.validatePassword(candidatePassword)) {
+    const isValidPassword = await existingUser.validatePassword(candidatePassword);
+
+    if (!isValidPassword) {
       return done(null, false, { message: "Contraseña incorrecta" });
     }
 
     // If the user exists and the password is correct, return the user
-    done(null, existingUser);
+    return done(null, existingUser);
   } catch (error) {
     done(error);
   }

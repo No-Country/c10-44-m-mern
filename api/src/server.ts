@@ -6,6 +6,7 @@ dotenv.config();
 import { classRouter} from "./routes/class.routes"
 import { modulesRouter} from "./routes/module.routes"
 import { usersRouter } from "./routes/user.routes";
+import { authRouter } from "./routes/auth.routes";
 
 // Mongoose initialization
 try {
@@ -32,9 +33,11 @@ const app: Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/classes", classRouter)
-app.use("/api/modules", modulesRouter)
-app.use("/api/users", usersRouter)
+app.use("/api/classes", classRouter);
+app.use("/api/modules", modulesRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

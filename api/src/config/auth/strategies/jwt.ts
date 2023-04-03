@@ -8,14 +8,14 @@ const jwtStrategyOptions: JWTStrategyOptions = {
 
 export const JWTStrategy = new PassportJWTStrategy(jwtStrategyOptions, async (payload, done) => {
   try {
-    const existingUser = await User.findById(payload.sub);
+    const existingUser = await User.findById(payload.user._id);
 
     if (!existingUser) {
       return done(null, false, { message: "No existe usuario con ese email" });
     }
 
     // If the user exists and the password is correct, return the user
-    done(null, existingUser);
+    return done(null, existingUser);
   } catch (error) {
     done(error);
   }
