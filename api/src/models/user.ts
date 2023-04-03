@@ -1,10 +1,11 @@
-import { type Model, Schema, model } from "mongoose";
+import { type Model, Schema, model, Types } from "mongoose";
 import bcrypt from "bcrypt";
 
 /**
  * Interface to model the User Schema
  */
 export interface IUser {
+  _id: Types.ObjectId;
   email: string;
   passwordHash?: string;
   displayName: string;

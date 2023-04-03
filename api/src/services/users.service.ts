@@ -17,12 +17,7 @@ const getOneById = async (id: string) => {
 };
 
 const create = async (body: IUser) => {
-  try {
-    await User.create(body);
-    return { message: `Class created successfully` };
-  } catch (err) {
-    throw new Error(err);
-  }
+  return User.create(body);
 };
 
 const updateOneById = async (id: string, body: Partial<IUser>) => {

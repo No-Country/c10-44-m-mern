@@ -13,7 +13,7 @@ const generateJWTCallback =
 
     const jwt = generateJWT(user);
 
-    return res.status(200).json({ token: jwt });
+    return res.status(200).json({ user, token: jwt });
   };
 
 export const authLocalMiddleware: RequestHandler = (req, res, next) => {

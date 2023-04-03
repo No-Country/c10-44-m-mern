@@ -39,8 +39,14 @@ const getOneById = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
   try {
-    const body: IUser = req.body;
-    const response = await userService.create(body);
+    const body = req.body;
+
+    const bodyUser: IUser = {
+      ...body,
+      passwordHash: body.password,
+    };
+
+    const response = await userService.create(bodyUser);
     res.status(201).json(response);
   } catch (error) {
     console.error(error);
