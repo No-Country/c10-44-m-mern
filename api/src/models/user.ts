@@ -1,10 +1,11 @@
-import { type Model, Schema, model } from "mongoose";
+import { type Model, Schema, model, Types } from "mongoose";
 import bcrypt from "bcrypt";
 
 /**
  * Interface to model the User Schema
  */
 export interface IUser {
+  _id: Types.ObjectId;
   email: string;
   passwordHash?: string;
   displayName: string;
@@ -20,12 +21,13 @@ export interface IUser {
  */
 export interface IUserMethods {
   validatePassword: (candidatePassword: string) => Promise<boolean>;
+  removePassword: () => void;
 }
 
 /**
  * The return type of the User model
  */
-type UserModel = Model<IUser, {}, IUserMethods>;
+export type UserModel = Model<IUser, {}, IUserMethods>;
 
 export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   email: { type: String, unique: true, required: true },
@@ -58,6 +60,11 @@ userSchema.pre("save", async function (next) {
 // To compare incoming password with the hashed password in the database
 userSchema.method('validatePassword', async function (candidatePassword: string) {
   return bcrypt.compare(candidatePassword, this.passwordHash);
+});
+
+// To remove the passwordHash from the user object before sending it to the client
+userSchema.method('removePassword', function () {
+  this.passwordHash = undefined;
 });
 
 export const User = model<IUser, UserModel>("User", userSchema);
