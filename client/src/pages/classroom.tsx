@@ -1,3 +1,4 @@
+import CourseDetails from "@/components/CourseDetails";
 import UnitsBox from "@/components/UnitsBox";
 import VideoBox from "@/components/VideoBox";
 
@@ -8,10 +9,11 @@ const unit = {
 
 function ClassRoom() {
   return (
-    <div>
-      <VideoBox videourl="" />
+    <>
+      <VideoBox videourl="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+      <CourseDetails title="Bienvenido a Verbify" description="description" />
       <UnitsBox title={unit.title} themes={unit.theme} />
-    </div>
+    </>
   );
 }
 
