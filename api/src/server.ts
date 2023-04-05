@@ -1,29 +1,29 @@
 import express, { Express } from "express";
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import { exit } from "process";
 dotenv.config();
-import { classRouter} from "./routes/class.routes"
-import { modulesRouter} from "./routes/module.routes"
+import { classRouter } from "./routes/class.routes";
+import { modulesRouter } from "./routes/module.routes";
 import { usersRouter } from "./routes/user.routes";
 import { authRouter } from "./routes/auth.routes";
-
+import { courseRouter } from "./routes/course.routes"; //jrn
 // Mongoose initialization
 try {
-  if (process.env.MONGO_URI === undefined) {
-    throw new Error("Set the MONGO_URI environment variable");
-  }
+   if (process.env.MONGO_URI === undefined) {
+      throw new Error("Set the MONGO_URI environment variable");
+   }
 
-  mongoose.connect(process.env.MONGO_URI);
-  console.log("MongoDB connected");
+   mongoose.connect(process.env.MONGO_URI);
+   console.log("MongoDB connected");
 } catch (error) {
-  console.error("MongoDB connection error");
-  
-  if (error instanceof Error) {
-    console.error(error.message);
-  }
-  
-  exit(1);
+   console.error("MongoDB connection error");
+
+   if (error instanceof Error) {
+      console.error(error.message);
+   }
+
+   exit(1);
 }
 
 //instance of express
@@ -37,9 +37,9 @@ app.use("/api/classes", classRouter);
 app.use("/api/modules", modulesRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
-
+app.use("/api/courses", courseRouter); //jrn
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`API running on http://localhost:${PORT}`);
+   console.log(`API running on http://localhost:${PORT}`);
 });
