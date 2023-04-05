@@ -1,5 +1,5 @@
-import { model, Model, Schema } from "mongoose";
-
+import mongoose, { model, Model, Schema } from "mongoose";
+import { Module, ModuleDocument } from "./module";
 /**
  * Interface to modelate the Course Schema
  */
@@ -10,6 +10,7 @@ export interface ICourse {
    level: string;
    isPublic: boolean;
    tags: string;
+   Module: ModuleDocument[];
    isCompleted: boolean;
    createdAt: Date;
    updatedAt: Date;
@@ -29,6 +30,7 @@ export const courseSchema = new Schema<ICourse, CourseModel>(
       isPublic: { type: Boolean },
       tags: { type: String },
       isCompleted: { type: Boolean },
+      Module: [{ type: mongoose.Schema.Types.ObjectId, ref: "Module" }],
    },
    {
       timestamps: true,
