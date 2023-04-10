@@ -6,6 +6,7 @@ dotenv.config();
 import { classRouter} from "./routes/class.routes"
 import { modulesRouter} from "./routes/module.routes"
 import { usersRouter } from "./routes/user.routes";
+import { swaggerDocs } from "./utils/docs/swagger";
 
 // Mongoose initialization
 try {
@@ -39,4 +40,5 @@ app.use("/api/users", usersRouter)
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`API running on http://localhost:${PORT}`);
+  swaggerDocs(app, PORT)
 });
