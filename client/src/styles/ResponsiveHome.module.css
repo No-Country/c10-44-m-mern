@@ -85,6 +85,18 @@
   font-family: "Sora", sans-serif;
 }
 
+.slick {
+  padding-bottom: 50px;
+  background-color: #ECEDF2;
+}
+
+.carousel {
+  font-family: 'Sora', sans-serif;
+  display: flex !important;
+  justify-content: center;
+  background-color: #ECEDF2;
+}
+
 .titlescontainer {
   display: flex;
   flex-direction: column;
@@ -117,7 +129,9 @@
   list-style: none;
 }
 
-/* Hasta Aquí */
+.container_benefits {
+  margin: 15px;
+}
 
 .container__benefitsSection {
   display: flex;

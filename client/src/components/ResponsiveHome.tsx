@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import CourseCard from './CourseCard';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import styles from '@/styles/ResponsiveHome.module.css';
 import Verbify from '../assets/Verbify.png';
 import ManGettingFolder from '../assets/ManGettingFolder.png';
@@ -61,22 +64,24 @@ function ResponsiveHome() {
           <h2 className={styles.maintitle}>Cursos de inglés</h2>
           <p className={styles.subtitle}> Todos los niveles para que lleves tu ingles al siguiente nivel </p>
         </div>
-        {/*   
-        <div className={styles.cardscontainer}>
+      </section>
+      <div className={styles.slick}>
+        <Slider>
           {courses &&
             courses.map((elem) => {
               return (
-                <CourseCard
-                  key={elem.title}
-                  title={elem.title}
-                  description={elem.description}
-                  image={elem.image}
-                />
+                <div className={styles.carousel}>
+                  <CourseCard
+                    key={elem.title}
+                    title={elem.title}
+                    description={elem.description}
+                    image={elem.image}
+                  />
+                </div>
               );
             })}
-        </div> 
-        */}
-      </section>
+        </Slider>
+      </div>
       <div className={styles.container__benefitsSection}>
         <h2>Beneficios de estudiar en Verbify</h2>
         <div className={styles.container_benefits}>
