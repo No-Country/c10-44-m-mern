@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import * as classService from "../services/classes.service";
-import { IClass } from "../models/class";
+import * as courseService from "../services/course.service";
+import { ICourse } from "../models/course";
 
 const getAll = async (req: Request, res: Response) => {
    try {
-      const modules = await classService.getAll();
+      const modules = await courseService.getAll();
       res.status(200).json(modules);
    } catch (error) {
       console.error(error);
@@ -22,7 +22,7 @@ const getAll = async (req: Request, res: Response) => {
 const getOneById = async (req: Request, res: Response) => {
    try {
       const { id } = req.params;
-      const mod = await classService.getOneById(id);
+      const mod = await courseService.getOneById(id);
       res.status(200).json(mod);
    } catch (error) {
       console.error(error);
@@ -40,7 +40,7 @@ const getOneById = async (req: Request, res: Response) => {
 const create = async (req: Request, res: Response) => {
    try {
       const { body } = req;
-      const response = await classService.create(body);
+      const response = await courseService.create(body);
       res.status(201).json(response);
    } catch (error) {
       console.error(error);
@@ -58,8 +58,8 @@ const create = async (req: Request, res: Response) => {
 const updateById = async (req: Request, res: Response) => {
    try {
       const { id } = req.params;
-      const body: IClass = req.body;
-      const response = await classService.updateOneById(id, body);
+      const body: ICourse = req.body;
+      const response = await courseService.updateOneById(id, body);
       res.status(201).json(response);
    } catch (error) {
       console.error(error);
@@ -77,7 +77,7 @@ const updateById = async (req: Request, res: Response) => {
 const deleteById = async (req: Request, res: Response) => {
    try {
       const { id } = req.params;
-      const response = await classService.deleteOneById(id);
+      const response = await courseService.deleteOneById(id);
       res.status(201).json(response);
    } catch (error) {
       console.error(error);

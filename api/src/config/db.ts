@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const { DB_HOST, DB_PORT, DB_NAME } = process.env;
+const { MONGO_URI } = process.env;
 
-export const db = mongoose.createConnection(`mongo://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
+export const db = mongoose.createConnection(`mongo://${MONGO_URI}`);
 
 export default db;
