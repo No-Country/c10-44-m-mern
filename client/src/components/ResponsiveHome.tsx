@@ -41,7 +41,7 @@ const courses = [
 
 function ResponsiveHome() {
   return (
-    <div>
+    <div className={styles.all}>
       <section className={styles.hero}>
         <img src={Verbify.src} />
         <div>
@@ -66,11 +66,11 @@ function ResponsiveHome() {
         </div>
       </section>
       <div className={styles.slick}>
-        <Slider>
+        <Slider dots>
           {courses &&
-            courses.map((elem) => {
+            courses.map((elem, index) => {
               return (
-                <div className={styles.carousel}>
+                <div key={index} className={styles.carousel}>
                   <CourseCard
                     key={elem.title}
                     title={elem.title}
