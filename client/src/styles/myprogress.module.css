@@ -3,8 +3,10 @@
 /* Hasta Aquí */
 
 .container__main {
+    /* position: relative; */
     display: flex;
     width: 100%;
+    /* min-height: 100vh; */
     font-family: 'Sora', sans-serif;
     background-image: url('https://i.ibb.co/D8XgB89/fondo.png');
     background-repeat: no-repeat;
@@ -14,7 +16,7 @@
 .container__myprogress header {
     display: flex;
     position: absolute;
-    /* width: calc(100% - 404px); */
+    width: calc(100% - 404px);
     justify-content: space-between;
     top: 32px;
     left: 275px;
@@ -40,7 +42,7 @@
     position: absolute;
     flex-direction: column;
     gap: 24px;
-    /* width: calc(100% - 404px); */
+    width: calc(100% - 404px);
     background-color: rgb(33, 33, 33, 0.2);
     top: 138px;
     right: 0;
