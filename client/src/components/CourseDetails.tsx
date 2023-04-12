@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import RatingStars from "./RatingStars";
 import styles from "@/styles/CourseDetails.module.css";
 
 interface DeatilsTypes {
@@ -6,11 +8,12 @@ interface DeatilsTypes {
 }
 
 function CourseDetails({ title, description }: DeatilsTypes) {
+  const [RatingIndex, setRatingIndex] = useState<number>(0);
   return (
     <section className={styles.main}>
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
-        <p>Rating</p>
+        <RatingStars RatingIndex={RatingIndex} setRatingIndex={setRatingIndex} />
       </div>
       <div className={styles.divider}></div>
       <p className={styles.resources}>Recursos</p>
