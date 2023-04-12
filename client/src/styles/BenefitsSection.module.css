@@ -1,11 +1,6 @@
-/* Se eliminará cuando se haga merge */
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap");
-
 .container__BenefitsSection ul {
   list-style: none;
 }
-
-/* Hasta Aquí */
 
 .container__benefitsSection {
   display: flex;

@@ -1,7 +1,3 @@
-/* Se eliminará cuando se haga merge */
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap");
-/* Hasta Aquí */
-
 .container__CardNews {
     display: flex;
     flex-direction: column;
