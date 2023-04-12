@@ -29,7 +29,7 @@
 
 .card__benefit {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   padding: 1rem;
   gap: 1rem;
 }
