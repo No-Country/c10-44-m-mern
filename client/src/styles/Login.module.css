@@ -1,76 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
-
 .main {
-  background-image: url('../assets/Background.png');
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  min-height: 821px;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.title {
+  color: #D39245;
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  margin: 20px;
 }
 
 .section {
-  font-family: 'Sora', sans-serif;
-  display: flex;
-  justify-content: center;
-  padding-top: 150px;
-}
-
-.section section {
   display: block;
   align-items: center;
   flex-direction: column;
   background-color: #343434;
-  min-width: 432px;
+  min-width: 350px;
   border-radius: 8px;
 }
 
-.section section section {
+.p {
+  margin-block: 5px;
   display: flex;
   justify-content: center;
 }
 
-.section section section img {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-.section section section p {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
+.input {
+  color: black;
+  background-color: white;
+  border-radius: 8px;
+  min-height: 37px;
+  padding-left: 10px;
+  border: 0px;
+  margin-inline: 20px;
+  margin-block: 5px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-}
-
-.form input {
-  font-family: 'Sora', sans-serif;
-  color: black;
-  background-color: white;
-  border-radius: 8px;
-  min-height: 43px;
-  padding-left: 10px;
-  border: 0px;
-  margin-inline: 20px;
-  margin-block: 8px;
-}
-
-.form div {
-  position: relative;
-}
-
-.form div button {
-  position: absolute;
-  bottom: 12px;
-  right: 40px;
-  background-color: transparent;
-  border: 0px;
-  color: grey;
 }
 
 .link {
@@ -82,68 +52,82 @@
 }
 
 .button {
-  font-family: 'Sora', sans-serif;
   background-color: #D39245;
   border-radius: 8px;
-  min-height: 43px;
+  min-height: 37px;
   padding-left: 10px;
   border: 0px;
   margin-block: 10px;
   margin-inline: 20px;
 }
 
-.div {
+.button2 {
+  color: grey;
+  background-color: white;
+  border-radius: 8px;
+  min-height: 37px;
+  padding-left: 10px;
+  border: 0px;
+  margin-block: 10px;
+  margin-inline: 20px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
-.div div {
+.line {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-inline: 10px;
+  margin-inline: 20px;
 }
 
-.div div div {
+.line2 {
   flex: 1;
   height: 1px;
   background-color: white;
 }
 
-.div div span p {
-  width: 10px;
+.or {
+  width: 22px;
   text-align: center
 }
 
-.div button {
-  font-family: 'Sora', sans-serif;
-  color: grey;
-  background-color: white;
-  border-radius: 8px;
-  min-height: 43px;
-  padding-left: 10px;
-  border: 0px;
+.section2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.h1 {
+  display: flex;
+  justify-content: center;
+  margin-block: 15px;
+}
+
+.link2 {
   margin-block: 10px;
-  margin-inline: 20px;
+}
+
+.p1 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.div button p {
+.p2 {
   margin-inline: 8px;
 }
 
-.p {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.buttondiv {
+  position: relative;
 }
 
-.link_2 {
-  color: #D39245;
-  margin-left: 10px;
-  margin-block: 12px;
+.button3 {
+  position: absolute;
+  bottom: 6px;
+  right: 30px;
+  background-color: transparent;
+  border: 0px;
+  color: grey;
 }

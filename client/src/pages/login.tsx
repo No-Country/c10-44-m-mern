@@ -3,7 +3,6 @@ import styles from '@/styles/Login.module.css';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import Verbify from '../assets/Verbify.png';
 
 function Login() {
   const [inputs, setInputs] = useState({ email: '', password: '' });
@@ -20,48 +19,49 @@ function Login() {
   };
 
   return (
-    <main className={styles.main}>
-      <section className={styles.section}>
-        <section>
+    <main>
+      <section className={styles.main}>
+        <section className={styles.section}>
           <section>
-            <img src={Verbify.src} />
-            <p>Iniciar sesión para ver más contenido</p>
+            <h1 className={styles.title}>Verbify</h1>
+            <p className={styles.p}>Login to continue your reservation</p>
           </section>
           <form method="post" className={styles.form}>
-            <input type="text" name="email" onChange={handleChange} placeholder="Correo electrónico" />
-            <input type={showPassword ? "text" : "password"} name="password" onChange={handleChange} placeholder="Contraseña" />
-            <div>
+            <input type="text" name="email" onChange={handleChange} placeholder="Email" className={styles.input} />
+            <input type={showPassword ? "text" : "password"} name="password" onChange={handleChange} placeholder="Password" className={styles.input} />
+            <div className={styles.buttondiv}>
               <button
+                className={styles.button3}
                 type="button"
                 onClick={handleClickShowPassword}
               >
                 <span>{showPassword ? <BsEyeSlash size={28} /> : <BsEye size={28} />}</span>
               </button>
             </div>
-            <Link className={styles.link} href="/">¿Has olvidado tu contraseña?</Link>
-            <button type="submit" className={styles.button}>Iniciar sesión</button>
+            <Link className={styles.link} href="/">Forgot your password?</Link>
+            <button type="submit" className={styles.button}>Log in</button>
           </form>
-          <div className={styles.div}>
-            <div>
-              <div />
-              <span>
-                <p>ó</p>
-              </span>
-              <div />
+          <section className={styles.section2}>
+            <div className={styles.line}>
+              <div className={styles.line2} />
+              <div>
+                <p className={styles.or}>or</p>
+              </div>
+              <div className={styles.line2} />
             </div>
-            <button>
-              <FcGoogle size={28} />
-              <p>Iniciar con Google</p>
+            <p className={styles.h1}>Or use Google</p>
+            <button className={styles.button2}>
+              <FcGoogle size={28} /><p className={styles.p2}>Log in with Google</p>
             </button>
-          </div>
-          <span>
-            <p className={styles.p}>
-              ¿No tienes una cuenta?
-              <Link className={styles.link_2} href="/register">
-                Registrate aquí
+          </section>
+          <section className={styles.link2}>
+            <p className={styles.p1}>
+              Don't have an account?{" "}
+              <Link className={styles.link} href="/register">
+                Sign up for free
               </Link>
             </p>
-          </span>
+          </section>
         </section>
       </section>
     </main>
