@@ -18,6 +18,9 @@
       "@types/passport": "^1.0.12",
       "@types/passport-google-oauth20": "^2.0.11",
       "@types/passport-local": "^1.0.35",
+      "@types/swagger-jsdoc": "^6.0.1",
+      "@types/swagger-ui-express": "^4.1.3",
+      "@types/yamljs": "^0.2.31",
       "@typescript-eslint/eslint-plugin": "^5.57.0",
       "dotenv": "^16.0.3",
       "eslint": "^8.37.0",
@@ -33,6 +36,7 @@
       "@types/http-errors": "^2.0.1",
       "@types/passport-jwt": "^3.0.8",
       "bcrypt": "^5.1.0",
+      "cors": "^2.8.5",
       "express": "^4.18.2",
       "http-errors": "^2.0.0",
       "jsonwebtoken": "^9.0.0",
@@ -40,6 +44,9 @@
       "passport": "^0.6.0",
       "passport-google-oauth20": "^2.0.0",
       "passport-jwt": "^4.0.1",
-      "passport-local": "^1.0.0"
+      "passport-local": "^1.0.0",
+      "swagger-jsdoc": "^6.2.8",
+      "swagger-ui-express": "^4.6.2",
+      "yamljs": "^0.3.0"
    }
 }

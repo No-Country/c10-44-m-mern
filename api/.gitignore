@@ -131,3 +131,6 @@ dist
 
 # rest client request jr
 request.http
+
+# others
+*.txt

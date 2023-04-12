@@ -8,6 +8,9 @@ import { modulesRouter } from "./routes/module.routes";
 import { usersRouter } from "./routes/user.routes";
 import { authRouter } from "./routes/auth.routes";
 import { courseRouter } from "./routes/course.routes"; //jrn
+import { swaggerDocs } from "./utils/docs/swagger";
+import cors from "cors";
+
 // Mongoose initialization
 try {
    if (process.env.MONGO_URI === undefined) {
@@ -32,6 +35,7 @@ const app: Express = express();
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors({origin: "*"}))
 
 app.use("/api/classes", classRouter);
 app.use("/api/modules", modulesRouter);
@@ -41,5 +45,6 @@ app.use("/api/courses", courseRouter); //jrn
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-   console.log(`API running on http://localhost:${PORT}`);
+  console.log(`API running on http://localhost:${PORT}`);
+  swaggerDocs(app, PORT)
 });
