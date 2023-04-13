@@ -1,61 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
-
-.container ul {
-    list-style: none;
-    left: 0;
-}
-
+/* Estilos para pantalla grande */
 .container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     gap: 2rem;
     font-family: 'Sora', sans-serif;
     line-height: 2rem;
     background-color: #212121;
-    padding: 6rem 0rem 1rem 0rem;
+    padding: 51px 96px 18.38px 93px;
+    justify-content: center;
 }
 
 .container div {
-    display: grid;
-    justify-content: space-evenly;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 36px;
 }
 
 .container div nav {
+    width: 100%;
     display: flex;
-    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 37px;
+    box-sizing: border-box;
+}
 
+.container ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
 }
 
 .logo_verbify {
     display: flex;
     justify-content: center;
     padding: 1rem 0rem;
+}
 
+.container div form {
+    width: 395px;
+    height: 40px;
 }
 
 .container div form input {
     font-family: inherit;
-    height: 40px;
+    height: 100%;
     background-color: #fff;
     border: none;
-    border-radius: .5rem 0rem 0rem .5rem;
+    border-radius: 8px 0rem 0rem 8px;
     outline: none;
     color: #000;
     padding: 0 1rem;
-
 }
 
 .container div form button {
-    height: 40px;
-    border-radius: 0rem .5rem .5rem 0rem;
+    width: 152px;
+    height: 100%;
+    border-radius: 0px 8px 8px 0px;
     font-family: inherit;
     background-color: #fff;
     color: #000;
     border: none;
     padding: 0 1rem;
     cursor: pointer;
+}
 
+.suscribe {
+    margin-top: 19px;
+}
+
+.suscribe p {
+    font-size: 32px;
 }
 
 .linea {
@@ -64,4 +82,20 @@
     border: none;
     margin: 18px 10px;
     background-color: #D39245;
+}
+
+/* Estilos para tabletas */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 51px 24px 18.38px 24px;
+    }
+
+    .container div {
+        gap: 2rem;
+    }
+
+    .linea {
+        width: 100%;
+        margin: 18px 0;
+    }
 }
