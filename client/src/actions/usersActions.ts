@@ -22,7 +22,7 @@ interface User {
   __v?: number,
 }
 
-export const getUseres = () => {
+export const getUsers = () => {
   return (dispatch: Dispatch) => {
     return fetch(`${url}`)
       .then(response => response.json())
