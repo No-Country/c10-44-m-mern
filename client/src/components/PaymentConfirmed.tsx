@@ -1,8 +1,8 @@
-import React from 'react';
-import Verbify from '../assets/Verbify.png';
-import ManTouchingBookWithStick from '../assets/ManTouchingBookWithStick.png';
-import { BiCheck } from 'react-icons/bi';
-import styles from '@/styles/PaymentConfirmed.module.css'
+import React from "react";
+import Verbify from "../assets/Verbify.png";
+import ManTouchingBookWithStick from "../assets/ManTouchingBookWithStick.png";
+import { BiCheck } from "react-icons/bi";
+import styles from "@/styles/PaymentConfirmed.module.css";
 
 function PaymentConfirmed() {
   return (
@@ -11,13 +11,15 @@ function PaymentConfirmed() {
         <div className={styles.top}>
           <div>
             <p>2. Confirmación del pago</p>
-            <img src={Verbify.src} />
+            <img src={Verbify.src} alt="logo" />
           </div>
           <hr />
         </div>
         <div className={styles.mid}>
-          <img src={ManTouchingBookWithStick.src} />
-          <label><BiCheck size={42} /></label>
+          <img src={ManTouchingBookWithStick.src} alt="Man reading a book" />
+          <label>
+            <BiCheck size={42} />
+          </label>
           <h1>Pago exitoso</h1>
         </div>
       </div>
@@ -26,7 +28,7 @@ function PaymentConfirmed() {
         <button>Empezar mis clases</button>
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default PaymentConfirmed;
