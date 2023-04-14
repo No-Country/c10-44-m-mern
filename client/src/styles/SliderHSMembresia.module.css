@@ -15,7 +15,7 @@
 
 .container_img {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     position: relative;
     height: 327px;
     margin: 8px 0px 0px 46px;
