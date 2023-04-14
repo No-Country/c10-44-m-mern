@@ -14,7 +14,7 @@ import SideBar from "@/components/SideBar";
 
 function MyProgress() {
   return (
-    <div className={styles.container__main}>
+    <div className={styles.container__mainmyprogress}>
       <div className={styles.container__sideBar}>
         <SideBar />
       </div>
