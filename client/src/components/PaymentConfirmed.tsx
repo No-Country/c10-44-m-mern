@@ -16,7 +16,10 @@ function PaymentConfirmed() {
           <hr />
         </div>
         <div className={styles.mid}>
-          <img src={ManTouchingBookWithStick.src} alt="Man reading a book" />
+          <img
+            src={ManTouchingBookWithStick.src}
+            alt="Man sitting while reading a book"
+          />
           <label>
             <BiCheck size={42} />
           </label>
