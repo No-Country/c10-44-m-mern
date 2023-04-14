@@ -99,7 +99,7 @@ Back .env
 
 | <img src="https://ca.slack-edge.com/T02KS88FB0E-U04RAQY50NP-fdb929f9ce70-512  " width=80>|
 |:-:|
-| **Anderson**|
+| **Anderson Ocampo**|
 | <a href="https://www.behance.net/andyvisualartist"><img src="https://img.shields.io/badge/Behance-%2320232a.svg?style=for-the-badge&logo=Behance&logoColor=%%2361DAFB"/></a> <a href="https://www.linkedin.com/in/anderson-ocampo-969260206/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 ### 👉🏻 UX
