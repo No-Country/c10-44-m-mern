@@ -1,4 +1,4 @@
-import styles from "@/styles/CardNews.module.css";
+import styles from "@/styles/CardResources.module.css";
 
 function CardResources(props: Props) {
   const { title, text, src } = props;

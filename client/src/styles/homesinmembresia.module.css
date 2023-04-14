@@ -6,14 +6,17 @@
     min-height: 100vh;
     font-family: 'Sora', sans-serif;
     padding: 0px 96px 0 202px;
+    background-color: #212121;
 }
 
 .container__sideBar {
     position: fixed;
     left: -1px;
+    z-index: 50;
 }
 
 .container__main header {
+    position: relative;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -31,15 +34,15 @@
     border-radius: 10px;
     outline: none;
     border: none;
-    padding: 0 2.5rem;
+    padding: 0 52px;
     font-family: inherit;
 }
 
 .container__main header button {
     position: absolute;
-    left: 1%;
-    top: 25%;
-    font-size: 2rem;
+    left: 12px;
+    top: 12px;
+    font-size: 24px;
     color: #989898;
     background-color: transparent;
     border: none;
@@ -57,33 +60,18 @@
 }
 
 .body_section h3 {
-    margin: 47px 0px 12px 0px;
+    margin: 34px 0px 12px 0px;
 }
 
 .slider_news {
     display: flex;
-    gap: 1rem;
+    gap: 12px;
 }
 
 .slider_resources {
-    gap: 1rem;
+    gap: 12px;
     display: flex;
     border-radius: 10px;
-}
-
-.slider_resourcescontents {
-    gap: 1rem;
-    display: flex;
-    background-color: #424242;
-    border-radius: 10px;
-}
-
-.slider_resources h5 {
-    padding: .5rem 1rem;
-}
-
-.slider_resources p {
-    padding: .5rem 1rem;
 }
 
 .container_CardPlans {
