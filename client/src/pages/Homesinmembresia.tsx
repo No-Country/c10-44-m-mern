@@ -7,6 +7,7 @@ import { useState } from "react";
 import SliderHSMembresia from "@/components/SliderHSMembresia";
 import CardNews from "@/components/CardNews";
 import CardResources from "@/components/CardResources";
+import ModalStartNow from "@/components/ModalStart";
 
 const plansArray = [
   {
@@ -105,11 +106,15 @@ function Homesinmembresia() {
     <div className={styles.container__main}>
       <div className={styles.container__sideBar}>
         <SideBar />
+        <ModalStartNow />
       </div>
       <header>
-        <h1>Mi progreso</h1>
+        <div>
+          <p>Bienvenido </p>
+          <h1>Robert</h1>
+        </div>
         <form>
-          <input />
+          <input placeholder="Buscar" />
           <button>
             <BiSearchAlt />
           </button>
@@ -144,7 +149,7 @@ function Homesinmembresia() {
           <h3>Recursos para aprender mejor</h3>
           <div className={styles.slider_resources}>
             {SliderResources.map((newsItem) => (
-              <div className={styles.slider_resourcescontents}>
+              <div>
                 <CardResources
                   key={newsItem.id}
                   title={newsItem.title}
