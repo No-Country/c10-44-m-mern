@@ -12,7 +12,7 @@
 }
 
 .all input {
-  background-color: #ECEDF2;
+  background-color: #ecedf2;
   border-radius: 8px;
   height: 47px;
   margin-block: 10px;
@@ -30,4 +30,25 @@
 
 .all p {
   font-size: small;
+}
+
+@media screen and (max-width: 620px) {
+  .all {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .all div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .all input {
+    margin: 0;
+    width: 100%;
+  }
+
+  .right {
+    margin: 0;
+  }
 }
