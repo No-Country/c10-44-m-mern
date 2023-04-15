@@ -1,0 +1,60 @@
+.container_sidebarmobile {
+  position: relative;
+}
+
+.icon_sandwich {
+  position: fixed;
+  top: 1rem;
+  right: 0;
+  font-size: 3rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.container_sidebarmobile hr {
+  background-color: #424242;
+  border: none;
+  height: 1px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.container_sidebarmobile img {
+  height: 50px;
+  margin: 10px 0;
+}
+
+.menu_mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 98vh;
+  padding: 0px 10px;
+  background-color: #343434;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  transition: transform 1s ease-in-out;
+}
+
+.menu_mobile button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ECEDF2;
+  font-size: 1.2rem;
+}
+
+.menu_mobile button:hover {
+  background-color: #D39245;
+  color: #ECEDF2;
+  border-radius: 10px;
+}
