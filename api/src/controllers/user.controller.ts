@@ -37,6 +37,24 @@ const getOneById = async (req: Request, res: Response) => {
   }
 };
 
+const getOneByEmail = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.params;
+    const user = await userService.getOneByEmail(email);
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      errors: [
+        {
+          code: error.code,
+          message: error.message,
+        },
+      ],
+    });
+  }
+};
+
 const create = async (req: Request, res: Response) => {
   try {
     const body = req.body;
