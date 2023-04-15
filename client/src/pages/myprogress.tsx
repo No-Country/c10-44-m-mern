@@ -11,12 +11,16 @@ import {
 } from "react-icons/bi";
 import MyProgressSection from "@/components/MyProgressSection";
 import SideBar from "@/components/SideBar";
+import SideBarMobile from "@/components/SideBarMobile";
 
 function MyProgress() {
   return (
     <div className={styles.container__mainmyprogress}>
       <div className={styles.container__sideBar}>
         <SideBar />
+      </div>
+      <div className={styles.container__sideBarmobile}>
+        <SideBarMobile />
       </div>
       <div className={styles.container__myprogress}>
         <header>

@@ -114,3 +114,70 @@
     border: none;
     margin-bottom: 17px;
 }
+
+.container__sideBarmobile {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .container__sideBarmobile {
+        display: block;
+        position: absolute;
+        z-index: 100;
+    }
+
+    .container__myprogress {
+        margin: 25px 20px;
+    }
+
+    .container__section {
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .container__section {
+        margin-top: 120px;
+        padding: 15px;
+    }
+
+    .container__course {
+        margin: 24px 16px;
+    }
+
+    .line__divisition {
+        margin-bottom: 8px;
+    }
+
+    .container__myprogress header {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        z-index: 1;
+    }
+
+    .container__myprogress header h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .container__myprogress header form {
+        margin-top: 10px;
+        width: calc(100% - 80px);
+        background-color: greenyellow;
+    }
+
+    .container__myprogress header form input {
+        padding-left: 2.5rem;
+        height: 40px;
+    }
+
+    .container__myprogress header form button {
+        font-size: 1.5rem;
+    }
+
+    .container__sideBar {
+        display: none;
+        z-index: 2;
+    }
+}
