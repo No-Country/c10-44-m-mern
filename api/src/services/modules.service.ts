@@ -16,10 +16,29 @@ const getOneById = async (id: string) => {
   }
 };
 
+//TODO arreglar endpoint
+const getClassesFromModule = async (moduleId: string) => {
+  try {
+    const classes = (await Module.findById(moduleId).populate({path: 'classes'})).classes
+     return classes
+  } catch (err) {
+     throw new Error(err);
+  }
+}
+
+const getOneClassFromModule = async (moduleId: string, classId: string) => {
+  try {
+     const ClassesArray = await Module.findById(moduleId).populate({path: "classes"})
+     return ClassesArray.classes.find(item => item['_id'] == classId)
+  } catch (err) {
+     throw new Error(err);
+  }
+}
+
 const create = async (body: IModule) => {
   try {
     await Module.create(body);
-    return { message: `Class created successfully` };
+    return { message: `Module created successfully` };
   } catch (err) {
     throw new Error(err);
   }
@@ -34,7 +53,7 @@ const updateOneById = async (id: string, body: Partial<IModule>) => {
       );
     } else {
     await Module.findOneAndUpdate({ _id: id }, body);
-    return `Class updated successfully`;}
+    return `Module updated successfully`;}
   } catch (err) {
     throw new Error(err);
   }
@@ -43,9 +62,9 @@ const updateOneById = async (id: string, body: Partial<IModule>) => {
 const deleteOneById = async (id: string) => {
   try {
     await Module.deleteOne({ _id: id });
-    return `Class deleted succesfully`;
+    return `Module deleted succesfully`;
   } catch (err) {
     throw new Error(err);
   }
 };
-export { getAll, getOneById, create, updateOneById, deleteOneById };
+export { getAll, getOneById, create, updateOneById, deleteOneById, getClassesFromModule, getOneClassFromModule };

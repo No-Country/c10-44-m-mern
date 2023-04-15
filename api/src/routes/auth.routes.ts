@@ -6,6 +6,7 @@ const router: Router = Router();
 
 // Authenticate using email and password
 router.post("/signin", authLocalMiddleware);
+
 // Authenticate using Google account, if user does not exist, creates a new one
 router.post("/google", authGoogleMiddleware);
 
