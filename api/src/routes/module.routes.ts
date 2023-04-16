@@ -20,4 +20,4 @@ router.delete("/:id", deleteById);
 router.get("/:moduleId/classes", getClassesFromModule)
 router.get("/:moduleId/classes/:classId", getOneClassFromModule)
 
-export { router as modulesRouter };
+export { router as moduleRouter };

@@ -1,4 +1,5 @@
-import { model, Model, Schema } from "mongoose";
+import mongoose, { model, Model, Schema } from "mongoose";
+import { MessageDocument } from "./message";
 
 /**
  * Interface to modelate the Class Schema
@@ -8,6 +9,7 @@ export interface IClass {
   content: string;
   videoURL: string;
   isCompleted: boolean;
+  messages: MessageDocument[]
   createdAt: Date;
   updatedAt: Date;
 }
@@ -23,6 +25,7 @@ export const classSchema = new Schema<IClass, ClassModel>(
     content: { type: String },
     videoURL: { type: String, required: true },
     isCompleted: { type: Boolean },
+    messages: [{type: mongoose.Schema.Types.ObjectId, ref: "Message"}]
   },
   {
     timestamps: true,

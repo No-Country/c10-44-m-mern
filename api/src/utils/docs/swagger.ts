@@ -5,7 +5,7 @@ import YAML from 'yamljs'
 
 
 
-const swaggerOP = YAML.load("/home/lean/Documents/Programacion/NoCountry/c10-44-m-mern/api/src/utils/docs/openapi.yaml")
+const swaggerOP = YAML.load("./src/utils/docs/openapi.yaml")
 
 
 
