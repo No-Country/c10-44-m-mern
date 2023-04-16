@@ -106,7 +106,7 @@
         gap: 10px;
         z-index: 2;
         flex-direction: column;
-        padding: 24px 55px 24px 55px;
+        padding: 24px 16px 24px 55px;
         background-color: #212121;
     }
 
@@ -136,19 +136,18 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        padding: 24px 55px 24px 55px;
+        padding: 24px 16px 24px 16px;
     }
 
     .slider_resources {
         flex-direction: column;
         align-items: center;
         padding: 0 24px;
-        padding: 24px 55px 24px 55px;
+        padding: 24px 16px 24px 16px;
     }
 
     .container_CardPlans {
         display: flex;
         padding-top: 0;
-        justify-content: center;
     }
 }
