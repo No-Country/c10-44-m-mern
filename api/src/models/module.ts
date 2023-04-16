@@ -1,5 +1,5 @@
 import mongoose, { model, Model, Schema } from "mongoose";
-import { Class, ClassDocument } from "./class";
+import { ClassDocument } from "./class";
 
 /**
  * Interface to modelate the Class Schema
