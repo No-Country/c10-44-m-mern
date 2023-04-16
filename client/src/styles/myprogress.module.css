@@ -128,17 +128,53 @@
     }
 
     .container__myprogress {
-        margin: 25px 20px;
+        display: flex;
+        margin: 0;
+    }
+
+
+    .container__myprogress header {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        padding: 59px 25px;
+        height: 180px;
+        background-image: url('https://i.ibb.co/16Mvp6Z/fondo.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .container__myprogress header form {
+        width: 100%;
+    }
+
+    .container__myprogress header h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .container__myprogress header form input {
+        padding-left: 2.5rem;
+        height: 40px;
+    }
+
+    .container__myprogress header form button {
+        font-size: 1.5rem;
+
+    }
+
+
+    .container___sections {
+        margin: 196px 25px;
+        display: flex;
+        flex-direction: column;
     }
 
     .container__section {
-        margin-top: 10px;
         padding: 10px;
-    }
-
-    .container__section {
-        margin-top: 120px;
-        padding: 15px;
+        height: 82px;
+        border-radius: 10px;
     }
 
     .container__course {
@@ -149,32 +185,6 @@
         margin-bottom: 8px;
     }
 
-    .container__myprogress header {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        z-index: 1;
-    }
-
-    .container__myprogress header h1 {
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-
-    .container__myprogress header form {
-        margin-top: 10px;
-        width: calc(100% - 80px);
-        background-color: greenyellow;
-    }
-
-    .container__myprogress header form input {
-        padding-left: 2.5rem;
-        height: 40px;
-    }
-
-    .container__myprogress header form button {
-        font-size: 1.5rem;
-    }
 
     .container__sideBar {
         display: none;
