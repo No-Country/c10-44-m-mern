@@ -8,6 +8,7 @@ import SliderHSMembresia from "@/components/SliderHSMembresia";
 import CardNews from "@/components/CardNews";
 import CardResources from "@/components/CardResources";
 import ModalStartNow from "@/components/ModalStart";
+import SideBarMobile from "@/components/SideBarMobile";
 
 const plansArray = [
   {
@@ -106,6 +107,10 @@ function Homesinmembresia() {
     <div className={styles.container__main}>
       <div className={styles.container__sideBar}>
         <SideBar />
+        <ModalStartNow />
+      </div>
+      <div className={styles.container__sideBarmobile}>
+        <SideBarMobile />
         <ModalStartNow />
       </div>
       <header>
