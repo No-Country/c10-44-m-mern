@@ -2,9 +2,15 @@
   background-color: #212121;
 }
 
+.sidebar {
+  position: absolute;
+  z-index: 100;
+}
+
 .top {
   display: flex;
   flex-direction: row;
+  padding-left: 100px;
 }
 
 .mid {
