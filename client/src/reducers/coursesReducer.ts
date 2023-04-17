@@ -4,11 +4,13 @@ import {
   GET_COURSE_BY_ID,
   DELETE_COURSE_BY_ID,
   UPDATE_COURSE_BY_ID,
+  GET_MODULES_FROM_COURSE_BY_ID,
 } from '../actions/types/types';
 
 const initialState = {
   coursesList: [],
-  courseList: null
+  courseList: null,
+  modulesList: [],
 };
 
 export default function coursesReducer(state = initialState, action: any) {
@@ -35,6 +37,11 @@ export default function coursesReducer(state = initialState, action: any) {
       return {
         ...state,
       };
+    case GET_MODULES_FROM_COURSE_BY_ID:
+      return {
+        ...state,
+        modulesList: action.payload,
+      }
     default:
       return state;
   };
