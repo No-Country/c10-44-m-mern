@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import styles from '@/styles/ResponsiveHome.module.css';
 import Verbify from '../assets/Verbify.png';
 import ManGettingFolder from '../assets/ManGettingFolder.png';
+import ManGettingDegreeOnline1 from '../assets/ManGettingDegreeOnline1.png';
 import BenefitSection from './BenefitSection';
 
 const courses = [
@@ -43,19 +44,20 @@ function ResponsiveHome() {
   return (
     <div className={styles.all}>
       <section className={styles.hero}>
-        <img src={Verbify.src} />
+        <img className={styles.img__1} src={Verbify.src} />
         <div>
-          <button>
+          <div className={styles.login}>
             <Link href="/login">
               Iniciar Sesión
             </Link>
-          </button>
+          </div>
           <button>
             <Link href="/register">
               Registrarme
             </Link>
           </button>
         </div>
+        <img className={styles.img__2} src={ManGettingDegreeOnline1.src} />
         <h1>Domina el inglés: la clave para el éxito profesional.</h1>
         <p>Libera tu potencial con nuestra plataforma de aprendizaje de inglés y lleva tu carrera al siguiente nivel.</p>
       </section>
@@ -119,9 +121,9 @@ function ResponsiveHome() {
         </div>
       </div>
       <div className={styles.container__NewsletterSection}>
-        {/* <section className={styles.logo__newsletter}>
+        <section className={styles.logo__newsletter}>
           <img src='https://i.ibb.co/Ct71D8d/Vector.png' alt='vector' />
-        </section> */}
+        </section>
         <section className={styles.contenido__newsletter}>
           <h1>Recibe nuestras noticias</h1>
           <p> Descubre nuevas formas de aprender y mejorar con nuestro

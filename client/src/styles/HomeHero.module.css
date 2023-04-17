@@ -9,9 +9,13 @@
 }
 
 .div img {
-  width: 400px;
-  height: 400px;
-  margin-left: 50px;
+  max-width: 510px;
+  max-height: 511px;
+  /* margin-left: 50px; */
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .div div h1 {
@@ -44,6 +48,10 @@
   margin-block: 10px;
   border: 0px;
   font-family: 'Sora', sans-serif;
+}
+
+.div div div {
+  display: flex;
 }
 
 @media (max-width: 1120px) {
