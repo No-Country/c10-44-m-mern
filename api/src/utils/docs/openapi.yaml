@@ -201,6 +201,68 @@ paths:
           description: Invalid Course value
       security:
         - api_key: []
+  /courses/{courseId}/modules:
+    get:
+      tags:
+        - courses
+      summary: Return all modules of the course given by ID
+      description: Return all modules of the course given by ID
+      operationId: getModulesByCourse
+      parameters:
+        - name: courseId
+          in: path
+          description: ID of course
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Modules'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Modules'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Course not found
+  /courses/{courseId}/modules/{moduleId}:
+    get:
+      tags:
+        - courses
+      summary: Return one module of the course given by ID
+      description: Return one module of the course given by ID
+      operationId: getOneModuleByCourse
+      parameters:
+        - name: courseId
+          in: path
+          description: ID of course
+          required: true
+          schema:
+            type: string
+        - name: moduleId
+          in: path
+          description: ID of module
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Modules'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Modules'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Module not found
   /modules:
     get:
       tags:
@@ -359,6 +421,68 @@ paths:
           description: Invalid module value
       security:
         - api_key: []
+  /modules/{moduleId}/classes:
+    get:
+      tags:
+        - modules
+      summary: Return all classes of the module given by ID
+      description: Return all classes of the module given by ID
+      operationId: getClassesByModule
+      parameters:
+        - name: moduleId
+          in: path
+          description: ID of module
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classes'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Classes'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Module not found
+  /modules/{moduleId}/classes/{classId}:
+    get:
+      tags:
+        - modules
+      summary: Return one class of the module given by ID
+      description: Return one class of the class given by ID
+      operationId: getOneClassByModule
+      parameters:
+        - name: moduleId
+          in: path
+          description: ID of module
+          required: true
+          schema:
+            type: string
+        - name: classId
+          in: path
+          description: ID of class
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classes'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Classes'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Class not found
   /classes:
     get:
       tags:
@@ -521,6 +645,30 @@ paths:
       security:
         - api_key: []
   /users:
+    get:
+      tags:
+        - users
+      summary: Get all existing users
+      description: Get all existing users
+      operationId: getusers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Users'
+        '400':
+          description: Invalid request
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+      security:
+        - api_key: []
     post:
       tags:
         - users
@@ -549,43 +697,48 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Users'
-  /users/createWithList:
+      security:
+        - api_key: []
+  /users/register:
     post:
       tags:
         - users
-      summary: Creates list of users with given input array
-      description: Creates list of users with given input array
-      operationId: createUsersWithListInput
+      summary: Create a user with register method
+      description: Create a user with register method
+            operationId: createUser
       requestBody:
+        description: Created user object
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Users'
+              $ref: '#/components/schemas/Users'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Users'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Users'
       responses:
-        '200':
-          description: Successful operation
+        default:
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users'          
+                $ref: '#/components/schemas/Users'
             application/xml:
               schema:
                 $ref: '#/components/schemas/Users'
-        default:
-          description: successful operation
-  /users/login:
-    get:
+  /users/signin:
+    post:
       tags:
         - users
-      summary: Logs user into the system
-      description: ''
+      summary: Logs user into the system with email and pass
+      description: 'Login user with password and email'
       operationId: loginUser
       parameters:
-        - name: username
+        - name: email
           in: query
-          description: The user name for login
+          description: The user email for login
           required: false
           schema:
             type: string
@@ -618,28 +771,47 @@ paths:
                 type: string
         '400':
           description: Invalid username/password supplied
-  /users/logout:
-    get:
+  /users/google:
+    post:
       tags:
         - users
-      summary: Logs out current logged in user session
-      description: ''
-      operationId: logoutUser
-      parameters: []
+      summary: Logs user into the system with google credentials
+      description: 'Login user with google account'
+      operationId: loginGoogleUser
       responses:
-        default:
+        '200':
           description: successful operation
-  /users/{username}:
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid google account supplied
+  /users/{email}:
     get:
       tags:
         - users
-      summary: Get user by user name
+      summary: Get user by user email
       description: ''
-      operationId: getUserByName
+      operationId: getUserByEmail
       parameters:
-        - name: username
+        - name: email
           in: path
-          description: 'The name that needs to be fetched. Use user1 for testing. '
+          description: 'The email of the user that needs to be fetched. Use user1 for testing. '
           required: true
           schema:
             type: string
@@ -654,9 +826,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Users'
         '400':
-          description: Invalid username supplied
+          description: Invalid email supplied
         '404':
           description: User not found
+      security:
+        - api_key: []
     put:
       tags:
         - users
@@ -664,7 +838,7 @@ paths:
       description: This can only be done by the logged in user.
       operationId: updateUser
       parameters:
-        - name: username
+        - name: email
           in: path
           description: name that need to be deleted
           required: true
@@ -685,6 +859,8 @@ paths:
       responses:
         default:
           description: successful operation
+      security:
+        - api_key: []
     delete:
       tags:
         - users
@@ -692,7 +868,7 @@ paths:
       description: This can only be done by the logged in user.
       operationId: deleteUser
       parameters:
-        - name: username
+        - name: email
           in: path
           description: The name that needs to be deleted
           required: true
@@ -700,9 +876,11 @@ paths:
             type: string
       responses:
         '400':
-          description: Invalid username supplied
+          description: Invalid email supplied
         '404':
           description: User not found
+      security:
+        - api_key: []
 components:
   schemas:
     Courses:

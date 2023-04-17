@@ -9,8 +9,8 @@ function UnitsBox(props: Props) {
       <div><p>{title}</p></div>
       <hr />
       <div className={styles.themes}>
-        {themes.map((theme) =>
-          <div>
+        {themes.map((theme, index) =>
+          <div key={index}>
             <button>{theme}</button>
           </div>
         )}

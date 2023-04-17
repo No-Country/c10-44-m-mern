@@ -13,7 +13,11 @@ interface Class {
   id?: string,
   name?: string,
   content?: string,
-  isCompleted?: boolean
+  videoURL?: string,
+  isCompleted?: boolean,
+  createdAt?: string,
+  updatedAt?: string,
+  __v?: number
 }
 
 export const getClasses = () => {
