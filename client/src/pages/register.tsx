@@ -1,11 +1,15 @@
 import Link from "next/link";
 import styles from "@/styles/Register.module.css";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BiLowVision, BiShow } from "react-icons/bi";
 import Verbify from "../assets/Verbify.png";
 import Image from "next/image";
 import img_register from "../assets/img_register.png";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { signUpUser } from "@/actions/authActions";
+import { useRouter } from "next/router";
+
 function Register() {
   const [inputs, setInputs] = useState({
     email: "",
@@ -14,6 +18,17 @@ function Register() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const navigate = useRouter();
+
+  const { authList, authToken } = useAppSelector(rootReducer => rootReducer.auth)
+
+  useEffect(() => {
+    if (authList && authToken) {
+      // TO DO check where this should route...
+      navigate.push('/myprogress');
+    }
+  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -27,6 +42,22 @@ function Register() {
 
   const handleClickShowConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const dispatch = useAppDispatch();
+
+  const fetchSignUp = useCallback(() => {
+    const user = {
+      email: inputs.email,
+      password: inputs.password,
+      displayName: inputs.email.split('@')[0]
+    };
+    inputs.password === inputs.confirmPassword && dispatch(signUpUser(user));
+  }, [dispatch, inputs]);
+
+  const handleClickSingUp = (event: React.MouseEvent) => {
+    event.preventDefault();
+    fetchSignUp();
   };
 
   return (
@@ -81,13 +112,13 @@ function Register() {
               </button>
             </div>
             <button
-              type="submit"
+              onClick={handleClickSingUp}
               className={styles.container_termsandconditions}
             >
               Crear cuenta
             </button>
             <p className={styles.termsandconditions}>
-              Al hacer clic en "Crear cuenta" certifico que tengo 16 años o más
+              Al hacer click en "Crear cuenta" certifico que tengo 16 años o más
               y acepto las Condiciones de Uso, la Política de Privacidad, la
               Política de Cookies y recibir novedades y promociones.
             </p>
