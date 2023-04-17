@@ -5,6 +5,7 @@ import {
   GET_COURSE_BY_ID,
   DELETE_COURSE_BY_ID,
   UPDATE_COURSE_BY_ID,
+  GET_MODULES_FROM_COURSE_BY_ID,
 } from "./types/types";
 import { Module } from "./modulesActions";
 
@@ -84,6 +85,16 @@ export const updateCourseById = (id: string, updates: Course) => {
       .then(response => response.json())
       .then(() =>
         dispatch({ type: UPDATE_COURSE_BY_ID })
+      )
+  };
+};
+
+export const getModulesFromCourseById = (courseId: string) => {
+  return (dispatch: Dispatch) => {
+    return fetch(`${url}/${courseId}/modules`)
+      .then(response => response.json())
+      .then(obj =>
+        dispatch({ type: GET_MODULES_FROM_COURSE_BY_ID, payload: obj })
       )
   };
 };
