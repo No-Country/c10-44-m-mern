@@ -1,39 +1,44 @@
 .container__card {
+    position: relative;
     display: flex;
     font-family: 'Sora', sans-serif;
-    background-image: linear-gradient(50deg,
-            hsl(0deg 0% 10%) 0%,
-            hsl(33deg 11% 19%) 21%,
-            hsl(34deg 24% 28%) 42%,
-            hsl(33deg 36% 37%) 62%,
-            hsl(33deg 48% 45%) 82%,
-            hsl(33deg 61% 54%) 100%);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-image: url('../assets/backgroundslider.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 100%;
-    height: 334px;
-    padding: 0rem 1rem;
-
+    height: 335px;
+    border: none;
 }
+
 
 .container_img {
     display: flex;
-    width: 35%;
+    justify-content: flex-end;
+    position: relative;
+    height: 327px;
+    margin: 8px 0px 0px 46px;
 }
+
 
 .container_phrases {
     position: relative;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    width: 65%;
-    padding: 83px 32px 0px 120px;
+    width: 720px;
+    height: 227px;
+    text-align: right;
+    margin: 54px 46px 54px;
 }
 
-.container_phrases h2 {
+.container_phrases p {
     position: absolute;
     width: 100%;
-    top: 20%;
-    left: 0;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
 
 }
 
@@ -59,7 +64,7 @@
 
 .button_Slider {
     position: absolute;
-    bottom: 6rem;
+    bottom: 85px;
     right: 0;
     width: 249.29px;
     height: 46px;
@@ -69,4 +74,52 @@
     border: none;
     font-family: inherit;
     cursor: pointer;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .container__card {
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        margin: 10px 16px 20px 16px;
+        padding: 0px 25px 0px 25px;
+    }
+
+    .container_img {
+        justify-content: center;
+        height: auto;
+        margin: 0;
+    }
+
+    .container_img img {
+        width: 100%;
+    }
+
+    .container_phrases {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .container_phrases p {
+        position: static;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .buttons_nextprev {
+        position: static;
+        width: 100%;
+        margin: 20px 0px;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .button_Slider {
+        position: static;
+        margin: 20px 0;
+        width: 100%;
+    }
 }

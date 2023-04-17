@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap");
 
 .main {
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   background-color: #212121;
   width: 66vw;
-  height: 98vh;
+  /* height: 98vh; */
   padding-inline: 100px;
   padding-block: 50px;
   display: flex;
@@ -38,7 +38,7 @@
 }
 
 .mid span {
-  background-color: #ECEDF2;
+  background-color: #ecedf2;
   color: #989898;
   border-radius: 8px;
   height: 73px;
@@ -76,7 +76,7 @@
 }
 
 .middle input:checked {
-  accent-color: #ECEDF2;
+  accent-color: #ecedf2;
 }
 
 .bottom {
@@ -85,8 +85,8 @@
 }
 
 .bottom button {
-  font-family: 'Sora', sans-serif;
-  background-color: #D39245;
+  font-family: "Sora", sans-serif;
+  background-color: #d39245;
   height: 46px;
   padding: 20px;
   border: none;
@@ -104,4 +104,31 @@
 
 .bottom div div p {
   margin: 10px;
+}
+
+@media screen and (max-width: 620px) {
+  .main {
+    width: 100%;
+    background-color: transparent;
+    justify-content: space-around;
+    padding-inline: 16px;
+    padding-block: 10px;
+  }
+
+  .top {
+    flex-direction: column-reverse;
+    gap: 50px;
+    font-weight: 400px;
+    font-size: 23px;
+  }
+
+  .mid {
+    margin-top: 30px;
+  }
+
+  .mid span {
+    height: 47px;
+    font-size: 13px;
+    padding-left: 30px;
+  }
 }

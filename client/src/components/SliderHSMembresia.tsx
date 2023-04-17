@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "@/styles/SliderHSMembresia.module.css";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
@@ -11,7 +10,7 @@ function SliderHSMembresia(props: Props) {
         <img src={src} alt={src} />
       </div>
       <div className={styles.container_phrases}>
-        <h2>{text}</h2>
+        <p>{text}</p>
         <button className={styles.button_Slider}> Quiero mi membresía</button>
         <div className={styles.buttons_nextprev}>
           <button onClick={handlePrevious}>
