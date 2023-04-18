@@ -66,6 +66,7 @@ const deleteOneById = async (id: string) => {
     throw new Error(err);
   }
 };
+
 export {
   getAll,
   getOneById,
@@ -75,3 +76,5 @@ export {
   getModulesFromCourse,
   getOneModuleFromCourse,
 };
+
+
