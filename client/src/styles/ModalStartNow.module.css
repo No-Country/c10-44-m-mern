@@ -63,12 +63,22 @@
 .button_start {
     margin-top: 26px;
     background-color: #D39245;
+
     border: none;
 }
+
+.button_start:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 
 .button_later {
     margin: 8px 0px 36px 0px;
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
+}
+
+.button_later:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
