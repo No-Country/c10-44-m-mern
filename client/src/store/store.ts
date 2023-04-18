@@ -3,13 +3,15 @@ import classesReducer from '../reducers/classesReducer';
 import modulesReducer from '@/reducers/modulesReducer';
 import coursesReducer from '@/reducers/coursesReducer';
 import usersReducer from '@/reducers/usersReducer';
+import authReducer from '@/reducers/authReducer';
 
 export const store = configureStore({
   reducer: {
     classes: classesReducer,
     modules: modulesReducer,
     courses: coursesReducer,
-    users: usersReducer
+    users: usersReducer,
+    auth: authReducer,
   },
 });
 

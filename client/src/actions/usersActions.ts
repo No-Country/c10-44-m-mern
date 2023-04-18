@@ -9,7 +9,7 @@ import {
 
 const url = "http://localhost:8080/api/users";
 
-interface User {
+export interface User {
   _id?: string,
   email?: string,
   passwordHash?: string,
@@ -20,7 +20,7 @@ interface User {
   createdAt?: string,
   updatedAt?: string,
   __v?: number,
-}
+};
 
 export const getUsers = () => {
   return (dispatch: Dispatch) => {

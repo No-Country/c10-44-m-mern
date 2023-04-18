@@ -21,3 +21,10 @@ export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 //export const DELETE_USER_BY_ID = "DELETE_USER_BY_ID";
 export const UPDATE_USER_BY_ID = "UPDATE_USER_BY_ID";
+
+export const SIGN_IN_USER = "SIGN_IN_USER";
+export const LOG_OUT_USER = "LOG_OUT_USER";
+export const SIGN_UP_USER = "SIGN_UP_USER";
+
+export const GET_MODULES_FROM_COURSE_BY_ID = "GET_MODULES_FROM_COURSE_BY_ID";
+export const GET_CLASSES_FROM_MODULE_BY_ID = "GET_CLASSES_FROM_MODULE_BY_ID";

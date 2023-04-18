@@ -4,11 +4,13 @@ import {
   GET_USER_BY_ID,
   //DELETE_USER_BY_ID,
   UPDATE_USER_BY_ID,
+  SIGN_IN_USER,
 } from '../actions/types/types';
 
 const initialState = {
-  coursesList: [],
-  courseList: null
+  usersList: [],
+  userList: null,
+  userToken: null,
 };
 
 export default function usersReducer(state = initialState, action: any) {
@@ -16,16 +18,16 @@ export default function usersReducer(state = initialState, action: any) {
     case GET_USERS:
       return {
         ...state,
-        classesList: action.payload,
+        usersList: action.payload,
       };
     /*case CREATE_USER:
-          return {
-            ...state,
-          }; */
+         return {
+           ...state,
+         }; */
     case GET_USER_BY_ID:
       return {
         ...state,
-        classList: action.payload,
+        userList: action.payload,
       };
     /*case DELETE_USER_BY_ID:
           return {
@@ -35,6 +37,12 @@ export default function usersReducer(state = initialState, action: any) {
       return {
         ...state,
       };
+    case SIGN_IN_USER:
+      return {
+        ...state,
+        userList: action.payload.user,
+        userToken: action.payload.token
+      }
     default:
       return state;
   };

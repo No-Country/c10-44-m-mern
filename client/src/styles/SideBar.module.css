@@ -118,6 +118,11 @@
   color: #ECEDF2;
 }
 
+.nav_2 button a {
+  display: flex;
+  align-items: center;
+}
+
 .nav_2 section {
   display: flex;
   flex-direction: column;

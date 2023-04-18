@@ -1,11 +1,10 @@
 import Link from "next/link";
 //Estilos Css
 import styles from "@/styles/Register.module.css";
-//React
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 
 //Iconos
+
+import React, { useCallback, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BiLowVision, BiShow } from "react-icons/bi";
 
@@ -13,25 +12,31 @@ import { BiLowVision, BiShow } from "react-icons/bi";
 import Verbify from "../assets/Verbify.png";
 import img_register from "../assets/img_register.png";
 
-//Axios
-import axios from "axios";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { signUpUser } from "@/actions/authActions";
+import { useRouter } from "next/router";
 
-interface RegisterFormData {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<RegisterFormData>();
+  const navigate = useRouter();
+
+  const { authList, authToken } = useAppSelector(rootReducer => rootReducer.auth)
+
+  useEffect(() => {
+    if (authList && authToken) {
+      // TO DO check where this should route...
+      navigate.push('/myprogress');
+    }
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -41,14 +46,21 @@ function Register() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const onSubmit = (data: RegisterFormData) => {
-    const url = "http://localhost:8080/api/users";
-    axios
-      .post(url, data)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
+  const dispatch = useAppDispatch();
+
+  const fetchSignUp = useCallback(() => {
+    const user = {
+      email: inputs.email,
+      password: inputs.password,
+      displayName: inputs.email.split('@')[0]
+    };
+    inputs.password === inputs.confirmPassword && dispatch(signUpUser(user));
+  }, [dispatch, inputs]);
+
+  const handleClickSingUp = (event: React.MouseEvent) => {
+    event.preventDefault();
+    fetchSignUp();
+
   };
 
   return (
@@ -102,13 +114,14 @@ function Register() {
                 </span>
               </button>
             </div>
-            <button className={styles.button_createAccount} type="submit">
+            <button
+              onClick={handleClickSingUp}
+              className={styles.container_termsandconditions}
+            >
               Crear cuenta
             </button>
-          </form>
-          <div className={styles.termsandconditions}>
-            <p>
-              Al hacer clic en "Crear cuenta" certifico que tengo 16 años o más
+            <p className={styles.termsandconditions}>
+              Al hacer click en "Crear cuenta" certifico que tengo 16 años o más
               y acepto las Condiciones de Uso, la Política de Privacidad, la
               Política de Cookies y recibir novedades y promociones.
             </p>

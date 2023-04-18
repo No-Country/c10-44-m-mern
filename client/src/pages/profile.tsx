@@ -1,6 +1,7 @@
 import SideBar from "@/components/SideBar";
 import styles from "@/styles/Profile.module.css";
 import Avatar from "@/assets/Avatar.png";
+import { useAppSelector } from "@/store/hooks";
 
 function ProfilePage() {
   const userData = {
@@ -15,6 +16,10 @@ function ProfilePage() {
     product: "Plan Anual",
     expirationDate: "06/04/2024",
   };
+
+  const {
+    authList
+  } = useAppSelector(rootReducer => rootReducer.auth)
 
   return (
     <div className={styles.background}>
@@ -33,8 +38,7 @@ function ProfilePage() {
               </div>
               <div className={styles.shortdescription}>
                 <p className={styles.userName}>
-                  {userData.name}
-                  {userData.surname}
+                  {authList?.firstName} {authList?.lastName}
                 </p>
                 <p>{userData.country}</p>
                 <p>{userData.occupation}</p>
@@ -49,11 +53,11 @@ function ProfilePage() {
                 <div className={styles.column}>
                   <div>
                     <p className={styles.label}>Nombre</p>
-                    <p>{userData.name}</p>
+                    <p>{authList?.firstName}</p>
                   </div>
                   <div>
                     <p className={styles.label}>Correo Electrónico</p>
-                    <p>{userData.email}</p>
+                    <p>{authList?.email}</p>
                   </div>
                   <div>
                     <p className={styles.label}>Bio</p>
@@ -62,8 +66,8 @@ function ProfilePage() {
                 </div>
                 <div className={styles.column}>
                   <div>
-                    <p className={styles.label}>Surname</p>
-                    <p>{userData.surname}</p>
+                    <p className={styles.label}>Apellido</p>
+                    <p>{authList?.lastName}</p>
                   </div>
                   <div>
                     <p className={styles.label}>Teléfono</p>

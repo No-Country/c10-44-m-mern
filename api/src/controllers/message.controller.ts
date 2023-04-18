@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import * as userService from "../services/users.service";
-import { IUser } from "../models/user";
+import * as messageService from "../services/message.service";
+import { IMessage } from "../models/message";
 
 const getAll = async (req: Request, res: Response) => {
   try {
-    const users = await userService.getAll();
-    res.status(200).json(users);
+    const messages = await messageService.getAll();
+    res.status(200).json(messages);
   } catch (error) {
     console.error(error);
     res.status(400).json({
-      errors: [
+      error: [
         {
           code: error.code,
           message: error.message,
@@ -22,30 +22,12 @@ const getAll = async (req: Request, res: Response) => {
 const getOneById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const user = await userService.getOneById(id);
-    res.status(200).json(user);
+    const message = await messageService.getOneById(id);
+    res.status(200).json(message);
   } catch (error) {
     console.error(error);
     res.status(400).json({
-      errors: [
-        {
-          code: error.code,
-          message: error.message,
-        },
-      ],
-    });
-  }
-};
-
-const getOneByEmail = async (req: Request, res: Response) => {
-  try {
-    const { email } = req.params;
-    const user = await userService.getOneByEmail(email);
-    res.status(200).json(user);
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({
-      errors: [
+      error: [
         {
           code: error.code,
           message: error.message,
@@ -57,14 +39,8 @@ const getOneByEmail = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
   try {
-    const body = req.body;
-
-    const bodyUser: IUser = {
-      ...body,
-      passwordHash: body.password,
-    };
-
-    const response = await userService.create(bodyUser);
+    const { body } = req;
+    const response = await messageService.create(body);
     res.status(201).json(response);
   } catch (error) {
     console.error(error);
@@ -81,20 +57,10 @@ const create = async (req: Request, res: Response) => {
 
 const updateById = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
-    let body: IUser = req.body;
-
-    if (req.body.password) {
-      body = {
-        ...req.body,
-        passwordHash: req.body.password,
-      };
-    }
-
-    const updatedUser = await userService.updateOneById(id, body);
-    updatedUser.removePassword()
-    
-    res.status(201).json(updatedUser);
+    const { id } = req.params;
+    const { body } = req;
+    const updatedMessage = await messageService.updateOneById(id, body);
+    res.status(200).json(updatedMessage);
   } catch (error) {
     console.error(error);
     res.status(400).json({
@@ -111,8 +77,8 @@ const updateById = async (req: Request, res: Response) => {
 const deleteById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const response = await userService.deleteOneById(id);
-    res.status(201).json(response);
+    const response = await messageService.deleteOneById(id);
+    res.status(200).json(response);
   } catch (error) {
     console.error(error);
     res.status(400).json({
