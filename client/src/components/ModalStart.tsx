@@ -22,10 +22,9 @@ function ModalStartNow() {
             </div>
             <img src={Reading.src} alt="Reading" />
             <p>
-              ¡Hola! ¿Estás buscando mejorar tu nivel de inglés? ¡Tenemos la
-              solución perfecta para ti! Te invitamos a acceder a nuestra clase
-              gratuita de inglés,donde podrás conocer nuestra metodología y la
-              calidad de nuestros contenidos.
+              ¡Hola! Te invitamos a acceder a nuestra clase gratuita de inglés,
+              donde podrás conocer nuestra metodología y la calidad de nuestros
+              contenidos.
             </p>
             <button className={styles.button_start}>Empezar ahora</button>
             <button className={styles.button_later} onClick={() => hideModal()}>

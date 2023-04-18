@@ -2,7 +2,7 @@ import styles from "@/styles/SliderHSMembresia.module.css";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 function SliderHSMembresia(props: Props) {
-  const { text, src, handlePrevious, handleNext } = props;
+  const { text, src, contentbutton, handlePrevious, handleNext } = props;
 
   return (
     <div className={styles.container__card}>
@@ -11,7 +11,7 @@ function SliderHSMembresia(props: Props) {
       </div>
       <div className={styles.container_phrases}>
         <p>{text}</p>
-        <button className={styles.button_Slider}> Quiero mi membresía</button>
+        <button className={styles.button_Slider}> {contentbutton}</button>
         <div className={styles.buttons_nextprev}>
           <button onClick={handlePrevious}>
             <BiLeftArrowAlt size={28} />
@@ -28,6 +28,7 @@ function SliderHSMembresia(props: Props) {
 type Props = {
   text: string;
   src: string;
+  contentbutton: string;
   handlePrevious: () => void;
   handleNext: () => void;
 };

@@ -42,16 +42,19 @@ const SliderPhrases = [
     id: 0,
     text: "Estudia inglés desde cualquier lugar del mundo con Verbify. ¡Regístrate ahora y comienza a aprender!",
     src: "https://i.ibb.co/t4Swxgk/slideimg1.png",
+    contentbutton: "Quiero mi membresía",
   },
   {
     id: 1,
     text: "Mejora tu inglés y destaca en el trabajo con Verbify. ¡Regístrate ahora!",
     src: "https://i.ibb.co/xJNRCJF/slideimg2.png",
+    contentbutton: "Quiero mi membresía",
   },
   {
     id: 2,
     text: "¡Únete a nuestra membresía y lleva tus habilidades al siguiente nivel!",
     src: "https://i.ibb.co/K5jQj3V/slideimg3.png",
+    contentbutton: "Quiero mi membresía",
   },
 ];
 
@@ -129,6 +132,7 @@ function Homesinmembresia() {
         <SliderHSMembresia
           text={SliderPhrases[sliderIndex].text}
           src={SliderPhrases[sliderIndex].src}
+          contentbutton={SliderPhrases[sliderIndex].contentbutton}
           handlePrevious={() =>
             setSliderIndex(
               (sliderIndex - 1 + SliderPhrases.length) % SliderPhrases.length
