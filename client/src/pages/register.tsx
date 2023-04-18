@@ -23,12 +23,14 @@ function Register() {
 
   const navigate = useRouter();
 
-  const { authList, authToken } = useAppSelector(rootReducer => rootReducer.auth)
+  const { authList, authToken } = useAppSelector(
+    (rootReducer) => rootReducer.auth
+  );
 
   useEffect(() => {
     if (authList && authToken) {
       // TO DO check where this should route...
-      navigate.push('/myprogress');
+      navigate.push("/myprogress");
     }
   });
 
@@ -52,7 +54,7 @@ function Register() {
     const user = {
       email: inputs.email,
       password: inputs.password,
-      displayName: inputs.email.split('@')[0]
+      displayName: inputs.email.split("@")[0],
     };
     inputs.password === inputs.confirmPassword && dispatch(signUpUser(user));
   }, [dispatch, inputs]);
