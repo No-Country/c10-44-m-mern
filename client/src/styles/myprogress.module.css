@@ -6,6 +6,7 @@
     background-size: cover;
     background-attachment: fixed;
     gap: 100px;
+    min-height: 100vh;
 }
 
 .container__sideBar {
@@ -117,6 +118,45 @@
 
 .container__sideBarmobile {
     display: none;
+}
+
+.container_classes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 68px;
+}
+
+.container_classes div {
+    display: flex;
+    margin: auto 0;
+}
+
+.container_classes button {
+    cursor: pointer;
+    padding: 0px 5px;
+}
+
+.container_class {
+    font-size: 1rem;
+}
+
+.card_class {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 2.5rem;
+}
+
+.card_class h4 {
+    padding-bottom: 12px;
+}
+
+.card_class p {
+    display: flex;
+    gap: .5rem;
+    padding-top: 12px;
+
 }
 
 @media only screen and (max-width: 767px) {

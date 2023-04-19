@@ -7,7 +7,7 @@ import {
   UPDATE_USER_BY_ID,
 } from "./types/types";
 
-const url = "http://localhost:8080/api/users";
+const url = "https://verbify.onrender.com/api/users";
 
 export interface User {
   _id?: string,

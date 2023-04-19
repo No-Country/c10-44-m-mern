@@ -36,14 +36,7 @@
     background-color: #343434;
     border-radius: 0px 20px 20px 0px;
     justify-content: center;
-    padding: 32px 32px 28px 44px;
-}
-
-.container_form form {
-    display: flex;
-    flex-direction: column;
-    padding: 0px 20px;
-    gap: 5px;
+    padding: 1rem;
 }
 
 .container_form img {
@@ -53,19 +46,22 @@
     margin: auto;
 }
 
-.container_form p {
-    padding: 16px 0px;
+.title {
+    display: flex;
+    justify-content: center;
     font-size: 14px;
-    text-align: center;
+    margin-top: 1rem;
 }
 
-.container_form .termsandconditions {
-    text-align: justify;
+.termsandconditions {
+    text-align: center;
     font-size: 10px;
-
+    margin: 10px 0px;
 }
 
 .container_form form input {
+    position: relative;
+    width: 100%;
     font-family: inherit;
     color: black;
     background-color: white;
@@ -77,21 +73,9 @@
     outline: none;
 }
 
-.container_form form div {
-    position: relative;
-}
-
-.container_form form div button {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    background-color: transparent;
-    border: 0px;
-    color: grey;
-    cursor: pointer;
-}
-
-.container_termsandconditions {
+.container_buttonRegister {
+    width: 100%;
+    margin-top: .5rem;
     font-family: inherit;
     background-color: #D39245;
     border-radius: 10px;
@@ -102,15 +86,14 @@
 
 .init_google {
     display: flex;
-    font-family: inherit;
     background-color: #fff;
     border-radius: 10px;
     justify-content: center;
-    margin: 0 20px;
     height: 43px;
 }
 
 .init_google button {
+    font-family: inherit;
     display: flex;
     align-items: center;
     outline: none;
@@ -126,6 +109,44 @@
     color: #D39245
 }
 
+
+.input_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.input_container input {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.input_container button {
+    position: absolute;
+    top: 30%;
+    right: 2%;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.input_container button svg {
+    color: #777;
+}
+
+.error_message {
+    position: absolute;
+    margin: auto;
+    bottom: -1rem;
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+}
 
 @media screen and (max-width: 768px) {
     .container_register {

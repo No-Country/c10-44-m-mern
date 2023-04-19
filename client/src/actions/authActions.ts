@@ -5,7 +5,7 @@ import {
   SIGN_IN_USER,
 } from "./types/types";
 
-const url = "http://localhost:8080/api/auth";
+const url = "https://verbify.onrender.com/api/auth";
 
 interface Inputs {
   email: string,
