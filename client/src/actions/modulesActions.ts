@@ -5,6 +5,7 @@ import {
   GET_MODULE_BY_ID,
   DELETE_MODULE_BY_ID,
   UPDATE_MODULE_BY_ID,
+  GET_CLASSES_FROM_MODULE_BY_ID,
 } from "./types/types";
 
 const url = "http://localhost:8080/api/modules";
@@ -79,6 +80,16 @@ export const updateModuleById = (id: string, updates: Module) => {
       .then(response => response.json())
       .then(() =>
         dispatch({ type: UPDATE_MODULE_BY_ID })
+      )
+  };
+};
+
+export const getClassesFromModuleById = (moduleId: string) => {
+  return (dispatch: Dispatch) => {
+    return fetch(`${url}/${moduleId}/classes`)
+      .then(response => response.json())
+      .then(obj =>
+        dispatch({ type: GET_CLASSES_FROM_MODULE_BY_ID, payload: obj })
       )
   };
 };

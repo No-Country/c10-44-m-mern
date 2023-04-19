@@ -1,19 +1,30 @@
-//Importación hoja de estilos
 import styles from "../styles/myprogress.module.css";
-//Importacion de Iconos
-import {
-  BiCaretRightCircle,
-  BiCaretUp,
-  BiCheckCircle,
-  BiHappyHeartEyes,
-  BiPlay,
-  BiSearchAlt,
-} from "react-icons/bi";
-import MyProgressSection from "@/components/MyProgressSection";
+import { BiSearchAlt } from "react-icons/bi";
 import SideBar from "@/components/SideBar";
 import SideBarMobile from "@/components/SideBarMobile";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import MyProgressSection from "@/components/MyProgressSection";
+
+interface Course {
+  _id: string;
+  name: string;
+  numModules: number;
+  numCompletedModules: number;
+  Module: [];
+}
 
 function MyProgress() {
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    const url = "https://verbify.onrender.com/api/courses";
+    axios
+      .get(url)
+      .then((response) => setCourses(response.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className={styles.container__mainmyprogress}>
       <div className={styles.container__sideBar}>
@@ -33,134 +44,15 @@ function MyProgress() {
           </form>
         </header>
         <div className={styles.container___sections}>
-          <MyProgressSection
-            title="Introducción "
-            content={[
-              <>
-                <div className={styles.container__courseH1}>
-                  {" "}
-                  <BiHappyHeartEyes /> Bienvenida a Verbify (clase 1){" "}
-                  <BiCaretRightCircle /> <BiCheckCircle /> <BiCaretUp />
-                </div>
-                <hr className={styles.line__divisition} />
-                "U1: Como será estudiar en Verbify."
-                <div>
-                  <BiPlay /> Ejemplo 1
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 2
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 3
-                </div>
-              </>,
-            ]}
-          />
-
-          <MyProgressSection
-            title="Ingles Basico"
-            content={[
-              <>
-                <div className={styles.container__courseH1}>
-                  {" "}
-                  <BiHappyHeartEyes /> Bienvenida a Verbify (clase 1){" "}
-                  <BiCaretRightCircle /> <BiCheckCircle /> <BiCaretUp />
-                </div>
-                <hr className={styles.line__divisition} />
-                "U1: Como será estudiar en Verbify."
-                <div>
-                  <button>
-                    <BiPlay />
-                  </button>{" "}
-                  Ejemplo 1
-                </div>
-                <div>
-                  <button>
-                    <BiPlay />
-                  </button>{" "}
-                  Ejemplo 2
-                </div>
-                <div>
-                  <button>
-                    <BiPlay />
-                  </button>{" "}
-                  Ejemplo 3
-                </div>
-              </>,
-            ]}
-          />
-
-          <MyProgressSection
-            title="Ingles Intermedio"
-            content={[
-              <>
-                <div className={styles.container__courseH1}>
-                  {" "}
-                  <BiHappyHeartEyes /> Bienvenida a Verbify (clase 1){" "}
-                  <BiCaretRightCircle /> <BiCheckCircle /> <BiCaretUp />
-                </div>
-                <hr className={styles.line__divisition} />
-                "U1: Como será estudiar en Verbify."
-                <div>
-                  <BiPlay /> Ejemplo 1
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 2
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 3
-                </div>
-              </>,
-            ]}
-          />
-
-          <MyProgressSection
-            title="Ingles Avanzado"
-            content={[
-              <>
-                <div className={styles.container__courseH1}>
-                  {" "}
-                  <BiHappyHeartEyes /> Bienvenida a Verbify (clase 1){" "}
-                  <BiCaretRightCircle /> <BiCheckCircle /> <BiCaretUp />
-                </div>
-                <hr className={styles.line__divisition} />
-                "U1: Como será estudiar en Verbify."
-                <div>
-                  <BiPlay /> Ejemplo 1
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 2
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 3
-                </div>
-              </>,
-            ]}
-          />
-
-          <MyProgressSection
-            title="Ingles de Negocios"
-            content={[
-              <>
-                <div className={styles.container__courseH1}>
-                  {" "}
-                  <BiHappyHeartEyes /> Bienvenida a Verbify (clase 1){" "}
-                  <BiCaretRightCircle /> <BiCheckCircle /> <BiCaretUp />
-                </div>
-                <hr className={styles.line__divisition} />
-                "U1: Como será estudiar en Verbify."
-                <div>
-                  <BiPlay /> Ejemplo 1
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 2
-                </div>
-                <div>
-                  <BiPlay /> Ejemplo 3
-                </div>
-              </>,
-            ]}
-          />
+          {courses?.map((course) => (
+            <MyProgressSection
+              key={course?._id}
+              title={course.name}
+              numModules={course.Module.length}
+              numCompletedModules={0}
+              Module={course?.Module}
+            />
+          ))}
         </div>
       </div>
     </div>

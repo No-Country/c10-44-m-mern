@@ -21,6 +21,7 @@
   display: block;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   background-color: #343434;
   min-width: 432px;
   border-radius: 8px;
@@ -29,6 +30,7 @@
 .section section section {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .section section section img {
@@ -58,6 +60,7 @@
   border: 0px;
   margin-inline: 20px;
   margin-block: 8px;
+  max-width: -webkit-fill-available;
 }
 
 .form div {
@@ -146,4 +149,25 @@
   color: #D39245;
   margin-left: 10px;
   margin-block: 12px;
+}
+
+@media screen and (max-width: 620px) {
+  .section section {
+    width: 90%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #343434;
+    border-radius: 8px;
+  }
+
+  .section section section p {
+    margin-bottom: 15px;
+  }
+
+  .form input {
+    margin-block: 8px;
+    width: 100%;
+  }
 }

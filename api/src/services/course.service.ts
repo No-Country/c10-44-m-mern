@@ -16,14 +16,6 @@ const getOneById = async (id: string) => {
   }
 };
 
-const getModulesFromCourse = async (courseId: string) => {
-  try {
-    return (await Course.findById(courseId).populate("Module")).Module;
-  } catch (err) {
-    throw new Error(err);
-  }
-};
-
 const getOneModuleFromCourse = async (courseId: string, moduleId: string) => {
   try {
     const modulesArray = await Course.findById(courseId).populate("Module");
@@ -33,6 +25,17 @@ const getOneModuleFromCourse = async (courseId: string, moduleId: string) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+const getModulesFromCourse = async (courseId: string) => {
+   try {
+      return (await Course.findById(courseId).populate('Module')).Module
+   } catch (err) {
+      throw new Error(err);
+   }
+}
+
+>>>>>>> 82b9b7856549563466d4be3126d378636410e6c1
 const create = async (body: ICourse) => {
   try {
     await Course.create(body);
