@@ -7,11 +7,13 @@ import bcrypt from "bcrypt";
 export interface IUser {
   _id: Types.ObjectId;
   email: string;
-  passwordHash?: string;
-  displayName: string;
+  passwordHash: string;
+  bio?: string;
+  phone?: string;
+  country?: string;
   firstName?: string;
   lastName?: string;
-  isPremium: boolean;
+  isSuscribed: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -32,10 +34,12 @@ export type UserModel = Model<IUser, {}, IUserMethods>;
 export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   email: { type: String, unique: true, required: true },
   passwordHash: String,
-  displayName: { type: String, required: true },
-  firstName: String,
-  lastName: String,
-  isPremium: {type: Boolean, default: false},
+  bio: { type: String },
+  phone: {type: String},
+  country: {type: String},
+  firstName: {type: String},
+  lastName: {type: String},
+  isSuscribed: {type: Boolean, default: false},
 }, {
   timestamps: true
 });

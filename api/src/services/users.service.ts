@@ -1,4 +1,4 @@
-import { User, IUser, UserModel, IUserMethods } from "../models/user";
+import { User, IUser, IUserMethods } from "../models/user";
 
 const getAll = async () => {
   try {
@@ -15,6 +15,14 @@ const getOneById = async (id: string) => {
     throw new Error(err);
   }
 };
+
+const getOneByEmail = async (email: string) => {
+try {
+  return await User.find({email: email})
+} catch (err) {
+  throw new Error(err)
+}
+}
 
 const create = async (body: IUser) => {
   return User.create(body);
@@ -43,4 +51,4 @@ const deleteOneById = async (id: string) => {
     throw new Error(err);
   }
 };
-export { getAll, getOneById, create, updateOneById, deleteOneById };
+export { getAll, getOneById, create, updateOneById, deleteOneById, getOneByEmail };

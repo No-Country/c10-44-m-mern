@@ -4,12 +4,13 @@ import * as dotenv from "dotenv";
 import { exit } from "process";
 dotenv.config();
 import { classRouter } from "./routes/class.routes";
-import { modulesRouter } from "./routes/module.routes";
-import { usersRouter } from "./routes/user.routes";
+import { moduleRouter } from "./routes/module.routes";
+import { userRouter } from "./routes/user.routes";
 import { authRouter } from "./routes/auth.routes";
 import { courseRouter } from "./routes/course.routes"; //jrn
 import { swaggerDocs } from "./utils/docs/swagger";
 import cors from "cors";
+import { messageRouter } from "./routes/message.routes";
 
 // Mongoose initialization
 try {
@@ -38,10 +39,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({origin: "*"}))
 
 app.use("/api/classes", classRouter);
-app.use("/api/modules", modulesRouter);
-app.use("/api/users", usersRouter);
+app.use("/api/modules", moduleRouter);
+app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/courses", courseRouter); //jrn
+app.use("/api/courses", courseRouter);
+app.use("/api/messages", messageRouter)
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

@@ -37,6 +37,47 @@ const getOneById = async (req: Request, res: Response) => {
   }
 };
 
+const getClassesFromModule = async (req: Request, res: Response) => {
+  try {
+    const { moduleId } = req.params;
+    const response = await moduleService.getClassesFromModule(
+      moduleId
+    );
+    res.status(200).json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      errors: [
+        {
+          code: error.code,
+          message: error.message,
+        },
+      ],
+    });
+  }
+};
+
+const getOneClassFromModule = async (req: Request, res: Response) => {
+  try {
+    const { moduleId, classId } = req.params;
+    const response = await moduleService.getOneClassFromModule(
+      moduleId,
+      classId
+    );
+    res.status(200).json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      errors: [
+        {
+          code: error.code,
+          message: error.message,
+        },
+      ],
+    });
+  }
+};
+
 const create = async (req: Request, res: Response) => {
   try {
     const { body } = req;
@@ -92,4 +133,4 @@ const deleteById = async (req: Request, res: Response) => {
   }
 };
 
-export { getAll, getOneById, create, updateById, deleteById };
+export { getAll, getOneById, create, updateById, deleteById, getClassesFromModule, getOneClassFromModule };
