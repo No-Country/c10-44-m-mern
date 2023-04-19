@@ -31,18 +31,22 @@ export interface IUserMethods {
  */
 export type UserModel = Model<IUser, {}, IUserMethods>;
 
-export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
-  email: { type: String, unique: true, required: true },
-  passwordHash: String,
-  bio: { type: String },
-  phone: {type: String},
-  country: {type: String},
-  firstName: {type: String},
-  lastName: {type: String},
-  isSuscribed: {type: Boolean, default: false},
-}, {
-  timestamps: true
-});
+export const userSchema = new Schema<IUser, UserModel, IUserMethods>(
+  {
+    email: { type: String, unique: true, required: true },
+    passwordHash: { type: String },
+    bio: { type: String },
+    phone: { type: String },
+    country: { type: String },
+    firstName: { type: String },
+    lastName: { type: String },
+    isSuscribed: { type: Boolean, default: false },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 
 export type UserDocument = typeof userSchema;
 
@@ -62,12 +66,15 @@ userSchema.pre("save", async function (next) {
 });
 
 // To compare incoming password with the hashed password in the database
-userSchema.method('validatePassword', async function (candidatePassword: string) {
-  return bcrypt.compare(candidatePassword, this.passwordHash);
-});
+userSchema.method(
+  "validatePassword",
+  async function (candidatePassword: string) {
+    return bcrypt.compare(candidatePassword, this.passwordHash);
+  }
+);
 
 // To remove the passwordHash from the user object before sending it to the client
-userSchema.method('removePassword', function () {
+userSchema.method("removePassword", function () {
   this.passwordHash = undefined;
 });
 

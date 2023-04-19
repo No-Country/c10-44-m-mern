@@ -929,6 +929,9 @@ components:
         name:
           type: string
           example: 'Introduction'
+        subtitle:
+          type: string
+          example: 'Inglés conversacional'
         isCompleted:
           type: boolean
         classes:
@@ -968,42 +971,30 @@ components:
           type: string
           format: objectId
           example: '6427c38d08b86ce760a1fa47'
-        displayName:
-          type: string
-          example: theUser_99
-        firstName:
-          type: string
-          example: John
-        lastName:
-          type: string
-          example: Doe
         email:
           type: string
           example: john@email.com
         passwordHash:
           type: string
           example: '12345'
-        isPremium:
+        phone:
+          type: string
+          example: '+54 011 4789455'
+        bio:
+          type: string
+          example: Ingeniero
+        country: 
+          type: string
+          example: Colombia
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        isSuscribed:
           type: boolean
           example: true
-        roles:
-          type: array
-          xml:
-            name: roles
-            wrapped: false
-          items:
-            $ref: '#/components/schemas/Roles'
-      xml:
-        name: users
-    Roles:
-      type: object
-      properties:
-        name:
-          type: string
-          example: 'admin'
-      xml:
-        name: roles
-  
   requestBodies:
     UserArray:
       description: List of user object
