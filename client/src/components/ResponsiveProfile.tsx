@@ -4,18 +4,6 @@ import Avatar from "@/assets/Avatar.png";
 import { useAppSelector } from "@/store/hooks";
 
 function ResponsiveProfile() {
-  const userData = {
-    image: Avatar.src,
-    name: "Robert",
-    surname: "Gomez",
-    occupation: "Ingeniero",
-    email: "correo@gmail.com",
-    number: "+00 346 46 46",
-    bio: "Ingeniero",
-    country: "Chile",
-    product: "Plan Anual",
-    expirationDate: "06/04/2024",
-  };
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
   return (
@@ -29,7 +17,7 @@ function ResponsiveProfile() {
               <div className={styles.imagebox}>
                 <img
                   className={styles.image}
-                  src={userData.image}
+                  src={Avatar.src}
                   alt="user image"
                 />
               </div>
@@ -37,8 +25,8 @@ function ResponsiveProfile() {
                 <p className={styles.userName}>
                   {authList?.firstName} {authList?.lastName}
                 </p>
-                <p>{userData.country}</p>
-                <p>{userData.occupation}</p>
+                <p>{authList?.country}</p>
+                <p>{authList?.bio}</p>
               </div>
             </div>
           </section>
@@ -57,7 +45,7 @@ function ResponsiveProfile() {
                   </div>
                   <div>
                     <p className={styles.label}>Bio</p>
-                    <p>{userData.occupation}</p>
+                    <p>{authList?.bio}</p>
                   </div>
                 </div>
                 <div className={styles.column}>
@@ -67,11 +55,11 @@ function ResponsiveProfile() {
                   </div>
                   <div>
                     <p className={styles.label}>Teléfono</p>
-                    <p>{userData.number}</p>
+                    <p>{authList?.phone}</p>
                   </div>
                   <div>
                     <p className={styles.label}>País</p>
-                    <p>{userData.country}</p>
+                    <p>{authList?.country}</p>
                   </div>
                 </div>
               </div>
@@ -83,15 +71,15 @@ function ResponsiveProfile() {
               <div className={styles.payment}>
                 <div>
                   <p className={styles.label}>Producto</p>
-                  <p>{userData.product}</p>
+                  <p>{authList?.product && "Es miembro"}</p>
                 </div>
                 <div>
                   <p className={styles.label}>Vence</p>
-                  <p>{userData.expirationDate}</p>
+                  <p>06/04/2024</p>
                 </div>
                 <div>
                   <p className={styles.label}>Número de tarjeta</p>
-                  <p>numerodsadeadwa</p>
+                  <p>**** 0405</p>
                 </div>
               </div>
             </div>

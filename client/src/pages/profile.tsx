@@ -8,18 +8,6 @@ import ResponsiveProfile from "@/components/ResponsiveProfile";
 function ProfilePage() {
   const [width, setWidth] = React.useState(0);
   const breakpoint = 860;
-  const userData = {
-    image: Avatar.src,
-    name: "Robert",
-    surname: "Gomez",
-    occupation: "Ingeniero",
-    email: "correo@gmail.com",
-    number: "+00 346 46 46",
-    bio: "Ingeniero",
-    country: "Chile",
-    product: "Plan Anual",
-    expirationDate: "06/04/2024",
-  };
 
   React.useEffect(() => {
     const handleWindowResize = () => {
@@ -46,7 +34,7 @@ function ProfilePage() {
                 <div className={styles.imagebox}>
                   <img
                     className={styles.image}
-                    src={userData.image}
+                    src={Avatar.src}
                     alt="user image"
                   />
                 </div>
@@ -54,8 +42,8 @@ function ProfilePage() {
                   <p className={styles.userName}>
                     {authList?.firstName} {authList?.lastName}
                   </p>
-                  <p>{userData.country}</p>
-                  <p>{userData.occupation}</p>
+                  <p>{authList?.country}</p>
+                  <p>{authList?.bio}</p>
                 </div>
               </div>
               <button className={styles.editbutton}>Editar</button>
@@ -75,7 +63,7 @@ function ProfilePage() {
                     </div>
                     <div>
                       <p className={styles.label}>Bio</p>
-                      <p>{userData.occupation}</p>
+                      <p>{authList?.bio}</p>
                     </div>
                   </div>
                   <div className={styles.column}>
@@ -85,11 +73,11 @@ function ProfilePage() {
                     </div>
                     <div>
                       <p className={styles.label}>Teléfono</p>
-                      <p>{userData.number}</p>
+                      <p>{authList?.phone}</p>
                     </div>
                     <div>
                       <p className={styles.label}>País</p>
-                      <p>{userData.country}</p>
+                      <p>{authList?.country}</p>
                     </div>
                   </div>
                 </div>
@@ -102,15 +90,15 @@ function ProfilePage() {
                 <div className={styles.payment}>
                   <div>
                     <p className={styles.label}>Producto</p>
-                    <p>{userData.product}</p>
+                    <p>{authList?.product && "Es miembro"}</p>
                   </div>
                   <div>
                     <p className={styles.label}>Vence</p>
-                    <p>{userData.expirationDate}</p>
+                    <p>06/04/2024</p>
                   </div>
                   <div>
                     <p className={styles.label}>Número de tarjeta</p>
-                    <p>numerodsadeadwa</p>
+                    <p>**** 0405</p>
                   </div>
                 </div>
               </div>
