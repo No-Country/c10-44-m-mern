@@ -25,8 +25,6 @@ const getOneModuleFromCourse = async (courseId: string, moduleId: string) => {
   }
 };
 
-<<<<<<< HEAD
-=======
 const getModulesFromCourse = async (courseId: string) => {
    try {
       return (await Course.findById(courseId).populate('Module')).Module
@@ -35,7 +33,6 @@ const getModulesFromCourse = async (courseId: string) => {
    }
 }
 
->>>>>>> 82b9b7856549563466d4be3126d378636410e6c1
 const create = async (body: ICourse) => {
   try {
     await Course.create(body);
