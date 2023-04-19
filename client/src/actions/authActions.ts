@@ -5,7 +5,7 @@ import {
   SIGN_IN_USER,
 } from "./types/types";
 
-const url = "http://localhost:8080/api/auth";
+const url = "https://verbify.onrender.com/api/users";
 
 interface Inputs {
   email: string,
@@ -44,7 +44,7 @@ export const logOutUser = () => {
 
 export const signUpUser = (user: User) => {
   return (dispatch: Dispatch) => {
-    return fetch(`${url}/signup`, {
+    return fetch(`${url}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/JSON',
