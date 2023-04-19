@@ -6,13 +6,6 @@ import { useAppSelector } from "@/store/hooks";
 function ProfilePage() {
   const userData = {
     image: Avatar.src,
-    name: "Robert",
-    surname: "Gomez",
-    occupation: "Ingeniero",
-    email: "correo@gmail.com",
-    number: "+00 346 46 46",
-    bio: "Ingeniero",
-    country: "Chile",
     product: "Plan Anual",
     expirationDate: "06/04/2024",
   };
@@ -40,8 +33,8 @@ function ProfilePage() {
                 <p className={styles.userName}>
                   {authList?.firstName} {authList?.lastName}
                 </p>
-                <p>{userData.country}</p>
-                <p>{userData.occupation}</p>
+                <p>{authList?.country}</p>
+                <p>{authList?.bio}</p>
               </div>
             </div>
             <button className={styles.editbutton}>Editar</button>
@@ -61,7 +54,7 @@ function ProfilePage() {
                   </div>
                   <div>
                     <p className={styles.label}>Bio</p>
-                    <p>{userData.occupation}</p>
+                    <p>{authList?.bio}</p>
                   </div>
                 </div>
                 <div className={styles.column}>
@@ -71,11 +64,11 @@ function ProfilePage() {
                   </div>
                   <div>
                     <p className={styles.label}>Teléfono</p>
-                    <p>{userData.number}</p>
+                    <p>{authList?.phone}</p>
                   </div>
                   <div>
                     <p className={styles.label}>País</p>
-                    <p>{userData.country}</p>
+                    <p>{authList?.country}</p>
                   </div>
                 </div>
               </div>
