@@ -9,7 +9,7 @@ import {
 } from "./types/types";
 import { Module } from "./modulesActions";
 
-const url = "http://localhost:8080/api/courses";
+const url = "https://verbify.onrender.com/api/courses";
 
 interface Course {
   _id?: string,

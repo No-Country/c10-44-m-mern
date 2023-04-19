@@ -7,7 +7,7 @@ import {
   UPDATE_CLASS_BY_ID,
 } from "./types/types";
 
-const url = "http://localhost:8080/api/classes";
+const url = "https://verbify.onrender.com/api/classes/";
 
 interface Class {
   id?: string,
