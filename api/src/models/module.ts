@@ -6,6 +6,7 @@ import { ClassDocument } from "./class";
  */
 export interface IModule {
   name: string;
+  subtitle: string;
   isCompleted: boolean;
   classes: ClassDocument[];
   createdAt: Date;
@@ -20,6 +21,7 @@ type ModuleModel = Model<IModule>;
 export const moduleSchema = new Schema<IModule, ModuleModel>(
   {
     name: { type: String, unique: true, required: true },
+    subtitle: {type: String},
     isCompleted: { type: Boolean },
     classes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Class" }],
   },
