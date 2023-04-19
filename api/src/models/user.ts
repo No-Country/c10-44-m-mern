@@ -47,6 +47,7 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>(
   }
 );
 
+
 export type UserDocument = typeof userSchema;
 
 // Hash user password before saving to database
