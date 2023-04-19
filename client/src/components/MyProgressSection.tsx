@@ -20,7 +20,7 @@ interface Section {
 }
 
 interface ModuleData {
-  id: string;
+  _id: string;
   name: string;
   classes: string[];
 }
@@ -77,7 +77,7 @@ function MyProgressSection(props: Section & { Module: string[] }) {
       <div className={styles.container__course}>
         {!isCollapsed &&
           moduleData?.map((module) => (
-            <div key={module.id}>
+            <div key={module._id}>
               <div className={styles.container_classes}>
                 <div>
                   <button>
@@ -101,7 +101,7 @@ function MyProgressSection(props: Section & { Module: string[] }) {
 
               <div className={styles.container_class}>
                 {isCollapsedModule && (
-                  <CardClasses id={module.id} classes={module.classes} />
+                  <CardClasses id={module._id} classes={module.classes} />
                 )}
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getClassById } from "@/actions/classesActions";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import SideBar from "@/components/SideBar";
 import UnitsBox from "@/components/UnitsBox";
 import VideoBox from "@/components/VideoBox";
@@ -18,6 +18,7 @@ function ClassRoom() {
   const { id } = router.query;
 
   const dispatch = useAppDispatch();
+  const { moduleList } = useAppSelector((rootReducer) => rootReducer.modules);
 
   const fetchGetClassById = useCallback(() => {
     if (typeof id === "string") dispatch(getClassById(id));
@@ -37,14 +38,21 @@ function ClassRoom() {
       <div className={styles.top}>
         <div className={styles.mid}>
           <VideoBox videourl={classList?.videoURL} />
-          <CourseDetails title={classList?.name} description={classList?.content} />
+          <CourseDetails
+            title={classList?.name}
+            description={classList?.content}
+          />
         </div>
         <div className={styles.right}>
-          <UnitsBox title={unit.title} themes={unit.theme} />
+          <UnitsBox
+            moduleID={moduleList?._id}
+            title={moduleList?.name}
+            themes={moduleList?.classes}
+          />
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default ClassRoom;

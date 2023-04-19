@@ -29,8 +29,6 @@ function MyProgress() {
   const { coursesList } = useAppSelector((rootReducer) => rootReducer.courses);
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
-  console.log(authList);
-
   return (
     <div className={styles.container__mainmyprogress}>
       <div className={styles.container__sideBar}>
@@ -50,7 +48,7 @@ function MyProgress() {
           </form>
         </header>
         <div className={styles.container___sections}>
-          {coursesList?.map((course) => (
+          {coursesList?.map((course: Course) => (
             <MyProgressSection
               key={course?._id}
               title={course.name}
