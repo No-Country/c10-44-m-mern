@@ -699,13 +699,13 @@ paths:
                 $ref: '#/components/schemas/Users'
       security:
         - api_key: []
-  /users/register:
+  /auth/signup:
     post:
       tags:
-        - users
+        - auth
       summary: Create a user with register method
       description: Create a user with register method
-            operationId: createUser
+      operationId: createUser
       requestBody:
         description: Created user object
         content:
@@ -728,10 +728,10 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Users'
-  /users/signin:
+  /auth/signin:
     post:
       tags:
-        - users
+        - auth
       summary: Logs user into the system with email and pass
       description: 'Login user with password and email'
       operationId: loginUser
@@ -771,10 +771,10 @@ paths:
                 type: string
         '400':
           description: Invalid username/password supplied
-  /users/google:
+  /auth/google:
     post:
       tags:
-        - users
+        - auth
       summary: Logs user into the system with google credentials
       description: 'Login user with google account'
       operationId: loginGoogleUser
