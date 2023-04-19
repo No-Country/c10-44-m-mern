@@ -1,8 +1,5 @@
 import { Course, ICourse } from "../models/course";
 
-
-
-
 const getAll = async () => {
   try {
     return await Course.find();
@@ -14,14 +11,6 @@ const getAll = async () => {
 const getOneById = async (id: string) => {
   try {
     return await Course.findById(id);
-  } catch (err) {
-    throw new Error(err);
-  }
-};
-
-const getModulesFromCourse = async (courseId: string) => {
-  try {
-    return (await Course.findById(courseId).populate("Module")).Module;
   } catch (err) {
     throw new Error(err);
   }
@@ -39,15 +28,6 @@ const getOneModuleFromCourse = async (courseId: string, moduleId: string) => {
 const getModulesFromCourse = async (courseId: string) => {
    try {
       return (await Course.findById(courseId).populate('Module')).Module
-   } catch (err) {
-      throw new Error(err);
-   }
-}
-
-const getOneModuleFromCourse = async (courseId: string, moduleId: string) => {
-   try {
-      const modulesArray = await Course.findById(courseId).populate("Module")
-      return modulesArray.Module.find(item => item['_id'] == moduleId)
    } catch (err) {
       throw new Error(err);
    }
