@@ -39,7 +39,6 @@
     padding: 1rem;
 }
 
-
 .container_form img {
     display: block;
     width: 225px;
@@ -57,7 +56,7 @@
 .termsandconditions {
     text-align: center;
     font-size: 10px;
-    margin: 10px 20px;
+    margin: 10px 0px;
 }
 
 .container_form form input {
@@ -90,7 +89,6 @@
     background-color: #fff;
     border-radius: 10px;
     justify-content: center;
-    margin: 0 20px;
     height: 43px;
 }
 
