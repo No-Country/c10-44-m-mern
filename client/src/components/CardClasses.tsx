@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BiCaretRightCircle } from "react-icons/bi";
 import styles from "../styles/myprogress.module.css";
+import Link from "next/link";
 
 interface ClassData {
   _id: string;
@@ -35,15 +36,17 @@ function CardClasses(props: CardClassesProps) {
       {classData?.map((classInfo) => (
         <div key={classInfo?._id}>
           {classInfo?.name !== null && classInfo?.name.length > 0 && (
-            <h4>{classInfo?.name}</h4>
+            <h4>
+              <Link href={`/classroom/${classInfo._id}`}>
+                <BiCaretRightCircle />
+                {classInfo?.name}
+              </Link>
+            </h4>
           )}
-          {classInfo?.content !== null && classInfo?.name.length > 0 && <hr />}
+          {/* {classInfo?.content !== null && classInfo?.name.length > 0 && <hr />}
           {classInfo?.content !== null && classInfo?.content.length > 0 && (
-            <p>
-              <BiCaretRightCircle />
-              {classInfo?.content}
-            </p>
-          )}
+            <p></p>
+          )} */}
         </div>
       ))}
     </div>

@@ -2,9 +2,10 @@ import styles from "../styles/myprogress.module.css";
 import { BiSearchAlt } from "react-icons/bi";
 import SideBar from "@/components/SideBar";
 import SideBarMobile from "@/components/SideBarMobile";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useCallback } from "react";
 import MyProgressSection from "@/components/MyProgressSection";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getCourses } from "@/actions/coursesActions";
 
 interface Course {
   _id: string;
@@ -15,15 +16,20 @@ interface Course {
 }
 
 function MyProgress() {
-  const [courses, setCourses] = useState<Course[]>([]);
+  const dispatch = useAppDispatch();
+
+  const fetchGetCourses = useCallback(() => {
+    dispatch(getCourses());
+  }, [dispatch]);
 
   useEffect(() => {
-    const url = "https://verbify.onrender.com/api/courses";
-    axios
-      .get(url)
-      .then((response) => setCourses(response.data))
-      .catch((err) => console.log(err));
-  }, []);
+    fetchGetCourses();
+  }, [fetchGetCourses]);
+
+  const { coursesList } = useAppSelector((rootReducer) => rootReducer.courses);
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+
+  console.log(authList);
 
   return (
     <div className={styles.container__mainmyprogress}>
@@ -44,7 +50,7 @@ function MyProgress() {
           </form>
         </header>
         <div className={styles.container___sections}>
-          {courses?.map((course) => (
+          {coursesList?.map((course) => (
             <MyProgressSection
               key={course?._id}
               title={course.name}
