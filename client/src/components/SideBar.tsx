@@ -29,6 +29,9 @@ function SideBar() {
   const {
     authList,
   } = useAppSelector(rootReducer => rootReducer.auth);
+  const {
+    classList,
+  } = useAppSelector(rootReducer => rootReducer.classes);
 
   return (
     <div> {!open ?
@@ -40,10 +43,10 @@ function SideBar() {
           </div>
           <hr />
           <div>
-            <button><Link href="/"><BiHomeAlt size={28} /></Link></button>
+            <button><Link href="/home"><BiHomeAlt size={28} /></Link></button>
             <button><Link href="/profile"><BiUserCircle size={28} /></Link></button>
             <button><Link href="/myprogress"><BiBookContent size={28} /></Link></button>
-            <button><Link href="/classroom"><BiPencil size={28} /></Link></button>
+            <button><Link href={classList?._id ? `/classroom/${classList._id}` : "/classroom/643f669920ab7834dd652c54"}><BiPencil size={28} /></Link></button>
           </div>
           <hr />
         </span>
@@ -65,10 +68,10 @@ function SideBar() {
           </div>
           <hr />
           <div>
-            <button><Link href="/"><BiHomeAlt size={28} /><p>Home</p></Link></button>
+            <button><Link href="/home"><BiHomeAlt size={28} /><p>Home</p></Link></button>
             <button><Link href="/profile"><BiUserCircle size={28} /><p>Perfil</p></Link></button>
             <button><Link href="/myprogress"><BiBookContent size={28} /><p>Cursos</p></Link></button>
-            <button><Link href="/classroom"><BiPencil size={28} /><p>Classroom</p></Link></button>
+            <button><Link href={classList?._id ? `/classroom/${classList._id}` : "/classroom/643f669920ab7834dd652c54"}><BiPencil size={28} /><p>Classroom</p></Link></button>
           </div>
           <hr />
         </span>

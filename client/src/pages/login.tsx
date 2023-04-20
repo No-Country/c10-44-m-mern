@@ -18,8 +18,7 @@ function Login() {
 
   useEffect(() => {
     if (authList && authToken) {
-      // TO DO check where this should route...
-      navigate.push('/myprogress');
+      navigate.push('/home');
     }
   });
 

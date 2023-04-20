@@ -36,8 +36,7 @@ function Register() {
 
   useEffect(() => {
     if (authList && authToken) {
-      // TO DO check where this should route...
-      navigate.push("/Homesinmembresia");
+      navigate.push("/home");
     }
   });
 

@@ -6,6 +6,7 @@ import { useEffect, useCallback } from "react";
 import MyProgressSection from "@/components/MyProgressSection";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getCourses } from "@/actions/coursesActions";
+import { useRouter } from "next/router";
 
 interface Course {
   _id: string;
@@ -20,21 +21,24 @@ interface CoursesList {
 }
 
 function MyProgress() {
+  const router = useRouter();
+  
   const dispatch = useAppDispatch();
+
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
   const fetchGetCourses = useCallback(() => {
     dispatch(getCourses());
   }, [dispatch]);
 
   useEffect(() => {
+    if (!authList) router.push("/login");
     fetchGetCourses();
   }, [fetchGetCourses]);
 
   const { coursesList } = useAppSelector(
     (rootReducer: { courses: CoursesList }) => rootReducer.courses
   );
-
-  // const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
   return (
     <div className={styles.container__mainmyprogress}>
