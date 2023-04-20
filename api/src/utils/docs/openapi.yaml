@@ -81,6 +81,29 @@ paths:
           description: Invalid input
       security:
         - api_key: []
+  /courses/populated:
+    get:
+      tags:
+        - courses
+      summary: Get all existing courses populated with all information
+      description: Get all existing courses populated with information
+      operationId: getCoursesPopulated
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Courses'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Courses'
+        '400':
+          description: Invalid request
+        '404':
+          description: Course not found
+        '405':
+          description: Validation exception
   /courses/{Id}:
     get:
       tags:
