@@ -1,15 +1,6 @@
-/* Ira en el index principal */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
-
-.container__Page404 {
-    font-family: 'Sora', sans-serif;
-}
-
-/* Se eliminara  hasta aqui*/
-
-
 .container__Page404 {
     display: flex;
+    font-family: 'Sora', sans-serif;
     flex-direction: column;
     padding: 54px 0px 100px 0px;
     justify-content: center;
@@ -46,4 +37,56 @@
     background-color: #D39245;
     color: #fff;
     border: none;
+}
+
+/* Estilos para dispositivos con un ancho máximo de 768px */
+@media (max-width: 768px) {
+    .container__Page404 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 24px;
+        margin: 0;
+    }
+
+    .container__Page404 section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container__Page404 section img {
+        width: 100%;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .container__Page404 section>div:first-of-type {
+        order: 2;
+        width: 50%;
+    }
+
+    .container__Page404 section>div:last-of-type {
+        order: 1;
+        width: 50%;
+    }
+
+    .container__Page404 section p {
+        background-color: #fff;
+        font-size: 16px;
+    }
+
+    .container__Page404 section button {
+
+        width: 187px;
+        height: 46px;
+        border-radius: 10px;
+        font-size: 18px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+    }
 }
