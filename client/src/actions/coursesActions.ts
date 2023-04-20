@@ -6,6 +6,7 @@ import {
   DELETE_COURSE_BY_ID,
   UPDATE_COURSE_BY_ID,
   GET_MODULES_FROM_COURSE_BY_ID,
+  GET_ALL_COURSES_WITH_MODULES_AND_CLASSES,
 } from "./types/types";
 import { Module } from "./modulesActions";
 
@@ -95,6 +96,16 @@ export const getModulesFromCourseById = (courseId: string) => {
       .then(response => response.json())
       .then(obj =>
         dispatch({ type: GET_MODULES_FROM_COURSE_BY_ID, payload: obj })
+      )
+  };
+};
+
+export const getAllCoursesWithModulesAndClasses = () => {
+  return (dispatch: Dispatch) => {
+    return fetch(`${url}/populated`)
+      .then(response => response.json())
+      .then(obj =>
+        dispatch({ type: GET_ALL_COURSES_WITH_MODULES_AND_CLASSES, payload: obj })
       )
   };
 };
