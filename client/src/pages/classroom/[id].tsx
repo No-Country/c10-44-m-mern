@@ -12,6 +12,8 @@ function ClassRoom() {
   const router = useRouter();
   const { id } = router.query;
 
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+
   const dispatch = useAppDispatch();
 
   const fetchGetClassById = useCallback(() => {
@@ -19,6 +21,7 @@ function ClassRoom() {
   }, [dispatch, id]);
 
   useEffect(() => {
+    if (!authList) router.push("/login");
     fetchGetClassById();
   }, [fetchGetClassById]);
 
