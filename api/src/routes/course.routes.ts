@@ -6,12 +6,14 @@ import {
    updateById,
    getModulesFromCourse,
    getOneModuleFromCourse,
+   getCoursesPopulated
 } from "../controllers/course.controller";
 import { Router } from "express";
 
 const router: Router = Router();
 
 router.get("/", getAll);
+router.get("/populated", getCoursesPopulated)
 router.get("/:id", getOneById);
 router.post("/", create);
 router.put("/:id", updateById);

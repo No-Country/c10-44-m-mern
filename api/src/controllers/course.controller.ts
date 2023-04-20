@@ -4,8 +4,8 @@ import { ICourse } from "../models/course";
 
 const getAll = async (req: Request, res: Response) => {
   try {
-    const modules = await courseService.getAll();
-    res.status(200).json(modules);
+    const courses = await courseService.getAll();
+    res.status(200).json(courses);
   } catch (error) {
     console.error(error);
     res.status(400).json({
@@ -76,6 +76,22 @@ const getOneModuleFromCourse = async (req: Request, res: Response) => {
   }
 };
 
+const getCoursesPopulated = async (req:Request, res: Response) => {
+  try {
+    const coursesPopulated = await courseService.getCoursesPopulated();
+    res.status(200).json(coursesPopulated);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      errors: [
+        {
+          code: error.code,
+          message: error.message,
+        },
+      ],
+    });
+  }
+}
 
 const create = async (req: Request, res: Response) => {
   try {
@@ -139,5 +155,6 @@ export {
   updateById,
   deleteById,
   getModulesFromCourse,
-  getOneModuleFromCourse
+  getOneModuleFromCourse,
+  getCoursesPopulated
 };
