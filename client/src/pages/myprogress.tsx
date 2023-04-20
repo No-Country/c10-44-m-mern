@@ -34,8 +34,6 @@ function MyProgress() {
     (rootReducer: { courses: CoursesList }) => rootReducer.courses
   );
 
-  // const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
-
   return (
     <div className={styles.container__mainmyprogress}>
       <div className={styles.container__sideBar}>

@@ -12,6 +12,7 @@ import styles from "../styles/myprogress.module.css";
 import axios from "axios";
 import CardClasses from "./CardClasses";
 import Link from "next/link";
+import { useAppSelector } from "@/store/hooks";
 
 interface Section {
   title: string;
@@ -32,6 +33,10 @@ function MyProgressSection(props: Section & { Module: string[] }) {
   const [moduleData, setModuleData] = useState<ModuleData[]>([]);
 
   const [isCollapsedModule, setisCollapsedModule] = useState(true);
+
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+
+  console.log(authList);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -59,25 +64,25 @@ function MyProgressSection(props: Section & { Module: string[] }) {
     <section>
       <div
         className={`${styles.container__section} ${
-          isCollapsed ? "" : styles.collapsed
+          isCollapsed && authList?.isSuscribed === false ? "" : styles.collapsed
         }`}
       >
         <p>{props.title}</p>
         <button onClick={toggleCollapse}>
-          {isCollapsed ? (
-            <BiLock />
-          ) : (
+          {isCollapsed && authList?.isSuscribed === false ? (
             <div className={styles.cardCourse__Count}>
               <h5>
                 {props.numCompletedModules}/{props.numModules}
               </h5>
               <BiCaretUp />
             </div>
+          ) : (
+            <BiLock />
           )}
         </button>
       </div>
       <div className={styles.container__course}>
-        {!isCollapsed &&
+        {(!isCollapsed && authList?.isSuscribed === false) ||
           moduleData?.map((module) => (
             <div key={module?._id}>
               <div className={styles.container_classes}>

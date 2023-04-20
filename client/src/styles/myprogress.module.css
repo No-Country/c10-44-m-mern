@@ -77,13 +77,16 @@
     height: 128px;
     align-items: center;
     justify-content: space-between;
-    background-color: #424242;
-    color: black;
+    border: 2px solid #D39245;
+    color: #fff;
 }
 
 .container__section.collapsed {
-    border: 2px solid #D39245;
-    color: #fff;
+    background-color: #424242;
+    color: black;
+    border: none;
+
+
 }
 
 .cardCourse__Count {
