@@ -4,6 +4,9 @@
   color: #E5E5E5;
   display: flex;
   padding-inline: 245px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
 .div img {
@@ -16,12 +19,13 @@
 }
 
 .div div h1 {
-  font-size: xx-large;
+  font-size: 64px;
   margin-block: 30px;
 }
 
 .div div p {
   margin-bottom: 20px;
+  font-size: 23px;
 }
 
 .begin {
