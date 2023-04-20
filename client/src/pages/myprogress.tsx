@@ -5,7 +5,7 @@ import SideBarMobile from "@/components/SideBarMobile";
 import { useEffect, useCallback } from "react";
 import MyProgressSection from "@/components/MyProgressSection";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { getCourses } from "@/actions/coursesActions";
+import { getAllCoursesWithModulesAndClasses, getCourses } from "@/actions/coursesActions";
 import { useRouter } from "next/router";
 
 interface Course {
@@ -26,9 +26,11 @@ function MyProgress() {
   const dispatch = useAppDispatch();
 
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+  const { allList } = useAppSelector((rootReducer) => rootReducer.courses);
 
   const fetchGetCourses = useCallback(() => {
     dispatch(getCourses());
+    dispatch(getAllCoursesWithModulesAndClasses())
   }, [dispatch]);
 
   useEffect(() => {
