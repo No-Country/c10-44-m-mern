@@ -6,7 +6,7 @@ function HomeHero() {
   return (
     <div className={styles.div}>
       <div>
-        <h1>Domina el inglés: <br />la clave para el éxito <br /> profesional.</h1>
+        <h1>Domina el inglés: la clave para el éxito profesional.</h1>
         <p>Libera tu potencial con nuestra plataforma de aprendizaje de inglés y lleva tu carrera al siguiente nivel.</p>
         <div>
           <button className={styles.begin}>
