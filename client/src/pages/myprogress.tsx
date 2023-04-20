@@ -15,6 +15,10 @@ interface Course {
   Module: [];
 }
 
+interface CoursesList {
+  coursesList: Course[];
+}
+
 function MyProgress() {
   const dispatch = useAppDispatch();
 
@@ -26,10 +30,11 @@ function MyProgress() {
     fetchGetCourses();
   }, [fetchGetCourses]);
 
-  const { coursesList } = useAppSelector((rootReducer) => rootReducer.courses);
-  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+  const { coursesList } = useAppSelector(
+    (rootReducer: { courses: CoursesList }) => rootReducer.courses
+  );
 
-  console.log(authList);
+  // const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
   return (
     <div className={styles.container__mainmyprogress}>

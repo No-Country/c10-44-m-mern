@@ -11,6 +11,7 @@ import {
 import styles from "../styles/myprogress.module.css";
 import axios from "axios";
 import CardClasses from "./CardClasses";
+import Link from "next/link";
 
 interface Section {
   title: string;
@@ -20,9 +21,10 @@ interface Section {
 }
 
 interface ModuleData {
-  id: string;
+  _id: string;
   name: string;
   classes: string[];
+  subtitle: string;
 }
 
 function MyProgressSection(props: Section & { Module: string[] }) {
@@ -77,20 +79,27 @@ function MyProgressSection(props: Section & { Module: string[] }) {
       <div className={styles.container__course}>
         {!isCollapsed &&
           moduleData?.map((module) => (
-            <div key={module.id}>
+            <div key={module?._id}>
               <div className={styles.container_classes}>
                 <div>
-                  <button>
-                    <BiHappyHeartEyes />
+                  <button className={styles.button_BiHappy}>
+                    <BiHappyHeartEyes
+                      style={{ background: "#F1DDC5", borderRadius: 10 }}
+                    />
                   </button>
-                  <h3>{module.name}</h3>
+                  <h3>{module?.name}</h3>
                 </div>
                 <div>
                   <button>
-                    <BiCaretRightCircle />
+                    <Link
+                      href={`/classroom/${module?.classes[0]}`}
+                      style={{ color: "#2AEF4A" }}
+                    >
+                      <BiCaretRightCircle />
+                    </Link>
                   </button>
                   <button>
-                    <BiCheckCircle />
+                    <BiCheckCircle style={{ color: "#2AEF4A" }} />
                   </button>
 
                   <button onClick={toggleCollapseModules}>
@@ -98,10 +107,16 @@ function MyProgressSection(props: Section & { Module: string[] }) {
                   </button>
                 </div>
               </div>
-
+              <div className={styles.subtitle_class}>
+                <p>{module?.subtitle}</p>
+                <h1>0/{module?.classes?.length}</h1>
+              </div>
+              <div>
+                <hr className={styles.line_Heigth} />
+              </div>
               <div className={styles.container_class}>
                 {isCollapsedModule && (
-                  <CardClasses id={module.id} classes={module.classes} />
+                  <CardClasses id={module?._id} classes={module?.classes} />
                 )}
               </div>
             </div>

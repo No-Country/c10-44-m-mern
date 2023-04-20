@@ -8,7 +8,7 @@ import {
   GET_CLASSES_FROM_MODULE_BY_ID,
 } from "./types/types";
 
-const url = "http://localhost:8080/api/modules";
+const url = "https://verbify.onrender.com/api/modules";
 
 export interface Module {
   _id?: string,
