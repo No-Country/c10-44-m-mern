@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { BiCaretRightCircle } from "react-icons/bi";
 import styles from "../styles/myprogress.module.css";
 import Link from "next/link";
+import { useAppDispatch } from "@/store/hooks";
+import { getModuleById } from "@/actions/modulesActions";
 
 interface ClassData {
   _id: string;
@@ -18,6 +20,12 @@ interface CardClassesProps {
 
 function CardClasses(props: CardClassesProps) {
   const [classData, setClassData] = useState<ClassData[]>([]);
+
+  const dispatch = useAppDispatch();
+
+  const setModuleForUnitsBox = useCallback(() => {
+    dispatch(getModuleById(props.id));
+  }, [dispatch]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +44,10 @@ function CardClasses(props: CardClassesProps) {
       {classData?.map((classInfo) => (
         <div key={classInfo?._id}>
           {classInfo?.name !== null && classInfo?.name.length > 0 && (
-            <div className={styles.classes_content}>
+            <div
+              className={styles.classes_content}
+              onClick={setModuleForUnitsBox}
+            >
               <Link
                 href={`/classroom/${classInfo._id}`}
                 style={{ color: "#2AEF4A" }}
