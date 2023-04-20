@@ -2,6 +2,7 @@ import styles from "@/styles/ModalStartNow.module.css";
 import Reading from "../assets/Reading.png";
 import { BiX } from "react-icons/bi";
 import { useState } from "react";
+import Link from "next/link";
 
 function ModalStartNow() {
   const [showModal, setShowModal] = useState(true);
@@ -26,7 +27,11 @@ function ModalStartNow() {
               donde podrás conocer nuestra metodología y la calidad de nuestros
               contenidos.
             </p>
-            <button className={styles.button_start}>Empezar ahora</button>
+            <button className={styles.button_start}>
+              <Link href={"/classroom/643f669920ab7834dd652c54"}>
+                Empezar ahora
+              </Link>
+            </button>
             <button className={styles.button_later} onClick={() => hideModal()}>
               Tal vez despues
             </button>
