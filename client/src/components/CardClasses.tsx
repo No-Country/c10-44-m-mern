@@ -25,7 +25,7 @@ function CardClasses(props: CardClassesProps) {
         return axios.get(`https://verbify.onrender.com/api/classes/${classId}`);
       });
       const results = await Promise.all(promises);
-      const classes = results.map((res) => res.data);
+      const classes = results?.map((res) => res.data);
       setClassData(classes);
     };
     fetchData();
@@ -36,17 +36,20 @@ function CardClasses(props: CardClassesProps) {
       {classData?.map((classInfo) => (
         <div key={classInfo?._id}>
           {classInfo?.name !== null && classInfo?.name.length > 0 && (
-            <h4>
-              <Link href={`/classroom/${classInfo._id}`}>
-                <BiCaretRightCircle />
-                {classInfo?.name}
+            <div className={styles.classes_content}>
+              <Link
+                href={`/classroom/${classInfo._id}`}
+                style={{ color: "#2AEF4A" }}
+              >
+                <BiCaretRightCircle size={20} />
               </Link>
-            </h4>
+              <h4>
+                <Link href={`/classroom/${classInfo._id}`}>
+                  {classInfo?.name}
+                </Link>
+              </h4>
+            </div>
           )}
-          {/* {classInfo?.content !== null && classInfo?.name.length > 0 && <hr />}
-          {classInfo?.content !== null && classInfo?.content.length > 0 && (
-            <p></p>
-          )} */}
         </div>
       ))}
     </div>
