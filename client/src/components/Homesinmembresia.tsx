@@ -9,6 +9,7 @@ import CardNews from "@/components/CardNews";
 import CardResources from "@/components/CardResources";
 import ModalStartNow from "@/components/ModalStart";
 import SideBarMobile from "@/components/SideBarMobile";
+import { useAppSelector } from "@/store/hooks";
 
 const plansArray = [
   {
@@ -106,6 +107,9 @@ function Homesinmembresia() {
     }
   };
 
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+  console.log(authList.email);
+
   return (
     <div className={styles.container__main}>
       <div className={styles.container__sideBar}>
@@ -119,7 +123,7 @@ function Homesinmembresia() {
       <header>
         <div>
           <p>Bienvenido </p>
-          <h1>Robert</h1>
+          <h1>{authList?.email?.split("@")[0]}</h1>
         </div>
         <form>
           <input placeholder="Buscar" />

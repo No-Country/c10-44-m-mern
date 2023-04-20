@@ -9,6 +9,7 @@ import CardResources from "@/components/CardResources";
 import SideBarMobile from "@/components/SideBarMobile";
 import CardAchievementRecord from "@/components/CardAchievementRecord";
 import CardLastClass from "@/components/CardLastClass";
+import { useAppSelector } from "@/store/hooks";
 
 const SliderPhrases = [
   {
@@ -76,6 +77,8 @@ const LastClass = [
 function Homeconmembresia() {
   const [sliderIndex, setSliderIndex] = useState(0);
 
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+
   return (
     <div className={styles.container__main}>
       <div className={styles.container__sideBar}>
@@ -87,7 +90,7 @@ function Homeconmembresia() {
       <header>
         <div>
           <p>Bienvenido </p>
-          <h1>Robert</h1>
+          <h1>{authList?.email?.split("@")[0]}</h1>
         </div>
         <form>
           <input placeholder="Buscar" />

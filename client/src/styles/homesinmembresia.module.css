@@ -23,6 +23,10 @@
     padding: 55.5px 0px;
 }
 
+.container__main header h1 {
+    text-transform: capitalize;
+}
+
 .container__main header form {
     position: relative;
     height: 100%;
