@@ -64,12 +64,12 @@ function MyProgressSection(props: Section & { Module: string[] }) {
     <section>
       <div
         className={`${styles.container__section} ${
-          isCollapsed && authList?.isSuscribed === false ? "" : styles.collapsed
+          isCollapsed && authList?.isSuscribed === true ? "" : styles.collapsed
         }`}
       >
         <p>{props.title}</p>
         <button onClick={toggleCollapse}>
-          {isCollapsed && authList?.isSuscribed === false ? (
+          {isCollapsed && authList?.isSuscribed === true ? (
             <div className={styles.cardCourse__Count}>
               <h5>
                 {props.numCompletedModules}/{props.numModules}
@@ -82,7 +82,7 @@ function MyProgressSection(props: Section & { Module: string[] }) {
         </button>
       </div>
       <div className={styles.container__course}>
-        {(!isCollapsed && authList?.isSuscribed === false) ||
+        {(!isCollapsed && authList?.isSuscribed === true) ||
           moduleData?.map((module) => (
             <div key={module?._id}>
               <div className={styles.container_classes}>
