@@ -10,7 +10,6 @@ interface ClassData {
   _id: string;
   name: string;
   content: string;
-  // otros campos que necesites
 }
 
 interface CardClassesProps {

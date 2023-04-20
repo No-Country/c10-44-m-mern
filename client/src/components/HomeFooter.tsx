@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/HomeFooter.module.css";
+import Swal from "sweetalert2";
 
 function HomeFooter() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    Swal.fire({
+      icon: "success",
+      title: "¡Gracias por suscribirte!",
+      text: "Recibirás nuestro newsletter lleno de contenido exclusivo y consejos prácticos en tu correo electrónico.",
+      confirmButtonColor: "#D39245",
+    });
+    e.currentTarget.reset();
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -39,9 +51,14 @@ function HomeFooter() {
               <section className={styles.suscribe}>
                 <p>Verbify</p>
                 <h5>Suscríbete a nuestro boletín</h5>
-                <form>
-                  <input placeholder="Ingresa tu correo"></input>
-                  <button>Suscribirse</button>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    placeholder="Ingresa tu correo"
+                    type="email"
+                    name="email"
+                    required
+                  />
+                  <button type="submit">Suscribirse</button>
                 </form>
               </section>
             </li>
