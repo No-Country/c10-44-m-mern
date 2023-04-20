@@ -15,20 +15,26 @@ export default function Home() {
   React.useEffect(() => {
     const handleWindowResize = () => {
       setWidth(window.innerWidth);
-    }
+    };
     handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
-  return (width > 0 ? width < breakpoint ? <ResponsiveHome /> :
-    <div className={styles.all}>
-      <NavBar />
-      <HomeHero />
-      <CardSection />
-      <BenefitsSection />
-      <NewsletterSection />
-      <HomeFooter />
-    </div> : <div className={styles.div}>Cargando...</div>
+  return width > 0 ? (
+    width < breakpoint ? (
+      <ResponsiveHome />
+    ) : (
+      <div className={styles.all}>
+        <NavBar />
+        <HomeHero />
+        <CardSection />
+        <BenefitsSection />
+        <NewsletterSection />
+        <HomeFooter />
+      </div>
+    )
+  ) : (
+    <div className={styles.div}>Cargando...</div>
   );
 }

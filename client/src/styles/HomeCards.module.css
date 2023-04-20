@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap");
-
 .mainsection {
   background-color: #ecedf2;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   place-content: center;
   padding: 60px 40px;
   gap: 60px;
