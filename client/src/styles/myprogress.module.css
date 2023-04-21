@@ -77,14 +77,14 @@
     height: 128px;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid #D39245;
-    color: #fff;
-}
-
-.container__section.collapsed {
     background-color: #424242;
     color: black;
     border: none;
+}
+
+.container__section.collapsed {
+    border: 2px solid #D39245;
+    color: #fff;
 
 
 }
@@ -101,6 +101,7 @@
 }
 
 .container__course {
+    background-color: red;
     display: flex;
     gap: 16px;
     flex-direction: column;

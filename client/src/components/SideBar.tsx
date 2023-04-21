@@ -1,23 +1,33 @@
-import React, { useCallback, useState } from 'react';
-import styles from '@/styles/SideBar.module.css';
-import { BiRightArrowAlt, BiHomeAlt, BiUserCircle, BiBookContent, BiPencil, BiLogOut, BiArrowBack } from 'react-icons/bi';
-import Avatar from '../assets/Avatar.png';
-import VerbifyLogo from '../assets/Verbify-logo.png';
-import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { logOutUser } from '@/actions/authActions';
-import { useRouter } from 'next/router';
+import React, { useCallback, useState } from "react";
+import styles from "@/styles/SideBar.module.css";
+import {
+  BiRightArrowAlt,
+  BiHomeAlt,
+  BiUserCircle,
+  BiBookContent,
+  BiPencil,
+  BiLogOut,
+  BiArrowBack,
+} from "react-icons/bi";
+import Avatar from "../assets/Avatar.png";
+import VerbifyLogo from "../assets/Verbify-logo.png";
+import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { logOutUser } from "@/actions/authActions";
+import { useRouter } from "next/router";
 
 function SideBar() {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    setOpen(!open)
+    setOpen(!open);
   };
 
   const dispatch = useAppDispatch();
 
-  const fetchLogOut = useCallback(() => { dispatch(logOutUser()) }, [dispatch]);
+  const fetchLogOut = useCallback(() => {
+    dispatch(logOutUser());
+  }, [dispatch]);
 
   const navigate = useRouter();
 
@@ -26,71 +36,123 @@ function SideBar() {
     navigate.push("/");
   };
 
-  const {
-    authList,
-  } = useAppSelector(rootReducer => rootReducer.auth);
-  const {
-    classList,
-  } = useAppSelector(rootReducer => rootReducer.classes);
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+  const { classList } = useAppSelector((rootReducer) => rootReducer.classes);
 
   return (
-    <div> {!open ?
-      <nav className={styles.nav}>
-        <span>
-          <div>
-            <button onClick={handleClick} className={styles.button_2}><BiRightArrowAlt size={28} /></button>
-            <p>Menu</p>
-          </div>
-          <hr />
-          <div>
-            <button><Link href="/home"><BiHomeAlt size={28} /></Link></button>
-            <button><Link href="/profile"><BiUserCircle size={28} /></Link></button>
-            <button><Link href="/myprogress"><BiBookContent size={28} /></Link></button>
-            <button><Link href={classList?._id ? `/classroom/${classList._id}` : "/classroom/643f669920ab7834dd652c54"}><BiPencil size={28} /></Link></button>
-          </div>
-          <hr />
-        </span>
-        <div>
-          <img src={Avatar.src} />
-          <button onClick={handleClickLogOut}><BiLogOut size={28} /></button>
-        </div>
-      </nav> :
-      <nav className={styles.nav_2}>
-        <span>
-          <div>
+    <div>
+      {" "}
+      {!open ? (
+        <nav className={styles.nav}>
+          <span>
             <div>
-              <img src={VerbifyLogo.src} />
-              <button onClick={handleClick} className={styles.button_3}>
-                <BiArrowBack size={28} />
+              <button onClick={handleClick} className={styles.button_2}>
+                <BiRightArrowAlt size={28} />
+              </button>
+              <p>Menu</p>
+            </div>
+            <hr />
+            <div>
+              <button>
+                <Link href="/home">
+                  <BiHomeAlt size={28} />
+                </Link>
+              </button>
+              <button>
+                <Link href="/profile">
+                  <BiUserCircle size={28} />
+                </Link>
+              </button>
+              <button>
+                <Link href="/myprogress">
+                  <BiBookContent size={28} />
+                </Link>
+              </button>
+              <button>
+                <Link
+                  href={
+                    classList?._id
+                      ? `/classroom/${classList._id}`
+                      : "/classroom/643f669920ab7834dd652c54"
+                  }
+                >
+                  <BiPencil size={28} />
+                </Link>
               </button>
             </div>
-            <p>Menu</p>
-          </div>
-          <hr />
-          <div>
-            <button><Link href="/home"><BiHomeAlt size={28} /><p>Home</p></Link></button>
-            <button><Link href="/profile"><BiUserCircle size={28} /><p>Perfil</p></Link></button>
-            <button><Link href="/myprogress"><BiBookContent size={28} /><p>Cursos</p></Link></button>
-            <button><Link href={classList?._id ? `/classroom/${classList._id}` : "/classroom/643f669920ab7834dd652c54"}><BiPencil size={28} /><p>Classroom</p></Link></button>
-          </div>
-          <hr />
-        </span>
-        <section>
+            <hr />
+          </span>
           <div>
             <img src={Avatar.src} />
-            <div>
-              <h5>{authList?.displayName}</h5>
-              <p>{authList?.email}</p>
-            </div>
+            <button onClick={handleClickLogOut}>
+              <BiLogOut size={28} />
+            </button>
           </div>
-          <button onClick={handleClickLogOut}>
-            <BiLogOut size={28} />
-            <p>Cerrar sesión</p>
-          </button>
-        </section>
-      </nav>}
+        </nav>
+      ) : (
+        <nav className={styles.nav_2}>
+          <span>
+            <div>
+              <div>
+                <img src={VerbifyLogo.src} />
+                <button onClick={handleClick} className={styles.button_3}>
+                  <BiArrowBack size={28} />
+                </button>
+              </div>
+              <p>Menu</p>
+            </div>
+            <hr />
+            <div>
+              <button>
+                <Link href="/home">
+                  <BiHomeAlt size={28} />
+                  <p>Home</p>
+                </Link>
+              </button>
+              <button>
+                <Link href="/profile">
+                  <BiUserCircle size={28} />
+                  <p>Perfil</p>
+                </Link>
+              </button>
+              <button>
+                <Link href="/myprogress">
+                  <BiBookContent size={28} />
+                  <p>Cursos</p>
+                </Link>
+              </button>
+              <button>
+                <Link
+                  href={
+                    classList?._id
+                      ? `/classroom/${classList._id}`
+                      : "/classroom/643f669920ab7834dd652c54"
+                  }
+                >
+                  <BiPencil size={28} />
+                  <p>Classroom</p>
+                </Link>
+              </button>
+            </div>
+            <hr />
+          </span>
+          <section>
+            <div>
+              <img src={Avatar.src} />
+              <div>
+                <h5>{authList?.displayName}</h5>
+                <p>{authList?.email}</p>
+              </div>
+            </div>
+            <button onClick={handleClickLogOut}>
+              <BiLogOut size={28} />
+              <p>Cerrar sesión</p>
+            </button>
+          </section>
+        </nav>
+      )}
     </div>
-  )
-};
+  );
+}
 
 export default SideBar;

@@ -95,16 +95,23 @@ function ProfilePage() {
                 <div className={styles.payment}>
                   <div>
                     <p className={styles.label}>Producto</p>
-                    <p>{authList?.isSuscribed && "Esta suscripto" || "No esta suscripto"}</p>
+                    <p>
+                      {(authList?.isSuscribed && "Con membresía activa") ||
+                        "Sin membresía"}
+                    </p>
                   </div>
-                  {/* <div>
-                    <p className={styles.label}>Vence</p>
-                    <p>06/04/2024</p>
-                  </div>
-                  <div>
-                    <p className={styles.label}>Número de tarjeta</p>
-                    <p>**** 0405</p>
-                  </div> */}
+                  {authList?.isSuscribed === true && (
+                    <>
+                      <div>
+                        <p className={styles.label}>Vence</p>
+                        <p>06/04/2024</p>
+                      </div>
+                      <div>
+                        <p className={styles.label}>Número de tarjeta</p>
+                        <p>**** 0405</p>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
               <button className={styles.editbutton}>Editar</button>

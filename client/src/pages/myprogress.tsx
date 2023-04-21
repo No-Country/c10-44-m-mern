@@ -10,16 +10,21 @@ import {
   getCourses,
 } from "@/actions/coursesActions";
 import { useRouter } from "next/router";
+
 interface Course {
+  id: string;
   _id: string;
   name: string;
   numModules: number;
   numCompletedModules: number;
-  Module: { _id: string }[];
+  Module: [];
+  title: string;
+  isPublic: boolean;
+  courseId: string;
 }
 
-interface AllList {
-  allList: Course[];
+interface CoursesList {
+  coursesList: Course[];
 }
 
 function MyProgress() {
@@ -28,6 +33,7 @@ function MyProgress() {
   const dispatch = useAppDispatch();
 
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+  const { allList } = useAppSelector((rootReducer) => rootReducer.courses);
 
   const fetchGetCourses = useCallback(() => {
     dispatch(getCourses());
@@ -39,9 +45,11 @@ function MyProgress() {
     fetchGetCourses();
   }, [fetchGetCourses]);
 
-  const { allList } = useAppSelector(
-    (rootReducer: { courses: AllList }) => rootReducer.courses
+  const { coursesList } = useAppSelector(
+    (rootReducer: { courses: CoursesList }) => rootReducer.courses
   );
+
+  console.log(allList);
 
   return (
     <div className={styles.container__mainmyprogress}>
@@ -62,13 +70,14 @@ function MyProgress() {
           </form>
         </header>
         <div className={styles.container___sections}>
-          {allList?.map((course) => (
+          {coursesList?.map((course) => (
             <MyProgressSection
               key={course?._id}
+              id={course._id}
               title={course.name}
               numModules={course.Module.length}
               numCompletedModules={0}
-              Module={course?.Module.map((module) => module._id)}
+              Module={course?.Module}
             />
           ))}
         </div>

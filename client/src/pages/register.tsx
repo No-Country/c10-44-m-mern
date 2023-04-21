@@ -36,7 +36,7 @@ function Register() {
 
   useEffect(() => {
     if (authList && authToken) {
-      navigate.push("/payment");
+      navigate.push("/home");
     }
   });
 
@@ -61,6 +61,8 @@ function Register() {
         title: "Oops...",
         text: "Las contraseñas no coinciden.",
         confirmButtonColor: "#D39245",
+        timer: 1000,
+        timerProgressBar: true,
       });
     } else {
       fetchSignUp(data);
@@ -69,6 +71,8 @@ function Register() {
         title: "¡Registro exitoso!",
         text: "Tu cuenta ha sido creada satisfactoriamente.",
         confirmButtonColor: "#D39245",
+        timer: 1000,
+        timerProgressBar: true,
       });
     }
   };
