@@ -7,17 +7,17 @@ import Homesinmembresia from "@/components/Homesinmembresia";
 function Home() {
   const router = useRouter();
 
-  const { authList } = useAppSelector(rootReducer => rootReducer.auth);
+  const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
   useEffect(() => {
     if (!authList) router.push("/login");
-  }, [])
+  }, []);
 
   return (
     <div>
       {authList?.isSuscribed ? <Homeconmembresia /> : <Homesinmembresia />}
     </div>
-  )
-};
+  );
+}
 
 export default Home;

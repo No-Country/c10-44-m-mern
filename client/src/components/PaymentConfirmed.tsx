@@ -3,6 +3,7 @@ import Verbify from "../assets/Verbify.png";
 import ManTouchingBookWithStick from "../assets/ManTouchingBookWithStick.png";
 import { BiCheck } from "react-icons/bi";
 import styles from "@/styles/PaymentConfirmed.module.css";
+import Link from "next/link";
 
 function PaymentConfirmed() {
   return (
@@ -28,7 +29,9 @@ function PaymentConfirmed() {
       </div>
       <div className={styles.bot}>
         <p>Paso 2 de 2</p>
-        <button>Empezar mis clases</button>
+        <button>
+          <Link href={"/myprogress"}>Empezar mis clases</Link>
+        </button>
       </div>
     </div>
   );
