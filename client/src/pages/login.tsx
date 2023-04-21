@@ -2,109 +2,160 @@ import Link from "next/link";
 import styles from "@/styles/Login.module.css";
 import React, { useCallback, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { BsEye, BsEyeSlash } from "react-icons/bs";
-import Verbify from "../assets/Verbify.png";
+import { BiLowVision, BiShow } from "react-icons/bi";
+
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { signInUser } from "@/actions/authActions";
 import { useRouter } from "next/router";
+import { useForm, Controller } from "react-hook-form";
 
+import Swal from "sweetalert2";
+
+import Verbify from "../assets/Verbify.png";
+import Chat from "../assets/chat.png";
+interface Inputs {
+  email: string;
+  password: string;
+}
+interface LoginData {
+  email: string;
+  password: string;
+}
 function Login() {
-  const [inputs, setInputs] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [inputs, setInputs] = useState<Inputs>({ email: "", password: "" });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
   const navigate = useRouter();
 
-  const { authList, authToken } = useAppSelector(rootReducer => rootReducer.auth)
+  const { authList, authToken } = useAppSelector(
+    (rootReducer) => rootReducer.auth
+  );
 
   useEffect(() => {
     if (authList && authToken) {
-      navigate.push('/home');
+      navigate.push("/home");
     }
   });
-
-  const dispatch = useAppDispatch();
-
-  const fetchLogIn = useCallback(() => { dispatch(signInUser(inputs)) }, [dispatch, inputs])
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleClickLogIn = (event: React.MouseEvent) => {
-    event.preventDefault();
-    fetchLogIn();
+  const dispatch = useAppDispatch();
+
+  const fetchLogIn = useCallback(
+    (data: LoginData) => {
+      dispatch(signInUser({ email: data.email, password: data.password }));
+    },
+    [dispatch]
+  );
+
+  const onSubmit = (data: Inputs) => {
+    fetchLogIn(data);
+    {
+      Swal.fire({
+        icon: "success",
+        title: "Inicio de sesión exitoso",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (
     <main className={styles.main}>
+      <Link href={"/"}>
+        <img className={styles.logo_outside} src={Verbify.src} />
+      </Link>
+      <img className={styles.chat} src={Chat.src} />
       <section className={styles.section}>
-        <section>
-          <section>
-            <img src={Verbify.src} />
-            <p>Iniciar sesión para ver más contenido</p>
-          </section>
-          <form method="post" className={styles.form}>
-            <input
-              type="text"
+        <div>
+          <img src={Verbify.src} />
+          <p>Iniciar sesión para ver más contenido</p>
+        </div>
+        <form
+          method="post"
+          className={styles.form}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className={styles.errors_container}>
+            <Controller
               name="email"
-              onChange={handleChange}
-              placeholder="Correo electrónico"
+              control={control}
+              rules={{ required: "Correo electrónico requerido" }}
+              render={({ field }) => (
+                <input
+                  type="email"
+                  {...field}
+                  placeholder="Correo electrónico"
+                />
+              )}
             />
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              onChange={handleChange}
-              placeholder="Contraseña"
-            />
-            <div>
-              <button type="button" onClick={handleClickShowPassword}>
-                <span>
-                  {showPassword ? (
-                    <BsEyeSlash size={28} />
-                  ) : (
-                    <BsEye size={28} />
-                  )}
-                </span>
-              </button>
-            </div>
-            <Link className={styles.link} href="/">
-              ¿Has olvidado tu contraseña?
-            </Link>
-            <button onClick={handleClickLogIn} className={styles.button}>
-              Iniciar sesión
-            </button>
-          </form>
-          <div className={styles.div}>
-            <div>
-              <div />
-              <span>
-                <p>ó</p>
-              </span>
-              <div />
-            </div>
-            <button>
-              <FcGoogle size={28} />
-              <p>Iniciar con Google</p>
-            </button>
+            {errors.email && (
+              <span className={styles.text_errors}>{errors.email.message}</span>
+            )}
           </div>
-          <span>
-            <p className={styles.p}>
-              ¿No tienes una cuenta?
-              <Link className={styles.link_2} href="/register">
-                Registrate aquí
-              </Link>
-            </p>
-          </span>
-        </section>
+          <div className={styles.errors_container}>
+            <Controller
+              name="password"
+              control={control}
+              rules={{ required: "Contraseña requerida" }}
+              render={({ field }) => (
+                <div className={styles.password_input_container}>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    {...field}
+                    placeholder="Contraseña"
+                  />
+                  <div className={styles.showpassword_container}>
+                    <button type="button" onClick={handleClickShowPassword}>
+                      {showPassword ? (
+                        <BiLowVision size={28} />
+                      ) : (
+                        <BiShow size={28} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              )}
+            />
+            {errors.password && (
+              <span className={styles.text_errors}>
+                {errors.password.message}
+              </span>
+            )}
+          </div>
+          <Link className={styles.link_forget} href="/">
+            ¿Has olvidado tu contraseña?
+          </Link>
+          <button type="submit" className={styles.button_sesion}>
+            Iniciar sesión
+          </button>
+        </form>
+        <div className={styles.container_line}>
+          <span />
+          <p>O</p>
+          <span />
+        </div>
+        <button className={styles.button_google}>
+          <FcGoogle size={28} />
+          Iniciar sesión con Google
+        </button>
+        <div className={styles.link_footer}>
+          ¿No tienes una cuenta?
+          <Link className={styles.link} href="/register">
+            Regístrate
+          </Link>
+        </div>
       </section>
     </main>
-  )
+  );
 }
 
 export default Login;

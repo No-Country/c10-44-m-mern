@@ -28,7 +28,7 @@ function ModalStartNow() {
               contenidos.
             </p>
             <button className={styles.button_start}>
-              <Link href={"/classroom/643f669920ab7834dd652c54"}>
+              <Link href={"/classroom/64419fd727fa1ffdefe3e5fc"}>
                 Empezar ahora
               </Link>
             </button>

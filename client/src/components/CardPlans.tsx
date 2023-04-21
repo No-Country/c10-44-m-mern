@@ -23,12 +23,15 @@ function CardPlans(props: Props) {
           ))}
         </div>
         <div>
-          <Link href="/">
+          <Link href="/payment">
             <p className={styles.link}>Ver más</p>
           </Link>
         </div>
         <div>
-          <button className={styles.button_Plan}>Adquirir Plan</button>
+          <button className={styles.button_Plan}>
+            {" "}
+            <Link href={"/payment"}> Adquirir Plan </Link>
+          </button>
         </div>
       </div>
       <div className={styles.bottom}>

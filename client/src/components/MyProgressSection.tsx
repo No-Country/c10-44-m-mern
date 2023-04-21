@@ -36,8 +36,6 @@ function MyProgressSection(props: Section & { Module: string[] }) {
 
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
-  console.log(authList);
-
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
