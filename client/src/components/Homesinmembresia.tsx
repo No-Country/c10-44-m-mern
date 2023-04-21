@@ -108,7 +108,6 @@ function Homesinmembresia() {
   };
 
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
-  console.log(authList.email);
 
   return (
     <div className={styles.container__main}>

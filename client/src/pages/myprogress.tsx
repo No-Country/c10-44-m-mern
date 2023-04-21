@@ -5,32 +5,33 @@ import SideBarMobile from "@/components/SideBarMobile";
 import { useEffect, useCallback } from "react";
 import MyProgressSection from "@/components/MyProgressSection";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { getAllCoursesWithModulesAndClasses, getCourses } from "@/actions/coursesActions";
+import {
+  getAllCoursesWithModulesAndClasses,
+  getCourses,
+} from "@/actions/coursesActions";
 import { useRouter } from "next/router";
-
 interface Course {
   _id: string;
   name: string;
   numModules: number;
   numCompletedModules: number;
-  Module: [];
+  Module: { _id: string }[];
 }
 
-interface CoursesList {
-  coursesList: Course[];
+interface AllList {
+  allList: Course[];
 }
 
 function MyProgress() {
   const router = useRouter();
-  
+
   const dispatch = useAppDispatch();
 
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
-  const { allList } = useAppSelector((rootReducer) => rootReducer.courses);
 
   const fetchGetCourses = useCallback(() => {
     dispatch(getCourses());
-    dispatch(getAllCoursesWithModulesAndClasses())
+    dispatch(getAllCoursesWithModulesAndClasses());
   }, [dispatch]);
 
   useEffect(() => {
@@ -38,8 +39,8 @@ function MyProgress() {
     fetchGetCourses();
   }, [fetchGetCourses]);
 
-  const { coursesList } = useAppSelector(
-    (rootReducer: { courses: CoursesList }) => rootReducer.courses
+  const { allList } = useAppSelector(
+    (rootReducer: { courses: AllList }) => rootReducer.courses
   );
 
   return (
@@ -61,13 +62,13 @@ function MyProgress() {
           </form>
         </header>
         <div className={styles.container___sections}>
-          {coursesList?.map((course) => (
+          {allList?.map((course) => (
             <MyProgressSection
               key={course?._id}
               title={course.name}
               numModules={course.Module.length}
               numCompletedModules={0}
-              Module={course?.Module}
+              Module={course?.Module.map((module) => module._id)}
             />
           ))}
         </div>

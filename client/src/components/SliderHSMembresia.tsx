@@ -1,4 +1,5 @@
 import styles from "@/styles/SliderHSMembresia.module.css";
+import Link from "next/link";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 function SliderHSMembresia(props: Props) {
@@ -11,7 +12,10 @@ function SliderHSMembresia(props: Props) {
       </div>
       <div className={styles.container_phrases}>
         <p>{text}</p>
-        <button className={styles.button_Slider}> {contentbutton}</button>
+        <Link href={"/payment"}>
+          <button className={styles.button_Slider}> {contentbutton}</button>
+        </Link>
+
         <div className={styles.buttons_nextprev}>
           <button onClick={handlePrevious}>
             <BiLeftArrowAlt size={28} />
