@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
-import styles from '@/styles/PurchaseSummary.module.css'
-import Link from 'next/link';
-import { BiCheck, BiRightArrowAlt } from 'react-icons/bi';
+import React, { useState } from "react";
+import styles from "@/styles/PurchaseSummary.module.css";
+import Link from "next/link";
+import { BiCheck, BiRightArrowAlt } from "react-icons/bi";
 
 function PurchaseSummary(props: Props) {
-  const { plan, price, features, handleClickPrevious, handleClickNext, } = props;
+  const { plan, price, features, handleClickPrevious, handleClickNext } = props;
   return (
     <div className={styles.all}>
-      <div className={styles.top}>
-        <p>Resumen de compra</p>
-      </div>
+      <div className={styles.top}>{/* <p>Resumen de compra</p> */}</div>
       <div className={styles.mid}>
         <div>
           <h2>{plan}</h2>
         </div>
         <div>
-          <h2>{'$' + price + '.00'}</h2>
+          <h2>{"$" + price + ".00"}</h2>
         </div>
         <div>
-          {features.map((feature, i) => <div key={i}><BiCheck /><p>{feature}</p></div>)}
+          {features.map((feature, i) => (
+            <div key={i}>
+              <BiCheck />
+              <p>{feature}</p>
+            </div>
+          ))}
         </div>
         <div>
-          <Link href='/'><p className={styles.link}>Saber más</p></Link>
+          <Link href={"/payment"}>
+            <p className={styles.link}>Saber más</p>
+          </Link>
         </div>
       </div>
       <div className={styles.bottom}>
@@ -33,15 +38,15 @@ function PurchaseSummary(props: Props) {
         </button>
       </div>
     </div>
-  )
-};
+  );
+}
 
 type Props = {
-  plan: string,
-  price: number,
-  features: string[],
-  handleClickPrevious: () => void,
-  handleClickNext: () => void,
-}
+  plan: string;
+  price: number;
+  features: string[];
+  handleClickPrevious: () => void;
+  handleClickNext: () => void;
+};
 
 export default PurchaseSummary;

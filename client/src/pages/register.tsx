@@ -36,7 +36,7 @@ function Register() {
 
   useEffect(() => {
     if (authList && authToken) {
-      navigate.push("/home");
+      navigate.push("/payment");
     }
   });
 

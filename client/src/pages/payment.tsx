@@ -7,18 +7,6 @@ import PaymentConfirmed from "@/components/PaymentConfirmed";
 const plansArray = [
   {
     id: 0,
-    name: "Gratis",
-    price: 0,
-    features: [
-      "Featured Feature 01",
-      "Featured Feature 01",
-      "Featured Feature 01",
-      "Featured Feature 01",
-      "Featured Feature 01",
-    ],
-  },
-  {
-    id: 1,
     name: "Plan mensual",
     price: 40,
     features: [
@@ -30,9 +18,21 @@ const plansArray = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     name: "Plan anual",
     price: 300,
+    features: [
+      "Featured Feature 01",
+      "Featured Feature 01",
+      "Featured Feature 01",
+      "Featured Feature 01",
+      "Featured Feature 01",
+    ],
+  },
+  {
+    id: 2,
+    name: "Plan semestral",
+    price: 200,
     features: [
       "Featured Feature 01",
       "Featured Feature 01",
@@ -48,19 +48,13 @@ function Payment() {
   const [confirmed, setConfirmed] = useState(false);
 
   const handleClickPrevious = () => {
-    if (plan.id < 1) {
-      setPlan(plansArray[2]);
-    } else {
-      setPlan(plansArray[plan.id - 1]);
-    }
+    const prevPlanId = (plan.id - 1 + plansArray.length) % plansArray.length;
+    setPlan(plansArray[prevPlanId]);
   };
 
   const handleClickNext = () => {
-    if (plan.id > 1) {
-      setPlan(plansArray[0]);
-    } else {
-      setPlan(plansArray[plan.id + 1]);
-    }
+    const nextPlanId = (plan.id + 1) % plansArray.length;
+    setPlan(plansArray[nextPlanId]);
   };
 
   const handleClickConfirm = () => {

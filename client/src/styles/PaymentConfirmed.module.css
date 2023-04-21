@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap");
-
 .all {
   font-family: "Sora", sans-serif;
   background-color: #343434;
   min-height: 821px;
+  height: 100vh;
 }
 
 .all div div div {

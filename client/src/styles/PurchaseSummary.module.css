@@ -1,20 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
-
 .all {
   font-family: 'Sora', sans-serif;
   background-color: #D39245;
   border-radius: 18px;
   width: 342px;
   height: 581px;
-  margin: 10px;
-  padding: 50px;
-  padding-top: 75px;
+  padding: 75px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  float: left;
 }
 
 .top {

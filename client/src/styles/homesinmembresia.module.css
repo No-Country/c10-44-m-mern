@@ -152,6 +152,7 @@
 
     .container_CardPlans {
         display: flex;
+        margin: auto;
         padding-top: 0;
     }
 }

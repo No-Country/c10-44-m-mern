@@ -3,8 +3,15 @@ import Verbify from "../assets/Verbify.png";
 import styles from "@/styles/PaymentInfo.module.css";
 import PaymentForm from "./PaymentForm";
 
+type Props = {
+  plan: string;
+  price: number;
+  id?: number;
+  handleClickConfirm: () => void;
+};
+
 function PaymentInfo(props: Props) {
-  const { plan, price, id, handleClickConfirm } = props;
+  const { plan, price, handleClickConfirm } = props;
 
   return (
     <main className={styles.main}>
@@ -20,7 +27,7 @@ function PaymentInfo(props: Props) {
           <span>
             <p>Verifica tu información y haz click en Realizar pago</p>
           </span>
-          {id > 0 ? <PaymentForm /> : null}
+          <PaymentForm />
           <div>
             <h4>Resumen</h4>
             <div>
@@ -35,45 +42,24 @@ function PaymentInfo(props: Props) {
             <p>Precio</p>
             <p>{"$" + price + ".00"}</p>
           </span>
-          {id < 1 ? (
-            <div>
-              <div>
-                <input type="checkbox" />
-                <p>Acepto recibir notificaciones a mi correo</p>
-              </div>
-              <div>
-                <input type="checkbox" />
-                <p>Acepto términos y condiciones</p>
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
       <div className={styles.bottom}>
         <p>Paso 1 de 2</p>
         <button onClick={handleClickConfirm}>Realizar pago</button>
-        {id > 0 ? (
+        <div>
           <div>
-            <div>
-              <input type="checkbox" />
-              <p>Acepto recibir notificaciones a mi correo</p>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <p>Acepto términos y condiciones</p>
-            </div>
+            <input type="checkbox" />
+            <p>Acepto recibir notificaciones a mi correo</p>
           </div>
-        ) : null}
+          <div>
+            <input type="checkbox" />
+            <p>Acepto términos y condiciones</p>
+          </div>
+        </div>
       </div>
     </main>
   );
 }
-
-type Props = {
-  plan: string;
-  price: number;
-  id: number;
-  handleClickConfirm: () => void;
-};
 
 export default PaymentInfo;

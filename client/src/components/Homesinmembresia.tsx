@@ -2,7 +2,6 @@ import SideBar from "@/components/SideBar";
 import styles from "../styles/homesinmembresia.module.css";
 //Importacion de Iconos
 import { BiSearchAlt } from "react-icons/bi";
-import CardPlans from "@/components/CardPlans";
 import { useState } from "react";
 import SliderHSMembresia from "@/components/SliderHSMembresia";
 import CardNews from "@/components/CardNews";
@@ -10,6 +9,7 @@ import CardResources from "@/components/CardResources";
 import ModalStartNow from "@/components/ModalStart";
 import SideBarMobile from "@/components/SideBarMobile";
 import { useAppSelector } from "@/store/hooks";
+import PurchaseSummary from "./PurchaseSummary";
 
 const plansArray = [
   {
@@ -28,6 +28,18 @@ const plansArray = [
     id: 1,
     name: "Plan anual",
     price: 300,
+    features: [
+      "Featured Feature 01",
+      "Featured Feature 01",
+      "Featured Feature 01",
+      "Featured Feature 01",
+      "Featured Feature 01",
+    ],
+  },
+  {
+    id: 2,
+    name: "Plan semestral",
+    price: 200,
     features: [
       "Featured Feature 01",
       "Featured Feature 01",
@@ -92,19 +104,13 @@ function Homesinmembresia() {
   const [sliderIndex, setSliderIndex] = useState(0);
 
   const handleClickPrevious = () => {
-    if (plan.id === 0) {
-      setPlan(plansArray[1]);
-    } else {
-      setPlan(plansArray[plan.id - 1]);
-    }
+    const prevPlanId = (plan.id - 1 + plansArray.length) % plansArray.length;
+    setPlan(plansArray[prevPlanId]);
   };
 
   const handleClickNext = () => {
-    if (plan.id === 1) {
-      setPlan(plansArray[0]);
-    } else {
-      setPlan(plansArray[plan.id + 1]);
-    }
+    const nextPlanId = (plan.id + 1) % plansArray.length;
+    setPlan(plansArray[nextPlanId]);
   };
 
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
@@ -173,7 +179,7 @@ function Homesinmembresia() {
           </div>
         </div>
         <div className={styles.container_CardPlans}>
-          <CardPlans
+          <PurchaseSummary
             plan={plan.name}
             price={plan.price}
             features={plan.features}
