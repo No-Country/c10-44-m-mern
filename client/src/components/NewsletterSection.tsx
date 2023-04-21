@@ -10,6 +10,8 @@ function NewsletterSection() {
       title: "¡Gracias por suscribirte!",
       text: "Recibirás nuestro newsletter lleno de contenido exclusivo y consejos prácticos en tu correo electrónico.",
       confirmButtonColor: "#D39245",
+      timer: 1000,
+      timerProgressBar: true,
     });
     e.currentTarget.reset();
   };
@@ -22,8 +24,8 @@ function NewsletterSection() {
       <section className={styles.contenido__newsletter}>
         <h1>Recibe nuestras noticias</h1>
         <p>
-          Descubre nuevas formas de aprender y mejorar con nuestro newsletter
-          lleno de contenido exclusivo y consejos prácticos.
+          Descubre nuevas formas de aprender y mejorar con nuestro <br />
+          newsletter lleno de contenido exclusivo y consejos prácticos.
         </p>
         <form onSubmit={handleSubmit}>
           <input

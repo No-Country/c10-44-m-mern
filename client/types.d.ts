@@ -6,9 +6,14 @@ La interface Course la uso en el componente NewCourse
 y en el handler definido en formHandlers
 */
 export interface Course {
+  _id:string;
   title: string;
   description: string;
   image: string;
+  isPublic: boolean;
+  name: string;
+  isPublic: boolean;
+  isSubscribed?: boolean;
 }
 
 /* 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import {
   BiCaretUp,
   BiLock,
@@ -9,12 +8,14 @@ import {
   BiCaretDown,
 } from "react-icons/bi";
 import styles from "../styles/myprogress.module.css";
+import { Module } from "../actions/modulesActions";
 import axios from "axios";
 import CardClasses from "./CardClasses";
 import Link from "next/link";
 import { useAppSelector } from "@/store/hooks";
 
 interface Section {
+  id: string;
   title: string;
   numModules: number;
   numCompletedModules: number;
@@ -31,9 +32,7 @@ interface ModuleData {
 function MyProgressSection(props: Section & { Module: string[] }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [moduleData, setModuleData] = useState<ModuleData[]>([]);
-
   const [isCollapsedModule, setisCollapsedModule] = useState(true);
-
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
 
   const toggleCollapse = () => {
@@ -46,11 +45,9 @@ function MyProgressSection(props: Section & { Module: string[] }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const promises = props.Module.map((moduleId: string) => {
-        return axios.get(
-          `https://verbify.onrender.com/api/modules/${moduleId}`
-        );
-      });
+      const promises = props.Module.map((moduleId: string) =>
+        axios.get(`https://verbify.onrender.com/api/modules/${moduleId}`)
+      );
       const results = await Promise.all(promises);
       const modules = results.map((res) => res.data);
       setModuleData(modules);
@@ -62,12 +59,13 @@ function MyProgressSection(props: Section & { Module: string[] }) {
     <section>
       <div
         className={`${styles.container__section} ${
-          isCollapsed && authList?.isSuscribed === true ? "" : styles.collapsed
+          isCollapsed && authList?.isSuscribed === false ? "" : styles.collapsed
         }`}
       >
         <p>{props.title}</p>
         <button onClick={toggleCollapse}>
-          {isCollapsed && authList?.isSuscribed === true ? (
+          {isCollapsed &&
+          authList?.isSuscribed === false ? null : authList?.isSuscribed ? (
             <div className={styles.cardCourse__Count}>
               <h5>
                 {props.numCompletedModules}/{props.numModules}
@@ -80,7 +78,7 @@ function MyProgressSection(props: Section & { Module: string[] }) {
         </button>
       </div>
       <div className={styles.container__course}>
-        {(!isCollapsed && authList?.isSuscribed === true) ||
+        {!isCollapsed &&
           moduleData?.map((module) => (
             <div key={module?._id}>
               <div className={styles.container_classes}>
@@ -106,7 +104,11 @@ function MyProgressSection(props: Section & { Module: string[] }) {
                   </button>
 
                   <button onClick={toggleCollapseModules}>
-                    {isCollapsedModule ? <BiCaretUp /> : <BiCaretDown />}
+                    {authList?.isSuscribed === true && isCollapsedModule ? (
+                      <BiCaretUp />
+                    ) : (
+                      <BiCaretDown />
+                    )}
                   </button>
                 </div>
               </div>
@@ -118,9 +120,7 @@ function MyProgressSection(props: Section & { Module: string[] }) {
                 <hr className={styles.line_Heigth} />
               </div>
               <div className={styles.container_class}>
-                {isCollapsedModule && (
-                  <CardClasses id={module?._id} classes={module?.classes} />
-                )}
+                <CardClasses id={module?._id} classes={module?.classes} />
               </div>
             </div>
           ))}

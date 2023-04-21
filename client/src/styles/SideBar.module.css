@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
-
 .nav {
-  height: 97vh;
+  height: 95vh;
   font-family: 'Sora', sans-serif;
   display: flex;
   flex-direction: column;
@@ -53,12 +51,13 @@
 .nav img {
   padding: 15px;
   border-radius: 8px;
+  width: 70px;
 }
 
 /*--------------------------------------------------------------*/
 
 .nav_2 {
-  height: 97vh;
+  height: 95vh;
   font-family: 'Sora', sans-serif;
   display: flex;
   flex-direction: column;
@@ -158,4 +157,6 @@
 .nav_2 section div img {
   padding: 15px;
   border-radius: 8px;
+  width: 70px;
+
 }
