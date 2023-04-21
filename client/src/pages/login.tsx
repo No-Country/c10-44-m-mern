@@ -58,14 +58,6 @@ function Login() {
 
   const onSubmit = (data: Inputs) => {
     fetchLogIn(data);
-    {
-      Swal.fire({
-        icon: "success",
-        title: "Inicio de sesión exitoso",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
   };
 
   return (
@@ -76,7 +68,10 @@ function Login() {
       <img className={styles.chat} src={Chat.src} />
       <section className={styles.section}>
         <div>
-          <img src={Verbify.src} />
+          <Link href={"/"}>
+            <img src={Verbify.src} />
+          </Link>
+
           <p>Iniciar sesión para ver más contenido</p>
         </div>
         <form

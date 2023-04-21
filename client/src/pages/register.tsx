@@ -71,7 +71,7 @@ function Register() {
         title: "¡Registro exitoso!",
         text: "Tu cuenta ha sido creada satisfactoriamente.",
         confirmButtonColor: "#D39245",
-        timer: 1000,
+        timer: 3000,
         timerProgressBar: true,
       });
     }
@@ -92,7 +92,9 @@ function Register() {
       </section>
       <section className={styles.container_form}>
         <section>
-          <img src={Verbify.src} />
+          <Link href={"/"}>
+            <img src={Verbify.src} />
+          </Link>
           <p className={styles.title}>
             Regístrate en nuestra grandiosa comunidad
           </p>

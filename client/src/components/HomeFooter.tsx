@@ -10,6 +10,8 @@ function HomeFooter() {
       title: "¡Gracias por suscribirte!",
       text: "Recibirás nuestro newsletter lleno de contenido exclusivo y consejos prácticos en tu correo electrónico.",
       confirmButtonColor: "#D39245",
+      timer: 3000,
+      timerProgressBar: true,
     });
     e.currentTarget.reset();
   };
