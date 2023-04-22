@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   BiCaretUp,
   BiLock,
@@ -12,7 +12,13 @@ import { Module } from "../actions/modulesActions";
 import axios from "axios";
 import CardClasses from "./CardClasses";
 import Link from "next/link";
-import { useAppSelector } from "@/store/hooks";
+
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import {
+  getAllCoursesWithModulesAndClasses,
+  getCourses,
+} from "@/actions/coursesActions";
+import { useRouter } from "next/router";
 
 interface Section {
   id: string;
@@ -29,11 +35,37 @@ interface ModuleData {
   subtitle: string;
 }
 
+interface Course {
+  id: string;
+  name: string;
+  isPublic: boolean;
+}
+
 function MyProgressSection(props: Section & { Module: string[] }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [moduleData, setModuleData] = useState<ModuleData[]>([]);
-  const [isCollapsedModule, setisCollapsedModule] = useState(true);
+  const [isCollapsedModule, setisCollapsedModule] = useState(false);
+
+  //Codigo para mostrar lista de cursos
+
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
   const { authList } = useAppSelector((rootReducer) => rootReducer.auth);
+  const { allList } = useAppSelector((rootReducer) => rootReducer.courses);
+
+  const fetchGetCourses = useCallback(() => {
+    dispatch(getCourses());
+    dispatch(getAllCoursesWithModulesAndClasses());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!authList) router.push("/login");
+    fetchGetCourses();
+  }, [fetchGetCourses]);
+
+  const { coursesList } = useAppSelector((rootReducer) => rootReducer.courses);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -59,13 +91,12 @@ function MyProgressSection(props: Section & { Module: string[] }) {
     <section>
       <div
         className={`${styles.container__section} ${
-          isCollapsed && authList?.isSuscribed === false ? "" : styles.collapsed
+          isCollapsed ? styles.collapsed : ""
         }`}
       >
         <p>{props.title}</p>
         <button onClick={toggleCollapse}>
-          {isCollapsed &&
-          authList?.isSuscribed === false ? null : authList?.isSuscribed ? (
+          {isCollapsed ? (
             <div className={styles.cardCourse__Count}>
               <h5>
                 {props.numCompletedModules}/{props.numModules}
@@ -78,7 +109,7 @@ function MyProgressSection(props: Section & { Module: string[] }) {
         </button>
       </div>
       <div className={styles.container__course}>
-        {!isCollapsed &&
+        {isCollapsed &&
           moduleData?.map((module) => (
             <div key={module?._id}>
               <div className={styles.container_classes}>
@@ -104,23 +135,23 @@ function MyProgressSection(props: Section & { Module: string[] }) {
                   </button>
 
                   <button onClick={toggleCollapseModules}>
-                    {authList?.isSuscribed === true && isCollapsedModule ? (
-                      <BiCaretUp />
-                    ) : (
-                      <BiCaretDown />
-                    )}
+                    {isCollapsedModule ? <BiCaretDown /> : <BiCaretUp />}
                   </button>
                 </div>
               </div>
               <div className={styles.subtitle_class}>
                 <p>{module?.subtitle}</p>
-                <h1>0/{module?.classes?.length}</h1>
+                <h4>0/{module?.classes?.length}</h4>
               </div>
               <div>
                 <hr className={styles.line_Heigth} />
               </div>
               <div className={styles.container_class}>
-                <CardClasses id={module?._id} classes={module?.classes} />
+                <CardClasses
+                  id={module?._id}
+                  classes={module?.classes}
+                  isCollapsedModule={isCollapsedModule}
+                />
               </div>
             </div>
           ))}

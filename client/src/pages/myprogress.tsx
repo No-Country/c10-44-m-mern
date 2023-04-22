@@ -1,9 +1,17 @@
+//Estilos CSS
 import styles from "../styles/myprogress.module.css";
+
+//Iconos
 import { BiSearchAlt } from "react-icons/bi";
+
+//Importacion de componentes
 import SideBar from "@/components/SideBar";
 import SideBarMobile from "@/components/SideBarMobile";
-import { useEffect, useCallback } from "react";
 import MyProgressSection from "@/components/MyProgressSection";
+
+//Importaciones de React
+import { useEffect, useCallback } from "react";
+//Redux
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   getAllCoursesWithModulesAndClasses,
@@ -48,8 +56,6 @@ function MyProgress() {
   const { coursesList } = useAppSelector(
     (rootReducer: { courses: CoursesList }) => rootReducer.courses
   );
-
-  console.log(allList);
 
   return (
     <div className={styles.container__mainmyprogress}>

@@ -34,12 +34,26 @@ export const signInUser = (inputs: Inputs) => {
   };
 };
 
+// export const logOutUser = () => {
+//   return (dispatch: Dispatch) => {
+//     return dispatch({
+//       type: LOG_OUT_USER,
+//     });
+//   }
+// };
+
+
+// export const logOutUser = () => {
+//   return (dispatch: Dispatch) => {
+//     return dispatch({
+//       type: 'LOG_OUT_USER', 
+//     });
+//   }
+// };
 export const logOutUser = () => {
-  return (dispatch: Dispatch) => {
-    return dispatch({
-      type: LOG_OUT_USER,
-    });
-  }
+  return {
+    type: LOG_OUT_USER
+  };
 };
 
 export const signUpUser = (user: User) => {

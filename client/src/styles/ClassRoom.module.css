@@ -34,3 +34,23 @@
   align-items: center;
   background-color: #212121;
 }
+
+@media screen and (max-width: 767px) {
+  .all {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .mid {
+    margin: 20px;
+  }
+
+  .right {
+    padding-top: 20px;
+  }
+}

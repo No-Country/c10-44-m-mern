@@ -85,8 +85,10 @@
 .container__section.collapsed {
     border: 2px solid #D39245;
     color: #fff;
+}
 
-
+.container__section.locked {
+    pointer-events: none;
 }
 
 .cardCourse__Count {
@@ -101,7 +103,6 @@
 }
 
 .container__course {
-    background-color: red;
     display: flex;
     gap: 16px;
     flex-direction: column;
@@ -197,12 +198,33 @@
     color: #BE843E;
 }
 
+.container___sections h1 {
+    font-size: 1rem;
+}
+
+.container___sections h2 {
+    font-size: 1rem;
+    background-color: red;
+}
+
+.container___sections h3 {
+    font-size: 2rem;
+}
+
+.container___sections h4 {
+    font-size: 1.15rem;
+}
+
+.container___sections p {
+    font-size: 1.3rem;
+}
+
 @media only screen and (max-width: 767px) {
 
     .container__sideBarmobile {
         display: block;
         position: absolute;
-        z-index: 100;
+        z-index: 999;
     }
 
     .container__myprogress {
@@ -221,6 +243,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
+        z-index: 888;
     }
 
     .container__myprogress header form {
@@ -228,18 +251,17 @@
     }
 
     .container__myprogress header h1 {
-        font-size: 32px;
         margin-bottom: 10px;
     }
 
     .container__myprogress header form input {
         padding-left: 2.5rem;
         height: 40px;
+
     }
 
     .container__myprogress header form button {
         font-size: 1.5rem;
-
     }
 
 
@@ -247,7 +269,25 @@
         margin: 196px 25px;
         display: flex;
         flex-direction: column;
+        font-size: 1rem;
     }
+
+    .container___sections h1 {
+        font-size: 1;
+    }
+
+    .container___sections h3 {
+        font-size: 1.2rem;
+    }
+
+    .container___sections h4 {
+        font-size: 1rem;
+    }
+
+    .container___sections p {
+        font-size: .9rem;
+    }
+
 
     .container__section {
         padding: 10px;

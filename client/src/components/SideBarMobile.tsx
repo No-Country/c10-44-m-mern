@@ -22,7 +22,9 @@ import iconV from "../assets/Icon_verbify.png";
 
 // Importaciones de Next.js
 import Link from "next/link";
-import { LogOutUserAction, logOutUser } from "@/actions/authActions";
+import { logOutUser } from "@/actions/authActions";
+import { Dispatch, AnyAction } from "redux";
+
 function SideBarMobile() {
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
@@ -32,12 +34,16 @@ function SideBarMobile() {
     setShowMenu(!showMenu);
   };
 
-  const fetchLogOut = useCallback(() => {
-    dispatch<LogOutUserAction>(logOutUser());
-  }, [dispatch]);
+  const fetchLogOut = useCallback(
+    (dispatch: Dispatch) => {
+      dispatch(logOutUser());
+      return {};
+    },
+    [dispatch]
+  );
 
   const handleClickLogOut = () => {
-    fetchLogOut();
+    dispatch(logOutUser());
     router.push("/");
   };
 
@@ -48,7 +54,7 @@ function SideBarMobile() {
         <p>Menu</p>
         <hr />
         <button>
-          <Link href="/">
+          <Link href="/home">
             <BiHomeAlt size={28} />
           </Link>
         </button>
