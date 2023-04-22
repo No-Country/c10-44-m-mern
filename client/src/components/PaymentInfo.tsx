@@ -2,6 +2,7 @@ import React from "react";
 import Verbify from "../assets/Verbify.png";
 import styles from "@/styles/PaymentInfo.module.css";
 import PaymentForm from "./PaymentForm";
+import Link from "next/link";
 
 type Props = {
   plan: string;
@@ -19,7 +20,9 @@ function PaymentInfo(props: Props) {
         <div>
           <div className={styles.top}>
             <p>1. Información del pago</p>
-            <img src={Verbify.src} alt="Verbify logo" />
+            <Link href={"/home"}>
+              <img src={Verbify.src} alt="Verbify logo" />
+            </Link>
           </div>
           <hr />
         </div>
