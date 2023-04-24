@@ -1,7 +1,15 @@
-import { Course } from "../../types.d";
 import styles from "../styles/Card.module.css";
 
-function CourseCard({ title, description, image }: Course) {
+interface Course {
+  key: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+interface Props extends Course {}
+
+function CourseCard({ title, description, image }: Props) {
   return (
     <div className={styles.container}>
       <figure className={styles.imagecontainer}>

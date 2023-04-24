@@ -8,7 +8,6 @@ import {
   BiCaretDown,
 } from "react-icons/bi";
 import styles from "../styles/myprogress.module.css";
-import { Module } from "../actions/modulesActions";
 import axios from "axios";
 import CardClasses from "./CardClasses";
 import Link from "next/link";

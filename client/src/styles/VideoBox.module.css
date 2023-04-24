@@ -13,8 +13,9 @@
 @media only screen and (max-width: 768px) {
   .video {
     display: flex;
+    margin-top: 5rem;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     height: auto;
     max-width: none;
     float: none;

@@ -11,12 +11,13 @@ function Home() {
 
   useEffect(() => {
     if (!authList) router.push("/login");
-  }, []);
+  }, [authList]);
 
   return (
-    <div>
+    <main>
+      {" "}
       {authList?.isSuscribed ? <Homeconmembresia /> : <Homesinmembresia />}
-    </div>
+    </main>
   );
 }
 

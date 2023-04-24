@@ -23,7 +23,7 @@ import iconV from "../assets/Icon_verbify.png";
 // Importaciones de Next.js
 import Link from "next/link";
 import { logOutUser } from "@/actions/authActions";
-import { Dispatch, AnyAction } from "redux";
+import { Dispatch } from "redux";
 
 function SideBarMobile() {
   const [showMenu, setShowMenu] = useState(false);

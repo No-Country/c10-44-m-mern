@@ -35,7 +35,32 @@
   background-color: #212121;
 }
 
+.sidebarmobile {
+  display: none;
+}
+
+.classroom {
+  display: none;
+}
+
+
 @media screen and (max-width: 767px) {
+
+  .classroom {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    padding-top: 43px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebarmobile {
+    display: block;
+  }
+
   .all {
     display: flex;
     flex-direction: column;
@@ -47,10 +72,37 @@
   }
 
   .mid {
-    margin: 20px;
+    margin: 0;
   }
 
   .right {
     padding-top: 20px;
   }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .mid {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    height: -webkit-fill-available;
+    align-items: center;
+    background-color: #212121;
+  }
+
 }

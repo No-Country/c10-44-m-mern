@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "../styles/HomeFooter.module.css";
 import Swal from "sweetalert2";
 

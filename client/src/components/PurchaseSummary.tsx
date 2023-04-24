@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "@/styles/PurchaseSummary.module.css";
 import Link from "next/link";
 import { BiCheck, BiRightArrowAlt } from "react-icons/bi";
