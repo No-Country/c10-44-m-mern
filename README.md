@@ -12,7 +12,7 @@
 
 <h3 align="center"  ><b>Puede consultar nuestra página web aquí:</b></h3>
 <h3 align="center" style="color: #D39245;
-"><a href="https://verbify.vercel.app/" target="_blank" rel="noopener noreferrer"> Verbify.vercel.app</a></h3>
+"><a href="https://verbify.vercel.app/" target="_blank" rel="noopener noreferrer"> Verbify</a></h3>
 <p  align="center" ><a href="https://www.youtube.com/watch?v=sY3yjBGqles" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
 
