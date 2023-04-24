@@ -18,56 +18,6 @@ interface CardClassesProps {
   isCollapsedModule: boolean;
 }
 
-// function CardClasses(props: CardClassesProps) {
-//   const [classData, setClassData] = useState<ClassData[]>([]);
-
-//   const dispatch = useAppDispatch();
-
-//   const setModuleForUnitsBox = useCallback(() => {
-//     dispatch(getModuleById(props.id));
-//   }, [dispatch]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const promises = props.classes.map((classId: string) => {
-//         return axios.get(`https://verbify.onrender.com/api/classes/${classId}`);
-//       });
-//       const results = await Promise.all(promises);
-//       const classes = results?.map((res) => res.data);
-//       setClassData(classes);
-//     };
-//     fetchData();
-//   }, [props.classes]);
-
-//   return (
-//     <div className={styles.card_class}>
-//       {classData?.map((classInfo) => (
-//         <div key={classInfo?._id}>
-//           {classInfo?.name !== null && classInfo?.name.length > 0 && (
-//             <div
-//               className={styles.classes_content}
-//               onClick={setModuleForUnitsBox}
-//             >
-//               <Link
-//                 href={`/classroom/${classInfo._id}`}
-//                 style={{ color: "#2AEF4A" }}
-//               >
-//                 <BiCaretRightCircle size={20} />
-//               </Link>
-//               <h4>
-//                 <Link href={`/classroom/${classInfo._id}`}>
-//                   {classInfo?.name}
-//                 </Link>
-//               </h4>
-//             </div>
-//           )}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-// export default CardClasses;
-
 function CardClasses(props: CardClassesProps) {
   const [classData, setClassData] = useState<ClassData[]>([]);
 

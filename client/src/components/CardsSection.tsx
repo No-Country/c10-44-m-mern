@@ -11,36 +11,42 @@ type Variants = {
 function CardSection() {
   const courses = [
     {
+      id: 1,
       title: "Nivel básico",
       image: ManGettingFolder.src,
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
     {
+      id: 2,
       title: "Nivel intermedio",
       image: ManGettingFolder.src,
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
     {
+      id: 3,
       title: "Nivel avanzado",
       image: ManGettingFolder.src,
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
     {
+      id: 4,
       title: "Nivel negocios",
       image: ManGettingFolder.src,
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
     {
+      id: 5,
       title: "Nivel básico",
       image: ManGettingFolder.src,
       description:
         "Comienza tu viaje hacia el dominio del inglés con desde el nivel básico.",
     },
     {
+      id: 6,
       title: "Nivel intermedio",
       image: ManGettingFolder.src,
       description:
@@ -80,13 +86,14 @@ function CardSection() {
         {courses.map((elem) => {
           return (
             <CourseCard
-              key={elem.title}
+              key={elem.id}
               title={elem.title}
               description={elem.description}
               image={elem.image}
             />
           );
         })}
+        console.log(elem);
       </motion.div>
     </section>
   );

@@ -41,11 +41,13 @@
 .button_2 {
   color: #D39245;
   margin-bottom: 20px;
+
 }
 
 .nav div button:hover {
   background-color: #D39245;
   color: #ECEDF2;
+  cursor: pointer;
 }
 
 .nav img {
@@ -100,16 +102,39 @@
   margin: 10px;
 }
 
-.nav_2 button {
+.button_back {
+  color: #D39245;
+  display: flex;
+  justify-content: center;
+  width: 2rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+}
+
+.button_back:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttons {
   font-family: 'Sora', sans-serif;
   display: flex;
   align-items: center;
-  width: -webkit-fill-available;
   background-color: transparent;
   border: 0px;
   padding: 15px;
   border-radius: 8px;
+  width: 12rem;
   font-size: medium;
+  text-align: start;
+}
+
+.buttons:hover {
+  background-color: #D39245;
+  color: #ECEDF2;
+  cursor: pointer;
+  text-align: start;
 }
 
 .nav_2 button p {
@@ -140,17 +165,6 @@
 }
 
 .nav_2 section div div p {
-  color: #ECEDF2;
-}
-
-.button_3 {
-  color: #D39245;
-  display: flex;
-  justify-content: center;
-}
-
-.nav_2 button:hover {
-  background-color: #D39245;
   color: #ECEDF2;
 }
 

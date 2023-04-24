@@ -7,6 +7,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 import CardSection from "@/components/CardsSection";
 import ResponsiveHome from "@/components/ResponsiveHome";
 import styles from "@/styles/index.module.css";
+import Head from "next/head";
 
 export default function Home() {
   const [width, setWidth] = React.useState(0);
@@ -26,6 +27,9 @@ export default function Home() {
       <ResponsiveHome />
     ) : (
       <div className={styles.all}>
+        <Head>
+          <link rel="icon" href="/Icon_verbify.svg" />
+        </Head>
         <NavBar />
         <HomeHero />
         <CardSection />

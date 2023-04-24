@@ -62,6 +62,7 @@ import VideoBox from "@/components/VideoBox";
 import CourseDetails from "@/components/CourseDetails";
 import styles from "@/styles/ClassRoom.module.css";
 import UnitsBox from "@/components/UnitsBox";
+import SideBarMobile from "@/components/SideBarMobile";
 
 function ClassRoom() {
   const router = useRouter();
@@ -88,8 +89,12 @@ function ClassRoom() {
       <div className={styles.sidebar}>
         <SideBar />
       </div>
+      <div className={styles.sidebarmobile}>
+        <SideBarMobile />
+      </div>
       <div className={styles.top}>
         <div className={styles.mid}>
+          <h1 className={styles.classroom}>Classroom</h1>
           <VideoBox videourl={classList?.videoURL} />
           <CourseDetails
             title={classList?.name}

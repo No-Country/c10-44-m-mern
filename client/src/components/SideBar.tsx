@@ -95,7 +95,7 @@ function SideBar() {
             <div>
               <div>
                 <img src={VerbifyLogo.src} />
-                <button onClick={handleClick} className={styles.button_3}>
+                <button onClick={handleClick} className={styles.button_back}>
                   <BiArrowBack size={28} />
                 </button>
               </div>
@@ -103,36 +103,36 @@ function SideBar() {
             </div>
             <hr />
             <div>
-              <button>
-                <Link href="/home">
+              <Link href="/home">
+                <button className={styles.buttons}>
                   <BiHomeAlt size={28} />
                   <p>Home</p>
-                </Link>
-              </button>
-              <button>
-                <Link href="/profile">
+                </button>
+              </Link>
+              <Link href="/profile">
+                <button className={styles.buttons}>
                   <BiUserCircle size={28} />
                   <p>Perfil</p>
-                </Link>
-              </button>
-              <button>
-                <Link href="/myprogress">
+                </button>
+              </Link>
+              <Link href="/myprogress">
+                <button className={styles.buttons}>
                   <BiBookContent size={28} />
                   <p>Cursos</p>
-                </Link>
-              </button>
-              <button>
-                <Link
-                  href={
-                    classList?._id
-                      ? `/classroom/${classList._id}`
-                      : "/classroom/643f669920ab7834dd652c54"
-                  }
-                >
+                </button>
+              </Link>
+              <Link
+                href={
+                  classList?._id
+                    ? `/classroom/${classList._id}`
+                    : "/classroom/643f669920ab7834dd652c54"
+                }
+              >
+                <button className={styles.buttons}>
                   <BiPencil size={28} />
                   <p>Classroom</p>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
             <hr />
           </span>
@@ -144,7 +144,7 @@ function SideBar() {
                 <p>{authList?.email}</p>
               </div>
             </div>
-            <button onClick={handleClickLogOut}>
+            <button className={styles.buttons} onClick={handleClickLogOut}>
               <BiLogOut size={28} />
               <p>Cerrar sesión</p>
             </button>

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 //import RatingStars from "./RatingStars";
 import styles from "@/styles/CourseDetails.module.css";
 

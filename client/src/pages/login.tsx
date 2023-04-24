@@ -1,18 +1,26 @@
+// Importaciónes Next.js
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+// Importación de estilos CSS
 import styles from "@/styles/Login.module.css";
+
+// Importaciónes de React y Hooks
 import React, { useCallback, useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+
+// Importaciones de Redux Toolkit
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { signInUser } from "@/actions/authActions";
+
+// Importación de una imagenes
+import Verbify from "../assets/Verbify.png";
+import Chat from "../assets/chat.png";
+
+// Importación de iconos de la librería react-icons
 import { FcGoogle } from "react-icons/fc";
 import { BiLowVision, BiShow } from "react-icons/bi";
 
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { signInUser } from "@/actions/authActions";
-import { useRouter } from "next/router";
-import { useForm, Controller } from "react-hook-form";
-
-import Swal from "sweetalert2";
-
-import Verbify from "../assets/Verbify.png";
-import Chat from "../assets/chat.png";
 interface Inputs {
   email: string;
   password: string;
@@ -21,6 +29,7 @@ interface LoginData {
   email: string;
   password: string;
 }
+
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [inputs, setInputs] = useState<Inputs>({ email: "", password: "" });
@@ -152,5 +161,4 @@ function Login() {
     </main>
   );
 }
-
 export default Login;
