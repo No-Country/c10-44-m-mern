@@ -60,10 +60,9 @@ Back .env
 ### 👉🏻 Desarrolladores
 
 | <img src="https://ca.slack-edge.com/T02KS88FB0E-U04UJRMNLM7-09b632b7c451-512" width=50>| <img src="https://ca.slack-edge.com/T02KS88FB0E-U04TZJWK8NA-cfe53890588e-512" width=50>|
-|:-:|:-:|
-| **Leandro Méndez**| **Juanra Noya**|
-| <a href="https://github.com/LeanMendez"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/leandroamendez/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/juanrnoya"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://ar.linkedin.com/in/jrnoya/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-
+|:-:|
+| **Leandro Méndez**|
+| <a href="https://github.com/LeanMendez"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/leandroamendez/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | 
 <hr/>
 
 ## ✔ Frontend
