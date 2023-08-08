@@ -3,16 +3,10 @@ import { create as createUser } from "../services/users.service";
 import { IUser } from "../models/user";
 import generateJWT from "../utils/generate-jwt";
 
-/**
- * Creates a new user and returns the user and a signed JWT
- * @param req Contains the body of the request
- * @param res Contains the response to the request
- */
 export const signUp = async (req: Request, res: Response) => {
   try {
     const bodyUser: IUser = {
       ...req.body,
-      passwordHash: req.body.password,
     };
 
     const newUser = await createUser(bodyUser);
